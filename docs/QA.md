@@ -68,7 +68,7 @@ Sau vòng 2: bổ sung cue “Use arrows to rotate”, caption “Concept vision
 
 ## GitHub Actions
 
-CI chạy npm ci → lint → token/contrast → build → cài Chromium → 11 browser tests. Lượt đầu trên Ubuntu hoàn thành build/lint và 10/11 tests nhưng test GPU hết budget 30s. Đã chuyển so sánh camera/pixel sang reduced-motion để kiểm state ổn định trên software GPU, giữ nguyên assertions và không bỏ test; runtime camera đồng thời chuyển sang interpolation theo thời gian. Kết quả mới cần đối chiếu tại PR theo SHA mới nhất, không dùng kết quả commit trước thay cho commit mới.
+CI chạy npm ci → lint → token/contrast → build → cài Chromium → 11 browser tests. Lượt đầu trên Ubuntu hoàn thành build/lint và 10/11 tests nhưng test GPU hết budget 30s. Đã chuyển so sánh camera/pixel sang reduced-motion để kiểm state ổn định trên software GPU, giữ nguyên assertions và không bỏ test; runtime camera đồng thời chuyển sang interpolation theo thời gian. Một lượt sau chạm giới hạn assertion mặc định 5s khi compile shader, nên CI dùng loading budget 15s/assertion và 60s/test; local giữ 5s/30s. Không thêm timeout/retry vào application để che lỗi. Kết quả mới cần đối chiếu tại PR theo SHA mới nhất, không dùng kết quả commit trước thay cho commit mới.
 
 **PASS tại source commit `2030df25af009456e1b196bcd634045349420767`**, [GitHub Actions run #2](https://github.com/Ngh1aa/Lava/actions/runs/41587168865). Các commit tài liệu sau đó không thay application source; xem check của HEAD tại PR để biết trạng thái mới nhất.
 

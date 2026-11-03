@@ -65,7 +65,7 @@ export function renderPage() {
     </section>
     <section class="spaces section" id="spaces" aria-labelledby="spaces-title" data-screen="Spaces">
       <div class="section-top"><span>03 / Spaces</span><span>Made for the moments between</span></div><h2 id="spaces-title" data-reveal>Life, given<br>a little more space.</h2>
-      <div class="spaces-grid">${c.spaces.map((s, i) => `<figure class="space space-${i + 1}" data-reveal><a class="image-link" href="images/${s.image}" data-gallery="${i + 1}" aria-label="View ${s.name}"><img src="images/${s.image}" alt="${s.alt}" width="${s.width}" height="${s.height}" loading="lazy" decoding="async" /><span class="image-open" aria-hidden="true">↗</span></a><figcaption><span class="space-name">0${i + 1} / ${s.name}</span><h3>${s.title}</h3><p>${s.body}</p></figcaption></figure>`).join("")}</div>
+      <div class="spaces-grid">${c.spaces.map((s, i) => `<figure class="space space-${i + 1}" data-reveal><a class="image-link" href="images/${s.image}" data-gallery="${i + 1}" aria-label="View ${s.name}"><img src="images/${s.image}" alt="${s.alt}" width="${s.width}" height="${s.height}" loading="lazy" decoding="async" /><span class="image-open" aria-hidden="true">↗</span></a><figcaption><div class="space-meta"><span class="space-name">0${i + 1} / ${s.name}</span><span class="space-name">Concept vision</span></div><h3>${s.title}</h3><p>${s.body}</p></figcaption></figure>`).join("")}</div>
     </section>
     <section class="experience section" id="experience" aria-labelledby="experience-title" data-screen="Experience">
       <div class="experience-heading"><span class="section-index">04 / The experience</span><h2 id="experience-title" data-reveal>The details<br>make the difference.</h2></div>

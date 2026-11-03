@@ -140,6 +140,7 @@ export function createScene(
     dragStart: number | null = null;
   let width = 0,
     height = 0;
+  let lastRenderTime = performance.now();
   function updateCamera() {
     const view = content.views[index];
     desiredPosition.fromArray(view.position);
@@ -160,13 +161,17 @@ export function createScene(
     if (compiled && !frame && visible && !disposed && !document.hidden)
       frame = requestAnimationFrame(render);
   }
-  function render() {
+  function render(time: number) {
     frame = 0;
     if (disposed || !visible || document.hidden) return;
     updateCamera();
     const immediate = reduced.matches || low;
-    camera.position.lerp(desiredPosition, immediate ? 1 : 0.09);
-    currentTarget.lerp(desiredTarget, immediate ? 1 : 0.09);
+    // Keep motion duration consistent when the GPU cannot maintain 60 frames per second.
+    const delta = Math.min(64, Math.max(1, time - lastRenderTime));
+    lastRenderTime = time;
+    const blend = immediate ? 1 : 1 - Math.exp(-delta / 150);
+    camera.position.lerp(desiredPosition, blend);
+    currentTarget.lerp(desiredTarget, blend);
     camera.lookAt(currentTarget);
     renderer.render(scene, camera);
     if (!ready) {

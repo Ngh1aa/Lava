@@ -122,7 +122,7 @@ async function mountScene(kind: "hero" | "viewer") {
                   : "Scroll to explore"
                 : ""
               : onDemand
-                ? ""
+                ? "Use arrows to rotate"
                 : "Drag to explore";
           $(
             kind === "hero" ? "#hero-scene" : "#architecture-scene",

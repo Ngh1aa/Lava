@@ -66,6 +66,8 @@ test("mobile navigation, Escape and anchor focus work", async ({ page }) => {
 test("real WebGL viewer responds to camera, lighting, power and keyboard tabs", async ({
   page,
 }) => {
+  // Assert camera/render differences in the stable supported mode, including on software GPUs in CI.
+  await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto("/");
   await page.locator("#showcase").scrollIntoViewIfNeeded();
   await expect(page.locator("#architecture-scene")).toHaveAttribute(
@@ -224,7 +226,7 @@ test("axe WCAG AA on desktop, mobile menu, form errors and gallery", async ({
   page,
 }) => {
   // Audit stable supported states; intermediate fade frames are tested separately as motion.
-  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/");
   const audit = async () =>
     expect(
@@ -266,9 +268,14 @@ test("touch devices load 3D on request and gallery accepts a swipe", async ({
     "data-render",
     "webgl",
   );
-  await page.getByRole('button',{name:'Still view',exact:true}).first().click();
-  await expect(page.locator('#hero-scene canvas')).toHaveCount(0);
-  await expect(page.getByRole('button',{name:'View in 3D',exact:true})).toBeFocused();
+  await page
+    .getByRole("button", { name: "Still view", exact: true })
+    .first()
+    .click();
+  await expect(page.locator("#hero-scene canvas")).toHaveCount(0);
+  await expect(
+    page.getByRole("button", { name: "View in 3D", exact: true }),
+  ).toBeFocused();
   await page.locator("#showcase").scrollIntoViewIfNeeded();
   await expect(
     page.getByRole("button", { name: "Daylight", exact: true }),
@@ -321,14 +328,32 @@ test("without JavaScript the narrative and image links work, enquiry cannot leak
   await context.close();
 });
 
-test('short viewports keep the hero CTA visible and large wordmark clear of the headline',async({page})=>{
-  await page.emulateMedia({reducedMotion:'reduce'});
-  for(const [width,height] of [[375,667],[390,740],[1280,720],[1920,1000]]){
-    await page.setViewportSize({width,height});await page.goto('/');await expect(page.getByRole('link',{name:'Explore LAVA'})).toBeInViewport();
-    if(width>=1200){
-      const wordmark=await page.locator('.hero-wordmark').boundingBox();const title=await page.locator('#hero-title').boundingBox();
-      expect(wordmark&&title&&wordmark.y+wordmark.height<=title.y,`wordmark overlaps headline at ${width}x${height}`).toBe(true);
+test("short viewports keep the hero CTA visible and large wordmark clear of the headline", async ({
+  page,
+}) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  for (const [width, height] of [
+    [375, 667],
+    [390, 740],
+    [1280, 720],
+    [1920, 1000],
+  ]) {
+    await page.setViewportSize({ width, height });
+    await page.goto("/");
+    await expect(
+      page.getByRole("link", { name: "Explore LAVA" }),
+    ).toBeInViewport();
+    if (width >= 1200) {
+      const wordmark = await page.locator(".hero-wordmark").boundingBox();
+      const title = await page.locator("#hero-title").boundingBox();
+      expect(
+        wordmark && title && wordmark.y + wordmark.height <= title.y,
+        `wordmark overlaps headline at ${width}x${height}`,
+      ).toBe(true);
     }
-    await page.keyboard.press('Tab');await expect(page.getByRole('link',{name:'Skip to content'})).toBeFocused();
+    await page.keyboard.press("Tab");
+    await expect(
+      page.getByRole("link", { name: "Skip to content" }),
+    ).toBeFocused();
   }
 });

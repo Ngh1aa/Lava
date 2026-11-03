@@ -687,6 +687,12 @@ dialog::backdrop {
   font-size: 12px;
   color: var(--ds-text-secondary);
 }
+.space-meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px 16px;
+}
 .space h3 {
   margin-top: 20px;
 }
@@ -1397,6 +1403,9 @@ details[open] .detail-plus::before {
     gap: 8px;
   }
   .showcase-caption > #showcase-status {
+    position: absolute;
+    bottom: 60px;
+    left: 0;
     max-width: 140px;
     line-height: 1.4;
     text-align: center;

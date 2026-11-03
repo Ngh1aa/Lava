@@ -687,6 +687,19 @@ dialog::backdrop {
   font-size: 12px;
   color: var(--ds-text-secondary);
 }
+.photo-credit {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  max-width: 100%;
+  font-size: 12px;
+  color: var(--ds-text-secondary);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.photo-credit:hover {
+  color: var(--ds-text-brand);
+}
 .space-meta {
   display: flex;
   flex-wrap: wrap;
@@ -967,6 +980,7 @@ details[open] .detail-plus::before {
 }
 .lightbox-top,
 .lightbox-bottom {
+  flex-wrap: wrap;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1564,7 +1578,7 @@ details[open] .detail-plus::before {
     margin-bottom: 32px;
   }
   .lightbox-stage img {
-    height: calc(100dvh - 190px);
+    height: calc(100dvh - 240px);
   }
   .lightbox-prev {
     left: 4px;
@@ -1573,7 +1587,18 @@ details[open] .detail-plus::before {
     right: 4px;
   }
   .lightbox-bottom {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 8px 16px;
     margin-top: 24px;
+  }
+  #lightbox-credit {
+    grid-column: 1;
+    grid-row: 2;
+  }
+  #lightbox-count {
+    grid-column: 2;
+    grid-row: 1;
   }
   [data-direction="b"] .hero-wordmark {
     font-size: 52px;

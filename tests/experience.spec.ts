@@ -6,7 +6,9 @@ test("all required viewport widths reflow, load assets and expose the hero CTA",
 }) => {
   const errors: string[] = [];
   page.on("pageerror", (e) => errors.push(e.message));
-  page.on("console", message => { if(message.type()==='error')errors.push(message.text()); });
+  page.on("console", (message) => {
+    if (message.type() === "error") errors.push(message.text());
+  });
   page.on("response", (r) => {
     if (r.status() >= 400) errors.push(`${r.status()} ${r.url()}`);
   });
@@ -68,7 +70,7 @@ test("real WebGL viewer responds to camera, lighting, power and keyboard tabs", 
   page,
 }) => {
   // Assert camera/render differences in the stable supported mode, including on software GPUs in CI.
-  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/");
   await page.locator("#showcase").scrollIntoViewIfNeeded();
   await expect(page.locator("#architecture-scene")).toHaveAttribute(
@@ -115,9 +117,19 @@ test("gallery opens the correct image, supports keys and restores focus", async 
     "src",
     /lounge.webp$/,
   );
+  await expect(page.locator("#lightbox-credit")).toHaveText(
+    "Photo: Sébastien Lavalaye",
+  );
+  await expect(page.locator("#lightbox-credit")).toHaveAttribute(
+    "href",
+    /unsplash.com\/photos\/.+kXKQEhfd06o$/,
+  );
   await page.keyboard.press("ArrowRight");
   await expect(page.locator("#lightbox-title")).toHaveText(
     "Between earth and sky",
+  );
+  await expect(page.locator("#lightbox-credit")).toHaveText(
+    "Photo: Caio Arbulu",
   );
   await page.keyboard.press("ArrowLeft");
   await page.keyboard.press("Escape");

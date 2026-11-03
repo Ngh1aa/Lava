@@ -1,4 +1,44 @@
-/** All project claims are conceptual; replace with verified project information before a commercial launch. */
+/** Real photographs used as architectural references, not photographs of the LAVA concept. */
+const photography = {
+  arrival: {
+    image: "arrival.webp",
+    width: 1600,
+    height: 757,
+    alt: "Copenhagen Opera House illuminated with warm interior light at night",
+    photographer: "Rasmus Lauridsen",
+    source:
+      "https://unsplash.com/photos/modern-building-illuminated-at-night-with-warm-interior-lighting-bsTw-CKKhx4",
+  },
+  lounge: {
+    image: "lounge.webp",
+    width: 1280,
+    height: 1280,
+    alt: "Concrete interior and leather bench beside a large window at Lugdunum Museum in Lyon",
+    photographer: "Sébastien Lavalaye",
+    source:
+      "https://unsplash.com/photos/a-modern-bench-sits-beside-a-large-window-kXKQEhfd06o",
+  },
+  terrace: {
+    image: "terrace.webp",
+    width: 898,
+    height: 2000,
+    alt: "Steel roof, glass facade and open terrace at Neue Nationalgalerie in Berlin",
+    photographer: "Caio Arbulu",
+    source:
+      "https://unsplash.com/photos/modern-building-with-a-large-terrace-under-a-blue-sky-bvx2_DCO9GA",
+  },
+  facade: {
+    image: "facade.webp",
+    width: 1600,
+    height: 1067,
+    alt: "Black and white photograph of an illuminated geometric facade in Hamburg",
+    photographer: "Maik Winnecke",
+    source:
+      "https://unsplash.com/photos/modern-building-facade-illuminated-at-night-U2YVQBUMq40",
+  },
+} as const;
+
+/** All LAVA project claims remain conceptual; reference photography is credited separately. */
 export const content = {
   brand: "LAVA",
   tagline: "Architecture in a different light",
@@ -61,20 +101,14 @@ export const content = {
     {
       title: "Space to connect.",
       name: "The gallery lounge",
-      image: "lounge.webp",
-      width: 1536,
-      height: 1024,
-      alt: "Double-height concrete lounge with warm lighting, stone benches and full-height glazing",
-      body: "A generous welcome. Tactile materials, quiet corners and an uninterrupted connection to the world outside.",
+      ...photography.lounge,
+      body: "A quiet material study. Concrete, soft daylight and a place to pause inspire LAVA's approach to shared interiors.",
     },
     {
       title: "A pause, above it all.",
       name: "The open terrace",
-      image: "terrace.webp",
-      width: 1536,
-      height: 1024,
-      alt: "Open architectural terrace with concrete overhangs, planted edges and warm light at dusk",
-      body: "Step out of the everyday. Open-air spaces make room for a conversation, a fresh thought or a slower moment.",
+      ...photography.terrace,
+      body: "An open-air study of proportion, shade and the relationship between architecture and its surroundings.",
     },
   ],
   experiences: [
@@ -93,28 +127,24 @@ export const content = {
   ],
   gallery: [
     {
-      image: "arrival.webp",
+      ...photography.arrival,
       title: "The blue hour",
-      category: "Exterior",
-      alt: "LAVA terraced building with warm bronze glazing reflected in still water at blue hour",
+      category: "Exterior reference",
     },
     {
-      image: "lounge.webp",
+      ...photography.lounge,
       title: "A warm welcome",
-      category: "Interior",
-      alt: "Concrete gallery lounge with warm recessed lighting and stone seating",
+      category: "Interior reference",
     },
     {
-      image: "terrace.webp",
+      ...photography.terrace,
       title: "Between earth and sky",
-      category: "Open air",
-      alt: "Planted concrete terrace opening onto the evening landscape",
+      category: "Open-air reference",
     },
     {
-      image: "structure.webp",
+      ...photography.facade,
       title: "A study of form",
-      category: "Architectural model",
-      alt: "Close view of the bronze fins and cantilevered concrete slabs of the LAVA model",
+      category: "Facade reference",
     },
   ],
 };

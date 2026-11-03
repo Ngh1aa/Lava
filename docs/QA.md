@@ -2,6 +2,12 @@
 
 Ngày kiểm: 03/11/2026. Trạng thái hướng thiết kế: **CHƯA DUYỆT bởi người dùng**. Review agent không thay thế việc phê duyệt.
 
+## Cập nhật ảnh thật — 03/11/2026
+
+Theo yêu cầu mới, thay ba ảnh AI và ảnh model trong Gallery bằng bốn ảnh chụp Unsplash có nguồn/tác giả/giấy phép được đối chiếu trong ASSETS.md. Ảnh được nén WebP và phục vụ local. Spaces ghi Photo reference và credit; lightbox cập nhật đúng tác giả/link theo ảnh. Hero và fallback WebGL vẫn dùng model gốc.
+
+Build/typecheck, lint, token/contrast và **11/11 browser tests PASS** sau thay ảnh; test gallery có thêm đối chiếu credit/link và vẫn kiểm keyboard/swipe/focus. Ảnh render Spaces/Gallery được chụp lại ở sáu viewport yêu cầu. Các điểm Lighthouse và review độc lập bên dưới thuộc mốc bàn giao trước thay ảnh, không phải phép đo/chấm điểm lại cho bộ ảnh Unsplash.
+
 ## Source và chạy thử
 
 - Repository: [Ngh1aa/Lava](https://github.com/Ngh1aa/Lava).
@@ -77,7 +83,7 @@ CI chạy npm ci → lint → token/contrast → build → cài Chromium → 11 
 - Chưa human/product approval, usability research, screen reader thủ công hoặc real iOS/Android/Safari/Firefox device testing.
 - Chưa kiểm việc gửi thư trong email app thật; mặc định chỉ tải file. Không có backend/inbox dự án thực, availability, đơn giá hay dữ liệu thương mại.
 - Zoom 200% bằng browser thật / trình đọc màn hình chưa được xác minh đầy đủ. Kiểm 320px reflow và short viewport không được đánh đồng với coverage này.
-- Hình concept AI diễn giải ý tưởng, không bảo đảm khớp từng chi tiết với mô hình WebGL, không phải bằng chứng dự án xây dựng.
+- Ảnh Unsplash là ảnh tham khảo của các công trình khác, có credit và link gốc; không phải ảnh chụp LAVA hay bằng chứng dự án đã xây dựng.
 - Visual model có thể tiếp tục nâng cấp nếu có GLB/BIM hoặc vật liệu/ảnh công trình thật. Đã giữ giới hạn GPU và accessibility thay vì thêm hậu kỳ nặng.
 - Không có public deployment hoặc domain được cấu hình; không merge main.
 

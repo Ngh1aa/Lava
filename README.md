@@ -2,6 +2,8 @@
 
 Website kiến trúc với nhận diện midnight navy, typography Manrope khổ lớn, công trình WebGL nguyên bản và hành trình từ hình khối đến không gian.
 
+Spaces và Gallery dùng ảnh chụp thật từ Unsplash, có tác giả và link nguồn. Ảnh là tham khảo kiến trúc của các công trình hiện hữu, không phải ảnh chụp LAVA; xem [nguồn ảnh](docs/ASSETS.md).
+
 ![LAVA desktop render](docs/previews/desktop.webp)
 
 **Hướng thị giác: CHƯA DUYỆT bởi chủ dự án.** Đây là architectural concept, chưa có thông tin dự án xây dựng hay đầu mối kinh doanh được xác thực. Xem [brand brief](docs/BRAND-BRIEF.md) và [giới hạn kiểm chứng](docs/QA.md).
@@ -90,7 +92,7 @@ Kết quả, điều kiện đo, review độc lập và giới hạn nằm tron
 
 - [Brand brief và các giả định](docs/BRAND-BRIEF.md).
 - [Audit, phân tích tham khảo, hai hướng và quyết định thiết kế](docs/DESIGN.md).
-- [Nguồn ảnh, giấy phép và prompt set](docs/ASSETS.md).
+- [Nguồn ảnh thật, tác giả và giấy phép](docs/ASSETS.md).
 - [Third-party notices](THIRD_PARTY_NOTICES.md).
 - [QA và trạng thái release](docs/QA.md).
 

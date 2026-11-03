@@ -277,6 +277,9 @@ function showImage(index: number) {
   image.alt = item.alt;
   $("#lightbox-title").textContent = item.title;
   $("#lightbox-category").textContent = item.category;
+  const credit = $<HTMLAnchorElement>("#lightbox-credit");
+  credit.href = item.source;
+  credit.textContent = `Photo: ${item.photographer}`;
   $("#lightbox-count").textContent =
     `0${imageIndex + 1} / 0${content.gallery.length}`;
 }

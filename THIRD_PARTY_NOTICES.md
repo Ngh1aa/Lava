@@ -6,4 +6,6 @@
 - UIUX AI Workspace and installed Codex skills are used as process references. No skill library or checker source is copied into LAVA. [Process reference](https://github.com/Ngh1aa/uiux-ai-workspace/tree/5404c183e2e6d09261ddb97b238e09ab56bd5a8a).
 - Likova / Vide Infra is a design reference only. No code, logo, imagery, 3D assets or fonts from that website are included.
 
-Original imagery and prompt provenance are recorded in [docs/ASSETS.md](docs/ASSETS.md).
+Photography sources, attribution and original model assets are recorded in [docs/ASSETS.md](docs/ASSETS.md).
+
+- Real architecture photographs: Rasmus Lauridsen, Sébastien Lavalaye, Caio Arbulu and Maik Winnecke via Unsplash, used under the [Unsplash License](https://unsplash.com/license). Individual photo pages, local assets and credit locations are recorded in docs/ASSETS.md.

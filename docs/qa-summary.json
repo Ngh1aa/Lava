@@ -1,0 +1,77 @@
+{
+  "sourceCommit": "2030df25af009456e1b196bcd634045349420767",
+  "measuredBuild": "production Vite build served at http://127.0.0.1:4173/",
+  "browsers": "Chrome 156 headless; software Chromium on GitHub Actions",
+  "tests": {
+    "playwright": 11,
+    "result": "PASS"
+  },
+  "design": {
+    "tokens": 53,
+    "contrastPairs": 20,
+    "result": "PASS"
+  },
+  "review": {
+    "kind": "agent-heuristic",
+    "independent": true,
+    "average": 4.05,
+    "minimum": 3.5,
+    "hardFails": 0,
+    "userApproval": "CHƯA DUYỆT"
+  },
+  "lighthouse": {
+    "mobile": {
+      "time": "2026-11-03T06:02:10.082Z",
+      "version": "13.6.0",
+      "scores": {
+        "performance": 99,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "largest-contentful-paint": {
+          "value": 2036.3363,
+          "display": "2.0 s"
+        },
+        "total-blocking-time": {
+          "value": 0,
+          "display": "0 ms"
+        },
+        "cumulative-layout-shift": {
+          "value": 0.00001759033165208165,
+          "display": "0"
+        }
+      }
+    },
+    "desktop": {
+      "time": "2026-11-03T06:02:19.049Z",
+      "version": "13.6.0",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "largest-contentful-paint": {
+          "value": 449.4778,
+          "display": "0.4 s"
+        },
+        "total-blocking-time": {
+          "value": 3.9999999999999716,
+          "display": "0 ms"
+        },
+        "cumulative-layout-shift": {
+          "value": 0.04207920670074432,
+          "display": "0.042"
+        }
+      }
+    }
+  },
+  "workspaceChecker": {
+    "errors": 0,
+    "warnings": 68,
+    "axe": "RUN"
+  }
+}

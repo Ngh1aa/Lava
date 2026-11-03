@@ -1,0 +1,102 @@
+{
+  "reviewer": {
+    "id": "independent_visual_review_2",
+    "kind": "agent-heuristic",
+    "independent": true
+  },
+  "cold": {
+    "enquiry-1440.png": {
+      "Màn này để làm gì?": "Để người quan tâm để lại nội dung hỏi về dự án kiến trúc và lưu thành tệp chia sẻ.",
+      "Bạn sẽ bấm vào đâu đầu tiên?": "Ô Your name để bắt đầu điền form.",
+      "Điều gì trông sai, rối hoặc thiếu?": "Form rõ nhưng Meet the project khá chung chung; không thấy thông tin liên hệ trực tiếp trong khung ảnh."
+    },
+    "enquiry-390.png": {
+      "Màn này để làm gì?": "Điền và lưu một enquiry về không gian kiến trúc trên điện thoại.",
+      "Bạn sẽ bấm vào đâu đầu tiên?": "Ô Your name dưới câu What do you have in mind?.",
+      "Điều gì trông sai, rối hoặc thiếu?": "Chưa thấy đánh dấu trường bắt buộc; phần giới thiệu chiếm khá nhiều chiều cao trước form nhưng vẫn dễ đọc."
+    },
+    "hero-1440.png": {
+      "Màn này để làm gì?": "Giới thiệu LAVA như một concept kiến trúc, lấy mô hình toà nhà làm hình chủ đạo.",
+      "Bạn sẽ bấm vào đâu đầu tiên?": "Explore LAVA ở góc dưới trái.",
+      "Điều gì trông sai, rối hoặc thiếu?": "Mô hình tối và có chất low-poly, chênh mức độ chân thực so với cảm giác thương hiệu cao cấp; chưa rõ đây là dự án ở đâu."
+    },
+    "hero-390.png": {
+      "Màn này để làm gì?": "Giới thiệu concept LAVA và mời khám phá tiếp hoặc chuyển sang xem 3D.",
+      "Bạn sẽ bấm vào đâu đầu tiên?": "View in 3D vì muốn xem mô hình gần hơn.",
+      "Điều gì trông sai, rối hoặc thiếu?": "Khoảng trống giữa chữ LAVA và toà nhà khá lớn; mô hình vẫn tối và đơn giản, nhưng CTA nằm gọn trong màn."
+    },
+    "hero-3d-390.png": {
+      "Màn này để làm gì?": "Xem phối cảnh 3D của toà nhà và chuyển về Still view.",
+      "Bạn sẽ bấm vào đâu đầu tiên?": "Thử kéo mô hình, sau đó dùng Still view để quay lại.",
+      "Điều gì trông sai, rối hoặc thiếu?": "Không có chỉ dẫn kéo/xoay trong ảnh; đế mô hình bị cắt hai bên và phần trên màn còn nhiều khoảng trống."
+    },
+    "showcase-1440.png": {
+      "Màn này để làm gì?": "Khám phá mô hình kiến trúc, thay ánh sáng và chuyển qua ba góc nhìn.",
+      "Bạn sẽ bấm vào đâu đầu tiên?": "Daylight để xem vật liệu và chi tiết rõ hơn.",
+      "Điều gì trông sai, rối hoặc thiếu?": "Mô hình chiếm ưu thế rõ, nhưng hình cây và vật liệu khá thô; Low power là nhãn kỹ thuật chưa mô tả tác động cho người xem."
+    },
+    "spaces-1440.png": {
+      "Màn này để làm gì?": "Giới thiệu hai tiện ích không gian: gallery lounge và open terrace.",
+      "Bạn sẽ bấm vào đâu đầu tiên?": "Mũi tên trên ảnh gallery lounge để mở xem không gian.",
+      "Điều gì trông sai, rối hoặc thiếu?": "Bố cục ảnh bất đối xứng có chủ đích và sạch; mũi tên đơn không cho biết sẽ mở ảnh hay chuyển trang."
+    },
+    "spaces-390.png": {
+      "Màn này để làm gì?": "Đọc và xem ảnh hai không gian lounge và terrace trên mobile.",
+      "Bạn sẽ bấm vào đâu đầu tiên?": "Mũi tên trên ảnh lounge đầu tiên.",
+      "Điều gì trông sai, rối hoặc thiếu?": "Khối terrace thụt lề phải làm nhịp khác khối lounge; nhìn có chủ đích nhưng ảnh và vùng chữ của nó hơi hẹp hơn."
+    }
+  },
+  "hard_fails": [],
+  "scores": {
+    "1": 4.0,
+    "2": 4.5,
+    "3": 4.0,
+    "4": 4.5,
+    "5": 4.5,
+    "6": 4.0,
+    "7": 3.5,
+    "8": 4.0,
+    "9": 4.0,
+    "10": 3.5
+  },
+  "observations": [
+    {
+      "dimension": "7",
+      "image": "hero-3d-390.png",
+      "element": "Vùng model 3D chỉ có nhãn 3D perspective; người dùng mới phải đoán có thể kéo/xoay, trong khi showcase desktop có Drag to explore.",
+      "fix": "Thêm chỉ dẫn ngắn Drag to rotate hoặc Swipe to explore trên mobile khi vào chế độ 3D; giữ nó nhỏ và tự ẩn sau tương tác thực."
+    },
+    {
+      "dimension": "10",
+      "image": "hero-1440.png",
+      "element": "Model là hình trung tâm và chiếm diện tích lớn nhưng cây dạng khối, bề mặt phẳng tối và nền đế đơn giản làm giảm cảm giác kiến trúc cao cấp; chất lượng khác đáng kể ảnh Spaces.",
+      "fix": "Polish model giữ hình khối hiện tại: cải thiện ánh sáng mặt đứng, roughness và bóng tiếp xúc, tinh chỉnh cây/landscape và vật liệu đế để đưa asset trung tâm gần mức hoàn thiện của ảnh Spaces."
+    },
+    {
+      "dimension": "10",
+      "image": "showcase-1440.png",
+      "element": "Cận cảnh model lặp nhiều nan mặt đứng đồng đều, ít chuyển sắc vật liệu; cây đa giác và đế mô hình nổi bật như maquette sơ bộ.",
+      "fix": "Tinh chỉnh vật liệu và chi tiết landscape vừa đủ ở khoảng nhìn này; ưu tiên ánh sáng ấm, shadow và độ sâu trước khi tăng geometry tốn hiệu năng."
+    },
+    {
+      "dimension": "8",
+      "image": "spaces-390.png",
+      "element": "Trong khung ảnh, hai hình không gian chỉ có tên tiện ích; chưa thấy câu phân biệt ảnh diễn giải concept và model 3D theo yêu cầu brief.",
+      "fix": "Bổ sung một caption tinh gọn Concept visualisation tại nhóm ảnh hoặc nơi mở ảnh; nếu nhãn đã nằm ngoài khung chụp thì đưa nó vào evidence ở vòng sau."
+    }
+  ],
+  "not_checked": [
+    "HF-1: Chưa đo tỷ lệ contrast từ pixel; chữ và UI trong ảnh nhìn có độ tách nền tốt, nhưng ảnh không chứng minh toàn bộ theme/state.",
+    "HF-2: Chưa kiểm vùng hit thực; ảnh cho thấy kích thước hiển thị, không cho biết padding nhận tap.",
+    "HF-3: Chưa kiểm chữ phóng 200%, browser zoom và width ngoài 390/1440. Hero 3D mobile cắt một phần đế model, được xem là camera crop có chủ đích chứ chưa đủ căn cứ gọi tràn layout.",
+    "HF-4: Chưa kiểm bàn phím, visible focus, thứ tự focus, tên control cho trình đọc màn hình và đường hoàn thành enquiry.",
+    "HF-5: Chưa có ảnh form validation, lỗi tải asset/WebGL, fallback và loading; không thể kết luận các state có hoặc thiếu từ packet.",
+    "HF-6: Chưa kiểm trạng thái interaction ngoài ảnh; Dusk và Still view trong ảnh có thay đổi nền/chữ để phân biệt trạng thái.",
+    "HF-7: Chưa kiểm browser back, menu mobile, touch drag, scroll và đóng panel/view.",
+    "HF-8/HF-9: Không thấy hai filled primary CTA cạnh tranh hoặc deceptive pattern trong 8 ảnh; chưa kiểm flow sau click.",
+    "HF-10: Không thấy testimonial hoặc thành tích bịa trong packet. Chưa xác minh nguồn tài sản hay cách label concept ở phần không chụp.",
+    "Chưa kiểm reduced motion, hiệu năng WebGL, chế độ Low power, Daylight, chuyển 3 góc nhìn, fallback GPU và thao tác save enquiry thật.",
+    "Chưa kiểm design-system validation ở source, đầy đủ hover/focus/active/disabled/error/success hoặc theme khác; điểm 6 chỉ phản ánh consistency nhìn thấy trong packet.",
+    "Không có thử nghiệm người dùng, kiểm thiết bị thật hoặc phê duyệt từ chủ sản phẩm. Điểm là agent-heuristic; trung bình 4.05 đạt ngưỡng số học XL nhưng không chứng minh các mục chưa kiểm."
+  ]
+}

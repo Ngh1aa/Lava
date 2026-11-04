@@ -681,11 +681,11 @@ dialog::backdrop {
   grid-column: 8 / -1;
   padding-top: 48px;
 }
-.experience details {
+.experience-list details {
   border-top: 1px solid var(--ds-border-subtle);
   padding-block: 24px;
 }
-.experience summary {
+.experience-list summary {
   display: flex;
   gap: 16px;
   align-items: center;
@@ -694,7 +694,7 @@ dialog::backdrop {
   letter-spacing: -0.03em;
   list-style: none;
 }
-.experience summary::-webkit-details-marker {
+.experience-list summary::-webkit-details-marker {
   display: none;
 }
 .detail-index {
@@ -719,7 +719,7 @@ dialog::backdrop {
 details[open] .detail-plus::before {
   content: "−";
 }
-.experience details p {
+.experience-list details p {
   margin: 24px 24px 0 32px;
   font-size: 15px;
   line-height: 1.7;
@@ -2442,14 +2442,14 @@ main[data-page^="/enquiry/"] .page-heading h1 {
   .experience-heading h2 {
     font-size: 42px;
   }
-  .experience details {
+  .experience-list details {
     padding-block: 16px;
   }
-  .experience details p {
+  .experience-list details p {
     font-size: 14px;
     margin-top: 16px;
   }
-  .experience summary {
+  .experience-list summary {
     font-size: 18px;
   }
   .detail-index {

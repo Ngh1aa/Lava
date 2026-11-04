@@ -48,3 +48,7 @@ Không lấy tài sản từ Likova. Các ảnh imagegen trước đây đã đ�
 - [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) cho phép chia sẻ/chỉnh sửa, kể cả thương mại, với credit, link giấy phép và chỉ rõ sửa đổi. [Notice đi cùng asset](../public/licenses/Modern-Office-Building.txt).
 - Thích ứng runtime: ẩn nền sân nguồn, chuẩn hóa tỷ lệ/đặt camera; thay transmission bằng reflective glass để giảm render pass; chỉnh màu backing và emissive, môi trường và ánh sáng. Không thêm tầng để giả mô hình gốc là thiết kế LAVA. Chương trình sáu tầng và zoning là đề xuất độc lập.
 - `hero.webp`, `exterior.webp`, `facade-view.webp`, `structure.webp` và bốn bản `*-mobile.webp` được render lại từ GLB này bằng dev server + `node scripts/render-assets.mjs`. Credit trên `/architecture/` và `/credits/#model-credit` áp dụng cho cả GLB và ảnh render. Model và ảnh đều tự host, không gọi Sketchfab/Hugging Face khi mở website.
+
+## Wordmark font — Syncopate Bold
+
+Wordmark header/hero/footer dùng Syncopate Bold (700), Brian J. Bonislawsky / Astigmatic, copyright 2010, Apache 2.0. Nguồn đối chiếu: https://github.com/google/fonts/tree/main/apache/syncopate và METADATA.pb. WOFF2 Latin từ Google Fonts CSS API / fonts.gstatic.com, lưu `public/fonts/syncopate-bold.woff2`, không đổi glyph. License: `public/licenses/Syncopate-Apache-2.0.txt`. Nội dung/UI giữ Manrope. Không dựng font Volution từ ảnh.

@@ -1,5 +1,19 @@
 @import "./brand.css";
 
+@font-face {
+  font-family: "Syncopate";
+  src: url("/fonts/syncopate-bold.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+.header-brand,
+.hero-wordmark,
+.footer-wordmark {
+  font-family: var(--font-display);
+}
+
 *,
 *::before,
 *::after {
@@ -140,7 +154,7 @@ dialog::backdrop {
   align-items: center;
 }
 .header-brand {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 700;
   letter-spacing: -0.07em;
   gap: 8px;
@@ -239,11 +253,11 @@ dialog::backdrop {
 .hero-wordmark {
   position: relative;
   z-index: -1;
-  font-weight: 600;
+  font-weight: 700;
   line-height: 0.82;
-  letter-spacing: -0.083em;
-  font-size: min(42vw, 60svh);
-  padding: 28px var(--gutter) 0;
+  letter-spacing: -0.045em;
+  font-size: min(26vw, 60svh);
+  padding: 64px var(--gutter) 0;
   width: 100%;
 }
 .hero-note {
@@ -832,10 +846,10 @@ details[open] .detail-plus::before {
   align-items: center;
 }
 .footer-wordmark {
-  font-size: 42vw;
+  font-size: 26vw;
   line-height: 0.95;
-  letter-spacing: -0.075em;
-  font-weight: 600;
+  letter-spacing: -0.045em;
+  font-weight: 700;
   margin: 48px 0 32px;
 }
 .footer-bottom {
@@ -2088,7 +2102,7 @@ main[data-page^="/enquiry/"] .page-heading h1 {
     padding-inline: max(var(--gutter), calc((100vw - 1792px) / 2));
   }
   .hero-wordmark {
-    font-size: min(42vw, 60svh);
+    font-size: min(26vw, 60svh);
   }
 }
 @media (max-width: 1199px) {
@@ -2248,10 +2262,10 @@ main[data-page^="/enquiry/"] .page-heading h1 {
     max-height: 920px;
   }
   .hero-wordmark {
-    font-size: 40vw;
+    font-size: 26vw;
     padding-top: 48px;
     line-height: 0.9;
-    letter-spacing: -0.08em;
+    letter-spacing: -0.045em;
   }
   .hero-note {
     top: 20px;
@@ -2479,7 +2493,7 @@ main[data-page^="/enquiry/"] .page-heading h1 {
     gap: 0;
   }
   .footer-wordmark {
-    font-size: 40vw;
+    font-size: 26vw;
     margin-block: 32px;
   }
   .footer-bottom {

@@ -1,6 +1,6 @@
 # LAVA — A different perspective
 
-Website dự án kiến trúc với **17 trang HTML riêng**, mô hình kiến trúc GLB có giấy phép, danh mục không gian, shortlist và enquiry ba bước. Nhận diện midnight navy, Manrope và ảnh chụp thật có nguồn.
+Website dự án kiến trúc với **17 trang HTML riêng**, mô hình kiến trúc GLB có giấy phép, danh mục không gian, shortlist và enquiry ba bước. Nhận diện midnight navy, Syncopate Bold cho wordmark, Manrope cho nội dung và ảnh chụp thật có nguồn.
 
 ![LAVA project experience](docs/previews/project-spaces.webp)
 

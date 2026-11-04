@@ -50,6 +50,7 @@
   --ds-card-border: transparent;
   --ds-elevation-raised: none;
   --font: "Manrope", sans-serif;
+  --font-display: "Syncopate", "Manrope", sans-serif;
   --gutter: clamp(20px, 3.34vw, 64px);
   --space-section: clamp(80px, 9vw, 160px);
   --ease: cubic-bezier(0.22, 0.68, 0.15, 1);

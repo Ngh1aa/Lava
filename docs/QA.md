@@ -96,3 +96,7 @@ Vite cảnh báo chunk Three.js >500 KB minified. Chunk đã lazy-split (~157 KB
 - Chế độ mailto chỉ xuất hiện nếu có `VITE_CONTACT_EMAIL` hợp lệ; chưa có inbox thật nên không xác minh giao thư end-to-end.
 - Production host phải cấu hình trailing slash, index theo thư mục và error document 404. Static `/Lava/` đã kiểm browser; chưa có public deployment.
 - CI/PR theo SHA mới nhất, không dùng kết quả của commit trước để tự nhận HEAD xanh. Không merge main trong lần bàn giao này.
+
+## Typography update — Syncopate Bold
+
+Wordmark header/hero/footer dùng Syncopate Bold 700, Apache 2.0, WOFF2 Latin tự host 17,432 bytes; body/UI giữ Manrope. Đã xem ảnh hero/footer ở 375/390/768/1280/1440/1920, chỉnh cỡ chữ theo chiều rộng glyph để không crop. Lint, TypeScript/build, 54 tokens/20 contrast pairs PASS. 15 kịch bản liên quan responsive/navigation/WCAG/static hosting được kiểm: 14 PASS trong lượt đầu; lượt 1920 bị HTTP failure do rebuild dist đồng thời, chạy lại trên build ổn định PASS (1/1). Không sửa test hoặc tăng timeout. Chưa đo lại Lighthouse cho thay đổi font; điểm modelUpdate thuộc mốc trước đổi font.

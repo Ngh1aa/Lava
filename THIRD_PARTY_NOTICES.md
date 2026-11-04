@@ -8,4 +8,4 @@
 
 Photography sources, attribution and original model assets are recorded in [docs/ASSETS.md](docs/ASSETS.md).
 
-- Real architecture photographs: Rasmus Lauridsen, Sébastien Lavalaye, Caio Arbulu and Maik Winnecke via Unsplash, used under the [Unsplash License](https://unsplash.com/license). Individual photo pages, local assets and credit locations are recorded in docs/ASSETS.md.
+- Real architecture photographs: Rasmus Lauridsen, Sébastien Lavalaye, Caio Arbulu, Maik Winnecke, Israel Andrade and Nastuh Abootalebi via Unsplash, used under the [Unsplash License](https://unsplash.com/license). Individual photo pages, local assets, responsive derivatives and credit locations are recorded in docs/ASSETS.md.

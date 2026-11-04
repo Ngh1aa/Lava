@@ -1,5 +1,7 @@
 # Design direction và nguồn tham khảo
 
+> Phần phân tích dưới đây ghi lại lần dựng nhận diện và hero đầu tiên. Từ ngày 04/11/2026, kiến trúc website đã được mở rộng thành 17 trang. Xem [PROJECT-EXPERIENCE.md](PROJECT-EXPERIENCE.md) cho audit brownfield, flow và quyết định hiện hành. Hai hướng hero là bằng chứng nghiên cứu, không còn là query thử nghiệm trong sản phẩm.
+
 ## Audit
 
 LAVA được clone từ `Ngh1aa/Lava`, clean tree, nhánh mặc định main, commit khởi tạo `3010a6f`. Không có framework, assets, tests, deployment hoặc UI cần redesign. Không áp dụng brownfield. Vite + TypeScript + Three.js phù hợp trải nghiệm tĩnh này, không cần React hoặc GSAP.

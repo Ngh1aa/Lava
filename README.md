@@ -1,73 +1,97 @@
 # LAVA — A different perspective
 
-Website kiến trúc với nhận diện midnight navy, typography Manrope khổ lớn, công trình WebGL nguyên bản và hành trình từ hình khối đến không gian.
+Website dự án kiến trúc với **17 trang HTML riêng**, công trình WebGL nguyên bản, danh mục không gian, shortlist và enquiry ba bước. Nhận diện midnight navy, Manrope và ảnh chụp thật có nguồn.
 
-Spaces và Gallery dùng ảnh chụp thật từ Unsplash, có tác giả và link nguồn. Ảnh là tham khảo kiến trúc của các công trình hiện hữu, không phải ảnh chụp LAVA; xem [nguồn ảnh](docs/ASSETS.md).
+![LAVA project experience](docs/previews/project-spaces.webp)
 
-![LAVA desktop render](docs/previews/desktop.webp)
-
-**Hướng thị giác: CHƯA DUYỆT bởi chủ dự án.** Đây là architectural concept, chưa có thông tin dự án xây dựng hay đầu mối kinh doanh được xác thực. Xem [brand brief](docs/BRAND-BRIEF.md) và [giới hạn kiểm chứng](docs/QA.md).
+**Hướng thị giác CHƯA DUYỆT bởi chủ dự án.** LAVA là architectural concept; chưa có vị trí, diện tích thương mại, giá, leasing availability hoặc đầu mối kinh doanh xác thực. Ảnh thật là architectural references, không phải ảnh chụp LAVA. [Nguồn ảnh và giấy phép](docs/ASSETS.md).
 
 ## Chạy local
 
-Khuyến nghị Node.js 24 và npm. Chrome dùng cho QA local; CI dùng Chromium do Playwright cài.
+Node.js 24 và npm. QA local dùng Chrome, CI dùng Chromium.
 
 ```bash
 npm ci
 npm run dev
 ```
 
-Dev: `http://127.0.0.1:5173/`.
+Dev tại `http://127.0.0.1:5173/`.
 
 ```bash
 npm run build
 npm run preview
 ```
 
-Bản production local: `http://127.0.0.1:4173/`. Cần giữ terminal chạy để truy cập. Không có public deployment được công bố trong lần bàn giao này. Build tạo website tĩnh trong `dist/`, hỗ trợ hosting ở subdirectory nhờ base tương đối.
+Production preview local tại `http://127.0.0.1:4173/`. Cần giữ terminal chạy. Chưa có public deployment được xác nhận.
 
-## Những gì đã xây dựng
+## Trải nghiệm và cấu trúc trang
 
-- Hero toàn màn với wordmark riêng, công trình sáu tầng procedural, camera phản hồi theo scroll và CTA tới viewer.
-- Vision và project overview theo bố cục editorial; số liệu chỉ đếm cấu trúc mô hình và các góc nhìn.
-- Viewer có ba perspective, Dusk/Daylight, kéo bằng chuột, nút xoay hỗ trợ keyboard và Low power.
-- Trên touch/Save-Data: bắt đầu bằng ảnh render nhẹ, tải WebGL khi chọn View in 3D / Explore in 3D, có Still view để giải phóng scene.
-- Spaces, experience accordion, gallery có lightbox, phím trái/phải, Escape, swipe và trả focus về ảnh đã mở.
-- Mobile menu dùng native dialog, điều hướng anchor và focus về heading đích.
-- Enquiry có validation, giữ dữ liệu khi lỗi, tải đúng bản nháp xuống thiết bị; không gửi dữ liệu lên backend.
-- Static fallback khi WebGL không hỗ trợ hoặc mất context; hỗ trợ reduced motion. Nội dung chính được render thành HTML lúc build, vẫn đọc và mở ảnh được khi tắt JavaScript.
+| Trang | Chức năng |
+| --- | --- |
+| Home `/` | Signature hero 3D, vision, chọn chương và không gian |
+| Project `/project/` | Ý tưởng, nguyên tắc và cấu trúc sáu tầng |
+| Architecture `/architecture/` | Viewer 3D, ba camera, Dusk/Daylight, kéo/xoay, Reduce detail |
+| Spaces `/spaces/` | Bộ lọc nhu cầu/tầng, URL giữ state, empty/reset |
+| 4 trang `/spaces/{id}/` | Workplace, Gallery lounge, Meeting suite, Open terrace; nội dung/ảnh/zoning riêng, tải SVG, save và enquiry theo ID |
+| Experience `/experience/` | Nhịp sinh hoạt, liên kết đúng không gian và accordion |
+| Gallery `/gallery/` | Phân loại ảnh, lightbox, keyboard, swipe, nguồn ảnh |
+| Saved `/saved/` | Lưu trên browser, bỏ/hoàn tác, empty state, enquiry cả lựa chọn |
+| Enquiry `/enquiry/` | Nhập nhu cầu, validation, giữ draft trong tab |
+| Review `/enquiry/review/` | Đối chiếu dữ liệu và quay lại sửa |
+| Ready `/enquiry/ready/` | Tải file thật, email tùy cấu hình, xác nhận trước xóa draft |
+| Contact, Credits, Privacy | FAQ, nguồn dự án, tác giả/giấy phép và xử lý dữ liệu |
+| `404.html` | Trang phục hồi với link về danh mục |
 
-## Công nghệ và source chính
+Luồng chính: **khám phá → lọc → chi tiết → lưu → xem lại → enquiry → sửa/review → tải file**. Các anchor cũ như `/#spaces`, `/#gallery` và `/#enquiry` chuyển tới trang tương ứng khi bật JavaScript.
 
-Vite 8, TypeScript 6, Three.js r187, native CSS / IntersectionObserver / requestAnimationFrame. Không dùng React hoặc GSAP vì website không cần chúng. Version cụ thể trong lockfile.
+## Công nghệ và source
+
+Vite 8, TypeScript 6 strict, Three.js r187, native CSS, IntersectionObserver/rAF và native dialogs. Không thêm runtime dependency cho lần mở rộng nhiều trang.
 
 | File | Trách nhiệm |
 | --- | --- |
-| `src/content.ts` | Nội dung dự án, views, gallery và email cấu hình |
-| `src/page.ts` | Semantic HTML được Vite dựng sẵn, copy của các hành động và trạng thái |
-| `src/brand.css` | Primitive và semantic tokens: màu, chữ, control, spacing |
-| `src/style.css` | Layout, responsive và motion của từng section |
-| `src/architecture.ts` | Hình học công trình, vật liệu, foliage và batched facade |
-| `src/scene.ts` | Camera, ánh sáng, lifecycle GPU, render theo nhu cầu và cleanup |
-| `src/main.ts` | Progressive enhancement: menu, viewer, gallery, enquiry |
-| `tests/experience.spec.ts` | Browser regression và accessibility checks |
-| `.github/workflows/ci.yml` | Lint, tokens/contrast, build và Chromium tests cho PR |
+| `src/page.ts` | Route catalogue, shared shell và các trang nội dung |
+| `src/sections.ts` | Hero, vision, overview, viewer, experience, lightbox dùng lại |
+| `src/enquiry-page.ts` | Markup ba bước enquiry và xác nhận xóa |
+| `src/spaces.ts` | ID, nội dung bốn không gian và bốn zoning SVG nguyên bản |
+| `src/journey.ts` | Bộ lọc, shortlist, autosave, review và tải file |
+| `src/content.ts` | Brand content, camera perspectives, ảnh và nguồn credit |
+| `src/main.ts` | Motion, menu, lifecycle scene và gallery keyboard/touch |
+| `src/architecture.ts`, `src/scene.ts` | Hình học, vật liệu, camera, GPU và fallback |
+| `src/brand.css`, `src/style.css` | Semantic tokens và stylesheet nguồn duy nhất |
+| `vite.config.ts` | Prerender HTML riêng, relative assets, canonical/404 preview |
+| `tests/` | Regression hành vi, responsive, accessibility và static subdirectory hosting |
 
-3D được tách thành chunk riêng khoảng 136 KB gzip; application JavaScript khoảng 6 KB gzip. Hero dùng direct lighting, viewer mới tạo môi trường phản xạ. Pixel ratio tối đa 1.5, Low power dùng 1. Scene ngừng render khi đứng yên, ngoài viewport hoặc tab bị ẩn. Geometry/material/texture được dispose khi đóng scene.
+Build tạo sẵn nội dung HTML cho mọi URL. Các trang có thể refresh/deep-link mà không cần client router hoặc SPA rewrite. JavaScript ứng dụng khoảng 10 KB gzip; scene riêng khoảng 136 KB gzip. Trên touch/Save-Data, ảnh still được dùng trước; chỉ tải WebGL khi yêu cầu. Scene ngừng render khi đứng yên/ngoài viewport/tab ẩn, giới hạn DPR 1.5 (Reduce detail: 1), có cleanup và fallback/context-loss handling.
 
-## Enquiry và cấu hình liên hệ
+## Dữ liệu và enquiry
 
-Mặc định nút **Save enquiry** tạo `LAVA-enquiry.txt`. File được tạo trên thiết bị, **chưa gửi tới ai**, không ghi nội dung form vào server hoặc localStorage. Khi tắt JavaScript, nút submit bị khóa để tránh đưa thông tin vào URL bằng GET.
-
-Khi có inbox đã được chủ dự án xác thực, sao chép `.env.example` thành `.env.local` và đặt:
+- `lava.saved.v1` trong localStorage chỉ lưu space IDs, không PII. Có remove/undo và clear/undo.
+- `lava.enquiry.v1` trong sessionStorage của tab lưu contact details, nhu cầu và lựa chọn để review/edit. Có xác nhận xóa draft. Không đưa PII vào URL, không POST dữ liệu.
+- Khi browser chặn storage: báo lỗi thật, giữ form và cho tải bản enquiry trực tiếp. Không báo đã lưu khi ghi storage thất bại.
+- **Download enquiry** tạo `LAVA-enquiry.txt` trên thiết bị. Đây không phải gửi thư, đặt chỗ hoặc booking.
+- Nếu có inbox đã xác thực, cấu hình `.env.local`:
 
 ```dotenv
 VITE_CONTACT_EMAIL=your-verified-inbox@your-domain.com
 ```
 
-Build lại. Nút sẽ chuyển thành Prepare email và mở email app để người dùng tự xem/gửi. Đây là `mailto:`, không phải dịch vụ gửi thư; vẫn có nút lưu file nếu email app không mở. Không đưa secret vào biến `VITE_*` vì giá trị nằm trong frontend build.
+Build lại. Bước Ready sẽ có thêm link mở draft trong email app để người dùng tự review/gửi. Không đặt secret vào biến `VITE_*`.
 
-## Kiểm tra
+## Hosting tĩnh
+
+Upload nội dung `dist/`, giữ cấu trúc thư mục và phục vụ `index.html` trong từng thư mục. Các route chuẩn kết thúc bằng `/`. Không rewrite mọi URL về trang chủ.
+
+Trang thông thường dùng relative assets và đã có browser test dưới `/Lava/`. Error document cần biết mount path vì URL sai có thể sâu tùy ý. Nếu deploy dưới `/Lava/`, build với:
+
+```powershell
+$env:LAVA_SITE_BASE='/Lava/'
+npm run build
+```
+
+Mặc định `LAVA_SITE_BASE=/`. Cấu hình host trả `404.html` với HTTP 404 cho URL không tồn tại. Vite preview đã xử lý 308 cho canonical route và 404; quy tắc server production phải được cấu hình theo nhà cung cấp hosting.
+
+## Kiểm tra và bằng chứng
 
 ```bash
 npm run typecheck
@@ -77,23 +101,22 @@ npm run build
 npm test
 ```
 
-Với production preview đang chạy:
+Với preview chạy:
 
 ```bash
 npm run test:visual
 npm run measure
 ```
 
-`test:visual` chụp 375, 390, 768, 1280, 1440 và 1920px, đồng thời lưu hai hướng hero và fallback. `measure` chạy Lighthouse mobile/desktop lần lượt, lưu HTML/JSON trong `qa/`. Có thể đặt `BASE_URL` và `CHROME_PATH` khi môi trường khác. Chạy phép đo khi máy không chạy browser QA khác. Để tái tạo fallback từ model, chạy dev server rồi `node scripts/render-assets.mjs`.
+`test:visual` chụp cả 17 trang tại 375/390/768/1280/1440/1920px, thêm scene WebGL và các trạng thái lỗi. Dữ liệu enquiry trong capture là fixture QA. Ảnh nằm trong `qa/project-screenshots/`, không dùng để giả lập UI.
 
-Kết quả, điều kiện đo, review độc lập và giới hạn nằm trong [QA.md](docs/QA.md). Báo cáo lab không chứng minh Core Web Vitals ngoài thực tế hay coverage trên thiết bị thật.
+`measure` lưu Lighthouse mobile/desktop tại `qa/`. Có thể đặt `BASE_URL`, `REPORT_PREFIX`, `CHROME_PATH`. Đo performance khi không chạy browser QA khác. Kết quả/điều kiện đo/giới hạn: [QA.md](docs/QA.md).
 
-## Thiết kế, tài sản và bàn giao
+## Quy trình và bàn giao
 
-- [Brand brief và các giả định](docs/BRAND-BRIEF.md).
-- [Audit, phân tích tham khảo, hai hướng và quyết định thiết kế](docs/DESIGN.md).
-- [Nguồn ảnh thật, tác giả và giấy phép](docs/ASSETS.md).
-- [Third-party notices](THIRD_PARTY_NOTICES.md).
-- [QA và trạng thái release](docs/QA.md).
+- [Bản đồ màn, flow, owner và quyết định mở rộng](docs/PROJECT-EXPERIENCE.md).
+- [Brand brief](docs/BRAND-BRIEF.md) và [nghiên cứu Likova, hai hướng hero ban đầu](docs/DESIGN.md).
+- [Ảnh thật và giấy phép](docs/ASSETS.md), [third-party notices](THIRD_PARTY_NOTICES.md).
+- [QA và giới hạn](docs/QA.md).
 
-UIUX AI Workspace được dùng ở nhánh main, commit `5404c183e2e6d09261ddb97b238e09ab56bd5a8a`, chỉ đọc. Không chép thư viện skill, checker hoặc tài sản Likova vào repository này.
+UIUX AI Workspace main `5404c183e2e6d09261ddb97b238e09ab56bd5a8a`, đối chiếu remote ngày 04/11/2026, chỉ đọc. Áp dụng brownfield/IA/FLOW, visual direction, responsive, semantic tokens, state recovery, craft QA và independent review. Không chép skill/checker/asset độc quyền vào repo. Source hiện trên branch `feat/lava-architectural-experience`, [PR #1](https://github.com/Ngh1aa/Lava/pull/1), chưa merge.

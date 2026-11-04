@@ -2,6 +2,8 @@
 
 Trạng thái hướng thị giác: **CHƯA DUYỆT**. Chủ dự án cho phép tiếp tục với hướng đề xuất.
 
+Cập nhật 04/11/2026: website gồm 17 trang và luồng chọn không gian → saved → enquiry → review → chuẩn bị chia sẻ. Các dòng mô tả luồng một trang ở cuối brief là lịch sử thiết kế ban đầu; bản đồ màn, sessionStorage, hành vi và trạng thái hiện hành nằm trong [PROJECT-EXPERIENCE.md](PROJECT-EXPERIENCE.md).
+
 - Mức D: chưa có brand assets, dữ liệu công trình, địa chỉ, thông số thương mại hoặc đầu mối liên hệ xác thực. Source ban đầu chỉ có README, commit `3010a6fdc4b52ebe3b299142aca397b0ab204573`.
 - Sản phẩm: trải nghiệm kiến trúc trên web; khách quan tâm kiến trúc, đối tác sáng tạo và khách hàng tiềm năng. Audience là HYPOTHESIS từ brief, chưa nghiên cứu người dùng.
 - Việc chính: hiểu ý tưởng → khám phá hình khối/không gian → xem gallery → lưu enquiry để gửi qua kênh liên hệ khi được cấu hình.

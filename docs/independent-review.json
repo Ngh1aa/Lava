@@ -1,102 +1,170 @@
 {
   "reviewer": {
-    "id": "independent_visual_review_2",
+    "id": "independent-corrected-review-agent",
     "kind": "agent-heuristic",
     "independent": true
   },
   "cold": {
-    "enquiry-1440.png": {
-      "Màn này để làm gì?": "Để người quan tâm để lại nội dung hỏi về dự án kiến trúc và lưu thành tệp chia sẻ.",
-      "Bạn sẽ bấm vào đâu đầu tiên?": "Ô Your name để bắt đầu điền form.",
-      "Điều gì trông sai, rối hoặc thiếu?": "Form rõ nhưng Meet the project khá chung chung; không thấy thông tin liên hệ trực tiếp trong khung ảnh."
+    "architecture-webgl-1440.png": {
+      "Màn này để làm gì?": "Khám phá mô hình kiến trúc ba chiều và thay đổi ánh sáng hoặc góc nhìn.",
+      "Bạn sẽ bấm vào đâu đầu tiên?": "Bấm Daylight để xem cấu trúc rõ hơn, sau đó thử kéo mô hình.",
+      "Điều gì trông sai, rối hoặc thiếu?": "Mô hình tối và khá sơ lược; thiếu tên công trình hoặc câu dẫn ngay trong khung để hiểu ngữ cảnh."
     },
-    "enquiry-390.png": {
-      "Màn này để làm gì?": "Điền và lưu một enquiry về không gian kiến trúc trên điện thoại.",
-      "Bạn sẽ bấm vào đâu đầu tiên?": "Ô Your name dưới câu What do you have in mind?.",
-      "Điều gì trông sai, rối hoặc thiếu?": "Chưa thấy đánh dấu trường bắt buộc; phần giới thiệu chiếm khá nhiều chiều cao trước form nhưng vẫn dễ đọc."
+    "contact--1440.png": {
+      "Màn này để làm gì?": "Giới thiệu cách bắt đầu trao đổi về concept LAVA và giải đáp trước khi liên hệ.",
+      "Bạn sẽ bấm vào đâu đầu tiên?": "Bấm Start an enquiry.",
+      "Điều gì trông sai, rối hoặc thiếu?": "FAQ có cả tam giác và dấu cộng cho cùng một hành động, hơi thừa tín hiệu."
     },
-    "hero-1440.png": {
-      "Màn này để làm gì?": "Giới thiệu LAVA như một concept kiến trúc, lấy mô hình toà nhà làm hình chủ đạo.",
-      "Bạn sẽ bấm vào đâu đầu tiên?": "Explore LAVA ở góc dưới trái.",
-      "Điều gì trông sai, rối hoặc thiếu?": "Mô hình tối và có chất low-poly, chênh mức độ chân thực so với cảm giác thương hiệu cao cấp; chưa rõ đây là dự án ở đâu."
+    "enquiry--390.png": {
+      "Màn này để làm gì?": "Soạn enquiry với các không gian đã chọn rồi chuyển sang rà soát.",
+      "Bạn sẽ bấm vào đâu đầu tiên?": "Bấm Review your enquiry sau khi đọc lại thông tin.",
+      "Điều gì trông sai, rối hoặc thiếu?": "Danh sách không gian và form rõ; footer lớn khiến toàn trang dài nhưng không chặn tác vụ."
     },
-    "hero-390.png": {
-      "Màn này để làm gì?": "Giới thiệu concept LAVA và mời khám phá tiếp hoặc chuyển sang xem 3D.",
-      "Bạn sẽ bấm vào đâu đầu tiên?": "View in 3D vì muốn xem mô hình gần hơn.",
-      "Điều gì trông sai, rối hoặc thiếu?": "Khoảng trống giữa chữ LAVA và toà nhà khá lớn; mô hình vẫn tối và đơn giản, nhưng CTA nằm gọn trong màn."
+    "enquiry-ready--390.png": {
+      "Màn này để làm gì?": "Tải bản enquiry đã chuẩn bị để chia sẻ trong cuộc trao đổi tiếp theo.",
+      "Bạn sẽ bấm vào đâu đầu tiên?": "Bấm Download enquiry.",
+      "Điều gì trông sai, rối hoặc thiếu?": "Có nhiều đường phụ sau tải, nhưng giới hạn không có dịch vụ gửi được nêu rõ."
     },
-    "hero-3d-390.png": {
-      "Màn này để làm gì?": "Xem phối cảnh 3D của toà nhà và chuyển về Still view.",
-      "Bạn sẽ bấm vào đâu đầu tiên?": "Thử kéo mô hình, sau đó dùng Still view để quay lại.",
-      "Điều gì trông sai, rối hoặc thiếu?": "Không có chỉ dẫn kéo/xoay trong ảnh; đế mô hình bị cắt hai bên và phần trên màn còn nhiều khoảng trống."
+    "enquiry-review--390.png": {
+      "Màn này để làm gì?": "Rà soát nội dung trước khi tạo file enquiry.",
+      "Bạn sẽ bấm vào đâu đầu tiên?": "Bấm Prepare enquiry nếu các trường đúng.",
+      "Điều gì trông sai, rối hoặc thiếu?": "Selected spaces được lặp lại cả trong tóm tắt và một khối riêng, kéo dài bước rà soát."
     },
-    "showcase-1440.png": {
-      "Màn này để làm gì?": "Khám phá mô hình kiến trúc, thay ánh sáng và chuyển qua ba góc nhìn.",
-      "Bạn sẽ bấm vào đâu đầu tiên?": "Daylight để xem vật liệu và chi tiết rõ hơn.",
-      "Điều gì trông sai, rối hoặc thiếu?": "Mô hình chiếm ưu thế rõ, nhưng hình cây và vật liệu khá thô; Low power là nhãn kỹ thuật chưa mô tả tác động cho người xem."
+    "form-errors-390.png": {
+      "Màn này để làm gì?": "Chỉ ra các trường bắt buộc đang thiếu trong form enquiry.",
+      "Bạn sẽ bấm vào đâu đầu tiên?": "Bấm ô Your name đang được làm nổi bật.",
+      "Điều gì trông sai, rối hoặc thiếu?": "Ảnh là một đoạn crop nên mép trái trường sát biên; lỗi có lời giải thích cụ thể, không chỉ dựa vào màu."
     },
-    "spaces-1440.png": {
-      "Màn này để làm gì?": "Giới thiệu hai tiện ích không gian: gallery lounge và open terrace.",
-      "Bạn sẽ bấm vào đâu đầu tiên?": "Mũi tên trên ảnh gallery lounge để mở xem không gian.",
-      "Điều gì trông sai, rối hoặc thiếu?": "Bố cục ảnh bất đối xứng có chủ đích và sạch; mũi tên đơn không cho biết sẽ mở ảnh hay chuyển trang."
+    "gallery--1440.png": {
+      "Màn này để làm gì?": "Xem bộ ảnh tham khảo về kiến trúc, nội thất và không gian mở có ghi nguồn.",
+      "Bạn sẽ bấm vào đâu đầu tiên?": "Bấm Interior hoặc một ảnh muốn xem lớn.",
+      "Điều gì trông sai, rối hoặc thiếu?": "Bố cục ảnh lệch nhịp có chủ đích, nhưng trang dài và các tiêu đề hình thức khá giống nhau."
     },
-    "spaces-390.png": {
-      "Màn này để làm gì?": "Đọc và xem ảnh hai không gian lounge và terrace trên mobile.",
-      "Bạn sẽ bấm vào đâu đầu tiên?": "Mũi tên trên ảnh lounge đầu tiên.",
-      "Điều gì trông sai, rối hoặc thiếu?": "Khối terrace thụt lề phải làm nhịp khác khối lounge; nhìn có chủ đích nhưng ảnh và vùng chữ của nó hơi hẹp hơn."
+    "home-opening-1440.png": {
+      "Màn này để làm gì?": "Giới thiệu concept kiến trúc LAVA qua nhận diện lớn và mô hình khối nhà.",
+      "Bạn sẽ bấm vào đâu đầu tiên?": "Bấm Explore LAVA.",
+      "Điều gì trông sai, rối hoặc thiếu?": "Mô hình khối khá tối, cây và vật liệu thô so với kỳ vọng của một trải nghiệm kiến trúc cao cấp."
+    },
+    "home-opening-390.png": {
+      "Màn này để làm gì?": "Mở đầu website giới thiệu concept kiến trúc LAVA trên điện thoại.",
+      "Bạn sẽ bấm vào đâu đầu tiên?": "Bấm Explore LAVA.",
+      "Điều gì trông sai, rối hoặc thiếu?": "Mô hình tĩnh hơi nhỏ, khoảng trống giữa logo và mô hình lớn khiến công trình mất sức nặng."
+    },
+    "home-webgl-1440.png": {
+      "Màn này để làm gì?": "Giới thiệu LAVA bằng mô hình ba chiều và dẫn vào nội dung dự án.",
+      "Bạn sẽ bấm vào đâu đầu tiên?": "Bấm Explore LAVA.",
+      "Điều gì trông sai, rối hoặc thiếu?": "Mô hình tối, cạnh và cây còn cảm giác minh họa khối; khả năng tương tác chưa hiện rõ từ ảnh."
+    },
+    "home-webgl-390.png": {
+      "Màn này để làm gì?": "Giới thiệu concept với mô hình 3D và tùy chọn xem ảnh tĩnh trên điện thoại.",
+      "Bạn sẽ bấm vào đâu đầu tiên?": "Bấm Explore LAVA hoặc Still view nếu muốn bỏ 3D.",
+      "Điều gì trông sai, rối hoặc thiếu?": "Đế mô hình chạm sát mép ảnh, nhưng chữ và CTA còn đủ chỗ; vật liệu mô hình khá thô."
+    },
+    "no-results-390.png": {
+      "Màn này để làm gì?": "Báo không có không gian khớp bộ lọc và cho phép đặt lại.",
+      "Bạn sẽ bấm vào đâu đầu tiên?": "Bấm Show all spaces.",
+      "Điều gì trông sai, rối hoặc thiếu?": "Trạng thái dễ hiểu; ảnh crop không cho thấy bộ lọc hiện tại nên không biết tổ hợp nào gây rỗng."
+    },
+    "privacy--1440.png": {
+      "Màn này để làm gì?": "Giải thích dữ liệu lưu trên thiết bị, bản nháp và cách chia sẻ enquiry.",
+      "Bạn sẽ bấm vào đâu đầu tiên?": "Đọc Enquiry drafts hoặc bấm About the concept.",
+      "Điều gì trông sai, rối hoặc thiếu?": "Từ localStorage và sessionStorage hơi kỹ thuật đối với độc giả phổ thông."
+    },
+    "saved-empty-390.png": {
+      "Màn này để làm gì?": "Thông báo danh sách lưu rỗng sau khi xóa và dẫn trở lại khám phá.",
+      "Bạn sẽ bấm vào đâu đầu tiên?": "Bấm Undo nếu xóa nhầm; nếu không thì Explore the spaces.",
+      "Điều gì trông sai, rối hoặc thiếu?": "Trạng thái có lời giải thích và khôi phục rõ, khối rỗng hơi cao."
+    },
+    "saved-feedback-390.png": {
+      "Màn này để làm gì?": "Quản lý không gian đã lưu, khôi phục mục vừa gỡ và tạo enquiry từ lựa chọn.",
+      "Bạn sẽ bấm vào đâu đầu tiên?": "Bấm Undo nếu gỡ nhầm hoặc Enquire with selection.",
+      "Điều gì trông sai, rối hoặc thiếu?": "Khoảng cách từ lời dẫn tới danh sách khá rộng; thao tác chính vẫn dễ nhận diện."
+    },
+    "spaces--1440.png": {
+      "Màn này để làm gì?": "Lọc, xem chi tiết và lưu bốn ý tưởng không gian theo công năng hoặc tầng.",
+      "Bạn sẽ bấm vào đâu đầu tiên?": "Bấm Work hoặc ảnh The open workplace.",
+      "Điều gì trông sai, rối hoặc thiếu?": "Các ảnh tham khảo khác phong cách nhưng được gắn nhãn; tên và chức năng từng mục rõ."
+    },
+    "spaces--390.png": {
+      "Màn này để làm gì?": "Duyệt bộ sưu tập không gian trên điện thoại với lọc công năng và tầng.",
+      "Bạn sẽ bấm vào đâu đầu tiên?": "Bấm Work hoặc The open workplace.",
+      "Điều gì trông sai, rối hoặc thiếu?": "Phải cuộn nhiều để so sánh bốn mục, nhưng từng ảnh và hành động không chồng nhau."
+    },
+    "spaces-gallery-lounge--390.png": {
+      "Màn này để làm gì?": "Xem ý tưởng gallery lounge, ảnh tham khảo, sơ đồ zoning và bắt đầu enquiry.",
+      "Bạn sẽ bấm vào đâu đầu tiên?": "Bấm Enquire about space.",
+      "Điều gì trông sai, rối hoặc thiếu?": "Sơ đồ nhỏ, nét mảnh; các khu chỉ đánh số nên cần nhìn qua lại với chú giải."
+    },
+    "spaces-meeting-suite--390.png": {
+      "Màn này để làm gì?": "Xem ý tưởng meeting suite, nội dung công năng và tải sơ đồ concept.",
+      "Bạn sẽ bấm vào đâu đầu tiên?": "Bấm Save space hoặc Enquire about space.",
+      "Điều gì trông sai, rối hoặc thiếu?": "Ảnh phòng họp hơi mềm; sơ đồ nhỏ và nét nội thất chìm trên nền tối."
+    },
+    "spaces-workplace--1440.png": {
+      "Màn này để làm gì?": "Trình bày concept workplace, bối cảnh ảnh, công năng và sơ đồ zoning.",
+      "Bạn sẽ bấm vào đâu đầu tiên?": "Bấm Enquire about space hoặc Save space.",
+      "Điều gì trông sai, rối hoặc thiếu?": "Ảnh hero khá lớn; sơ đồ rõ bố cục nhưng nét nội thất mờ hơn đường bao."
     }
   },
   "hard_fails": [],
   "scores": {
-    "1": 4.0,
+    "1": 4.3,
     "2": 4.5,
-    "3": 4.0,
-    "4": 4.5,
-    "5": 4.5,
-    "6": 4.0,
-    "7": 3.5,
-    "8": 4.0,
-    "9": 4.0,
-    "10": 3.5
+    "3": 4.1,
+    "4": 4.2,
+    "5": 4.1,
+    "6": 4.3,
+    "7": 4.0,
+    "8": 4.3,
+    "9": 4.1,
+    "10": 3.6
   },
   "observations": [
     {
-      "dimension": "7",
-      "image": "hero-3d-390.png",
-      "element": "Vùng model 3D chỉ có nhãn 3D perspective; người dùng mới phải đoán có thể kéo/xoay, trong khi showcase desktop có Drag to explore.",
-      "fix": "Thêm chỉ dẫn ngắn Drag to rotate hoặc Swipe to explore trên mobile khi vào chế độ 3D; giữ nó nhỏ và tự ẩn sau tương tác thực."
+      "dimension": "10",
+      "image": "home-webgl-1440.png",
+      "element": "Mô hình hero: vật liệu mặt đứng, mái, cây và ánh sáng",
+      "fix": "Tinh chỉnh độ sâu vật liệu và phản xạ kính, làm mềm bóng, tăng phân lớp sáng tối và dùng hình khối cây bớt đồng đều; giữ hình học concept và bảng màu. Mô hình hiện giống sơ khối hơn hình ảnh kiến trúc cao cấp."
     },
     {
       "dimension": "10",
-      "image": "hero-1440.png",
-      "element": "Model là hình trung tâm và chiếm diện tích lớn nhưng cây dạng khối, bề mặt phẳng tối và nền đế đơn giản làm giảm cảm giác kiến trúc cao cấp; chất lượng khác đáng kể ảnh Spaces.",
-      "fix": "Polish model giữ hình khối hiện tại: cải thiện ánh sáng mặt đứng, roughness và bóng tiếp xúc, tinh chỉnh cây/landscape và vật liệu đế để đưa asset trung tâm gần mức hoàn thiện của ảnh Spaces."
+      "image": "architecture-webgl-1440.png",
+      "element": "Khung xem 3D và bối cảnh quanh mô hình",
+      "fix": "Đưa ánh sáng vào mặt đứng để đọc được vật liệu và chiều sâu; thêm câu dẫn ngắn hoặc nhãn công trình trong bố cục ngoài canvas để khung xem có ngữ cảnh mà không che mô hình."
     },
     {
-      "dimension": "10",
-      "image": "showcase-1440.png",
-      "element": "Cận cảnh model lặp nhiều nan mặt đứng đồng đều, ít chuyển sắc vật liệu; cây đa giác và đế mô hình nổi bật như maquette sơ bộ.",
-      "fix": "Tinh chỉnh vật liệu và chi tiết landscape vừa đủ ở khoảng nhìn này; ưu tiên ánh sáng ấm, shadow và độ sâu trước khi tăng geometry tốn hiệu năng."
+      "dimension": "3",
+      "image": "home-opening-390.png",
+      "element": "Tỷ lệ mô hình tĩnh giữa wordmark và headline",
+      "fix": "Tăng tỷ lệ mô hình tĩnh và điều chỉnh khoảng trống phía trên để công trình có sức nặng tương đương trạng thái 3D, vẫn giữ CTA trong viewport."
     },
     {
       "dimension": "8",
-      "image": "spaces-390.png",
-      "element": "Trong khung ảnh, hai hình không gian chỉ có tên tiện ích; chưa thấy câu phân biệt ảnh diễn giải concept và model 3D theo yêu cầu brief.",
-      "fix": "Bổ sung một caption tinh gọn Concept visualisation tại nhóm ảnh hoặc nơi mở ảnh; nếu nhãn đã nằm ngoài khung chụp thì đưa nó vào evidence ở vòng sau."
+      "image": "privacy--1440.png",
+      "element": "Các đoạn Saved spaces và Enquiry drafts",
+      "fix": "Dẫn bằng ngôn ngữ lưu trên trình duyệt / trong tab hiện tại; chuyển localStorage và sessionStorage thành thông tin phụ nếu cần để người đọc phổ thông hiểu ngay."
+    },
+    {
+      "dimension": "6",
+      "image": "contact--1440.png",
+      "element": "Hàng FAQ có đồng thời tam giác và dấu cộng",
+      "fix": "Dùng một chỉ báo mở/đóng nhất quán, căn cùng hàng câu hỏi; bỏ dấu còn lại để giảm tín hiệu trùng."
     }
   ],
   "not_checked": [
-    "HF-1: Chưa đo tỷ lệ contrast từ pixel; chữ và UI trong ảnh nhìn có độ tách nền tốt, nhưng ảnh không chứng minh toàn bộ theme/state.",
-    "HF-2: Chưa kiểm vùng hit thực; ảnh cho thấy kích thước hiển thị, không cho biết padding nhận tap.",
-    "HF-3: Chưa kiểm chữ phóng 200%, browser zoom và width ngoài 390/1440. Hero 3D mobile cắt một phần đế model, được xem là camera crop có chủ đích chứ chưa đủ căn cứ gọi tràn layout.",
-    "HF-4: Chưa kiểm bàn phím, visible focus, thứ tự focus, tên control cho trình đọc màn hình và đường hoàn thành enquiry.",
-    "HF-5: Chưa có ảnh form validation, lỗi tải asset/WebGL, fallback và loading; không thể kết luận các state có hoặc thiếu từ packet.",
-    "HF-6: Chưa kiểm trạng thái interaction ngoài ảnh; Dusk và Still view trong ảnh có thay đổi nền/chữ để phân biệt trạng thái.",
-    "HF-7: Chưa kiểm browser back, menu mobile, touch drag, scroll và đóng panel/view.",
-    "HF-8/HF-9: Không thấy hai filled primary CTA cạnh tranh hoặc deceptive pattern trong 8 ảnh; chưa kiểm flow sau click.",
-    "HF-10: Không thấy testimonial hoặc thành tích bịa trong packet. Chưa xác minh nguồn tài sản hay cách label concept ở phần không chụp.",
-    "Chưa kiểm reduced motion, hiệu năng WebGL, chế độ Low power, Daylight, chuyển 3 góc nhìn, fallback GPU và thao tác save enquiry thật.",
-    "Chưa kiểm design-system validation ở source, đầy đủ hover/focus/active/disabled/error/success hoặc theme khác; điểm 6 chỉ phản ánh consistency nhìn thấy trong packet.",
-    "Không có thử nghiệm người dùng, kiểm thiết bị thật hoặc phê duyệt từ chủ sản phẩm. Điểm là agent-heuristic; trung bình 4.05 đạt ngưỡng số học XL nhưng không chứng minh các mục chưa kiểm."
+    "HF-1: Không đo tỷ lệ tương phản pixel cho mọi cỡ chữ, nét sơ đồ và trạng thái; trên các ảnh không thấy chữ hoặc icon có nghĩa mất khả năng đọc. Cần kiểm màu tính toán riêng trước khi khẳng định AA.",
+    "HF-2: Không có DOM hoặc hit box để đo vùng bấm thật. Không suy kích thước touch target từ riêng glyph nhỏ; cần đo tối thiểu 24 px web, nhất là dấu gỡ không gian và liên kết phụ.",
+    "HF-3: Ảnh 390 px và 1440 px không cho thấy chữ nội dung chồng/cắt hoặc tràn ngang; chữ phóng 200%, nội dung cực dài và breakpoint khác chưa được kiểm.",
+    "HF-4: bàn phím, focus indicator đầy đủ, thứ tự focus, trình đọc màn hình, live announcement và khả năng hoàn tất tác vụ không có bằng chứng từ ảnh.",
+    "HF-5: Có ảnh lỗi form, kết quả lọc rỗng, danh sách lưu rỗng, Undo và các bước enquiry. Trạng thái loading hoặc lỗi tải ảnh/WebGL/dữ liệu không có ảnh nên chưa được kiểm.",
+    "HF-6: Các trạng thái thể hiện trên ảnh có chữ, bước hoặc ký hiệu bên cạnh màu; chưa kiểm các trạng thái không xuất hiện trong packet.",
+    "HF-7: Browser back, deep link, lịch sử giữa các bước enquiry và các quy ước điều hướng khi thao tác chưa được kiểm.",
+    "HF-8: Không thấy hai CTA filled chính cạnh tranh trong cùng vùng trên ảnh; trạng thái menu, dialog hoặc overlay không có ảnh chưa được kiểm.",
+    "HF-9: Không thấy chi phí ẩn, lựa chọn bán thêm hoặc copy gây áp lực trên ảnh; hành vi hủy, xóa, tải file và Undo thật chưa được kiểm.",
+    "HF-10: Ảnh thể hiện rõ concept và photo reference có ghi nguồn; enquiry không tuyên bố gửi thành công hay đặt chỗ. Tính nguyên bản mô hình/bản vẽ, quyền sử dụng và tính chính xác nguồn ảnh không thể xác minh chỉ từ screenshot; form là fixture QA theo brief.",
+    "WebGL tương tác, chuyển Dusk/Daylight, reduced motion, Still view và Reduce detail chưa được kiểm hoạt động.",
+    "Download enquiry, Download concept plan, lưu lựa chọn thực tế, phục hồi Undo, bộ lọc, validation và session/local storage chưa được kiểm hoạt động.",
+    "Các trang Project, Experience, Credits, trang chi tiết terrace đầy đủ, menu mobile và Gallery mobile không có ảnh riêng trong packet nên chưa được duyệt toàn màn.",
+    "Điểm là agent-heuristic độc lập theo ảnh, không phải bằng chứng user research, tốc độ tải hoặc hoàn tất tác vụ thực tế."
   ]
 }

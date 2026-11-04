@@ -1,92 +1,87 @@
-# QA và bàn giao LAVA
+# LAVA — QA cho website dự án nhiều trang
 
-Ngày kiểm: 03/11/2026. Trạng thái hướng thiết kế: **CHƯA DUYỆT bởi người dùng**. Review agent không thay thế việc phê duyệt.
+Cập nhật 04/11/2026. Bản build Vite production phục vụ qua HTTP local `http://127.0.0.1:4173/`. Branch `feat/lava-architectural-experience`; [PR #1](https://github.com/Ngh1aa/Lava/pull/1). Không có production deployment được xác nhận; hướng thiết kế **CHƯA DUYỆT** bởi chủ dự án.
 
-## Cập nhật ảnh thật — 03/11/2026
+## Kiểm chứng kỹ thuật và hành vi
 
-Theo yêu cầu mới, thay ba ảnh AI và ảnh model trong Gallery bằng bốn ảnh chụp Unsplash có nguồn/tác giả/giấy phép được đối chiếu trong ASSETS.md. Ảnh được nén WebP và phục vụ local. Spaces ghi Photo reference và credit; lightbox cập nhật đúng tác giả/link theo ảnh. Hero và fallback WebGL vẫn dùng model gốc.
-
-Build/typecheck, lint, token/contrast và **11/11 browser tests PASS** sau thay ảnh; test gallery có thêm đối chiếu credit/link và vẫn kiểm keyboard/swipe/focus. Ảnh render Spaces/Gallery được chụp lại ở sáu viewport yêu cầu. Các điểm Lighthouse và review độc lập bên dưới thuộc mốc bàn giao trước thay ảnh, không phải phép đo/chấm điểm lại cho bộ ảnh Unsplash.
-
-## Source và chạy thử
-
-- Repository: [Ngh1aa/Lava](https://github.com/Ngh1aa/Lava).
-- Branch: `feat/lava-architectural-experience`.
-- PR: [#1](https://github.com/Ngh1aa/Lava/pull/1), về main; không tự merge.
-- Mốc implementation: `553e17197aec1d2b62a12814b1459719047bd9dc`.
-- Mốc polish: `2030df2` (controls, responsive, stable GPU tests và camera theo thời gian).
-- Dev local: `http://127.0.0.1:5173/`; production preview: `http://127.0.0.1:4173/` khi server tương ứng đang chạy. Không có deployment production được xác nhận.
-
-## Kết quả kiểm tra
-
-| Hạng mục | Trạng thái | Bằng chứng / phạm vi |
+| Kiểm tra | Kết quả | Phạm vi / bằng chứng |
 | --- | --- | --- |
-| TypeScript | PASS | `npm run build` chạy `tsc --noEmit`, TypeScript strict; thêm `npm run typecheck` để chạy riêng |
-| Lint | PASS | `npm run lint` |
-| Production build | PASS | Vite build, HTML dựng sẵn và assets local |
-| Design tokens | PASS | `npm run check:design`: 53 tokens, 20 cặp contrast, resolve alias, kiểm token dùng trong CSS, không `!important` và màu UI không rải vào component CSS |
-| Browser regression | PASS | 11 Playwright tests, Chrome headless trên Windows; không có unit test vì logic cần kiểm chủ yếu nằm trong browser |
-| Responsive | PASS trong phạm vi đo | 320/375/390/768/1280/1440/1920px không document overflow; sáu kích thước yêu cầu có screenshot full page và hero; thêm 375×667, 390×740, 1280×720 và 1920×1000 kiểm CTA và wordmark |
-| 3D thật | PASS | Constructor WebGL, canvas hiển thị, đổi perspective làm thay đổi pixels, Dusk/Daylight, Low power và nút xoay |
-| Touch 3D / gallery | PASS trong emulation | Coarse pointer bắt đầu bằng still; bật WebGL theo yêu cầu, Still view dispose canvas; CDP touch swipe chuyển đúng ảnh |
-| Menu / focus | PASS | Mở/đóng bằng nút và Escape, anchor đúng đích, focus về heading; lightbox đóng trả focus về ảnh gốc |
-| Enquiry mặc định | PASS | Nhập thiếu/sai → lỗi cụ thể → sửa giữ dữ liệu → file chứa đúng nội dung; không POST hay báo đã gửi |
-| Keyboard | PASS trong luồng đã kiểm | Tab, Escape, gallery trái/phải; tablist trái/phải/Home/End; skip link focus được |
-| Reduced motion | PASS | Không intro/reveal/parallax, shader camera cập nhật trực tiếp; tắt transition của canvas/ảnh; axe chạy trên các state ổn định này |
-| WebGL fallback | PASS | Thử constructor thất bại, `?view=still`, context-lost; ảnh và nội dung còn dùng được, controls không khả dụng được khóa |
-| Không JavaScript | PASS | Nội dung đã có trong HTML, ảnh mở bằng link thật, form submit bị khóa để không đưa dữ liệu vào URL |
-| Runtime / assets | PASS trong test | Không page exception hay HTTP >=400 ở viewport checks; ảnh lazy được kích hoạt trước khi capture |
-| axe WCAG A/AA | PASS trong phạm vi audit | Desktop, mobile menu, form lỗi và gallery; không có violations. Không tương đương chứng nhận WCAG toàn bộ sản phẩm |
-| UIUX `static-check` | PASS | 0 lỗi trên `dist/index.html` |
-| UIUX `taste-check` | PASS về lỗi tự động | 390/768/1280/1440, sáng/tối theo OS, 320px reflow, `--layout strict`; cảnh báo được xử lý theo nhóm dưới đây |
-| UIUX `flow-check` | PASS phần tĩnh; runtime UNKNOWN trong checker | Không có lỗi chắc chắn. Các handler runtime được đối chiếu bằng 11 browser tests; no-entry của overview/experience là section đọc qua scroll, không phải route thiếu |
-| Review ảnh độc lập | PASS ngưỡng rubric ở packet vòng 2 | Fresh agent chỉ đọc ảnh/brief/rubric: 4.05/5, không hard fail nhìn thấy, min 3.5, chiều consistency 4. Verifier xác nhận packet hợp lệ |
-| Runtime dependency audit | PASS tại thời điểm kiểm | `npm audit --omit=dev`: 0 vulnerability |
+| TypeScript strict / build | PASS | `npm run build`, 17 trang HTML + 404, assets tự host |
+| ESLint | PASS | `npm run lint` |
+| Token / contrast source | PASS | `npm run check:design`: 53 tokens, 20 cặp contrast, không `!important` hoặc raw UI colors trong component CSS |
+| Browser tests | PASS ở lượt kiểm mới nhất | `qa/project-tests.json`; Chrome 156 headless Windows. Số lượng và thời gian chính xác trong `docs/qa-summary.json`; CI theo SHA ở PR |
+| Reflow đa trang | PASS trong browser emulation | 17 route × 320/375/390/768/1280/1440/1920px: một h1, không document overflow/text clipping/asset error trong phạm vi kiểm |
+| Native route / static hosting | PASS | Deep link + refresh từng route; thêm HTTP server riêng dưới `/Lava/` kiểm nested assets/srcset, chọn không gian, enquiry/review và saved |
+| URL cũ / 404 | PASS | Anchor từ trang một trang chuyển tới route đúng; preview redirect 308 cho URL thiếu `/`; URL sai trả 404 với đường phục hồi |
+| Bộ lọc | PASS | Use + level, count/empty/reset, URL, history Back và breadcrumb giữ filter |
+| Shortlist | PASS | Lưu đúng ID, reload, remove, Undo, clear/Undo, empty state, count đồng bộ; storage không ghi được thì báo lỗi thật |
+| Chi tiết / zoning | PASS | Đúng tên/ảnh theo ID, bốn sơ đồ riêng có tên accessible và download SVG đúng đối tượng |
+| Enquiry xuyên trang | PASS | Thiếu/sai → sửa → review → edit → reload → review → ready → file chứa đúng thông tin và selected spaces; không POST, không báo đã gửi |
+| Privacy / history | PASS | Bỏ không gian rồi refresh không thêm lại; clear draft có Cancel/Confirm; Back sau clear không khôi phục draft đã xóa |
+| Storage recovery | PASS | Dữ liệu không hợp lệ được lọc, review/ready thiếu draft có hướng tạo mới; browser chặn storage giữ form và tải file trực tiếp |
+| Gallery | PASS | Credit/ảnh/tên đúng, bộ lọc, điều hướng trong tập ảnh đang chọn, keyboard, Escape, swipe và focus restore |
+| 3D / fallback | PASS | WebGL canvas thật, camera làm thay đổi pixels, Dusk/Daylight, Reduce detail, xoay bằng nút; touch tải khi yêu cầu, dispose khi chọn Still view; constructor failure và context loss có fallback |
+| Reduced motion | PASS trong trạng thái kiểm | Tắt intro/reveal/parallax/interpolation, không transition ảnh/canvas |
+| Không JavaScript | PASS trong phạm vi kiểm | HTML đọc được, link ảnh/native route dùng được, submit bị khóa để PII không rơi vào GET |
+| axe WCAG 2.1 A/AA | PASS trong audit tự động | Mọi page family và saved/review có dữ liệu; thêm menu mobile, form lỗi và lightbox. Tags gồm `wcag2a`, `wcag2aa`, `wcag21a`, `wcag21aa` |
+| Runtime dependency audit | PASS | `npm audit --omit=dev`, 0 vulnerabilities tại lượt kiểm |
 
-## Lighthouse trên production build local
+`PASS` không đồng nghĩa chứng nhận WCAG hoặc đầy đủ tình huống sản xuất. Chrome/Chromium emulation không thay thiết bị iOS/Android thật.
 
-Đo bằng Lighthouse 13.6.0, Chrome headless 156, qua HTTP local, mobile/desktop chạy lần lượt. Không chạy browser QA khác trong lúc đo. Mobile emulation có coarse pointer và giữ ảnh still trước khi người dùng yêu cầu 3D; desktop tải hero WebGL tự động. Đây là hành vi sản phẩm, không phải chế độ riêng cho benchmark.
+## UIUX AI Workspace
 
-| Chỉ số | Mobile | Desktop |
-| --- | ---: | ---: |
-| Performance | 99 | 100 |
-| Accessibility | 100 | 100 |
-| Best Practices | 100 | 100 |
-| SEO | 100 | 100 |
-| LCP | 2.0 s | 0.4 s |
-| TBT | 0 ms | 0 ms |
-| CLS | 0 | 0.042 |
+Main `5404c183e2e6d09261ddb97b238e09ab56bd5a8a`, đã đối chiếu remote ngày 04/11/2026, working tree nguồn kiến thức sạch và chỉ đọc.
 
-Giá trị cụ thể của lượt đo cuối được lưu trong `qa/lighthouse-mobile.json` và `qa/lighthouse-desktop.json`, cùng HTML report. Lần đo đầu trước tối ưu chỉ đạt Performance 63 mobile; đã thay đổi cách tải 3D trên touch, tách chi phí môi trường phản xạ khỏi hero và kiểm lại. Các số lab không chứng minh INP/CWV ngoài thực tế; không có dữ liệu field hay real-device benchmark.
+- **static-check:** 18 HTML, 0 lỗi.
+- **flow-check:** 0 lỗi chắc chắn ở source; checker tự ghi runtime UNKNOWN. Các luồng ở bảng trên có kiểm browser riêng; không đổi UNKNOWN tĩnh thành chứng minh runtime.
+- **taste-check:** các page family ở 390/768/1280/1440px, cả OS light/dark và reflow 320, `--layout strict`. Kết quả mỗi route trong `qa/taste-*.json`; website giữ dark theme theo brand. Kết quả và tổng hợp cuối trong `qa-summary.json`.
+- **overlay-check:** so với `e08d622`, 0 lỗi, 1 cảnh báo đã review. `journey.ts` có annotation `brownfield-allow` theo cơ chế chính thức của checker: DOM query/append chỉ cập nhật state trong feedback slots do renderer sở hữu, selected-space rows và review values; không thay layout hoặc reparent UI. Sửa trực tiếp stylesheet/renderer nguồn, xóa code cũ, không thêm lớp CSS đè.
+- **check-brand.py:** không dùng kết quả kiểm dashboard tokens không có consumer trong LAVA làm bằng chứng contrast. Kiểm trực tiếp 20 cặp semantic token đang dùng và browser axe/taste. Không bổ sung token thừa hoặc chỉnh checker để qua.
 
-## Checker và các cảnh báo đã review
+Cảnh báo taste đã xem theo nhóm: headline/editorial xuống dòng chủ đích, mô tả kiến trúc theo brief, empty state cần ngữ cảnh, nhãn ảnh và widow. Không che cảnh báo bằng cờ bỏ kiểm. Tránh nhầm glyph nhỏ với hit area: controls/credit links có min-height 44px; nút xoay có accessible labels; số zoning đã tăng cỡ và legend riêng.
 
-- `taste-check` còn các heuristic về wordmark sát cạnh, headline chủ đích hai dòng, captions trong track cuộn ngang, body copy sau heading và widow. Không có lỗi contrast, overflow, asset hoặc axe trong lượt PASS. Giữ đoạn mô tả vì đây là nội dung kiến trúc của brief; không xóa nội dung cần thiết chỉ để giảm số cảnh báo. Gallery cắt track theo viewport có scroll/touch/nút thật, không phải document overflow.
-- `check-brand.py` của Workspace tự ghép token LAVA với **toàn bộ** design system dashboard gốc. Nó báo 14 cặp dataviz/feedback không dùng trong website, nên không được gọi là PASS. Không thêm token thừa để che các lỗi không áp dụng. Thay vào đó kiểm trực tiếp toàn bộ 20 cặp đang dùng bằng `check:design`, rồi so contrast trên browser với axe/taste-check. `validate.py` của design system Workspace không áp dụng cho CSS system độc lập này.
-- Vite cảnh báo scene chunk lớn hơn 500 KB minified. Chunk đã tách riêng, khoảng 136 KB gzip; trên touch chỉ tải khi yêu cầu. Không tăng giới hạn checker để xóa cảnh báo.
-- `npm audit` đầy đủ báo 15 moderate ở dependency phát triển liên quan glob/minimatch/ESLint/Lighthouse; runtime audit là 0. Không chạy `audit fix --force` để downgrade/bẻ peer dependency. Không phục vụ dev tooling ra production.
+## Visual QA và ba vòng critique
 
-## Review và thay đổi từ bằng chứng
+Chụp thật 17 trang ở **375, 390, 768, 1280, 1440, 1920px**, thêm WebGL hero/viewer, form errors và no-results. Lazy images được kích hoạt và decode trước khi chụp. File tại `qa/project-screenshots/`; screenshot không dùng làm UI của sản phẩm. Enquiry đã điền trong ảnh là fixture QA, không phải lead thật.
 
-Vòng 1 độc lập: 3.75/5, HF-3 do Skip link xuất hiện che title trong capture mobile. Đổi cách ẩn thành clip ngoài focus, kiểm keyboard, chụp lại. Vòng 2 độc lập: 4.05/5, không hard fail từ ảnh, verifier đạt XL. Hai chiều Interaction và Craft vẫn 3.5; model hiện là architectural study, chưa có mức chi tiết của model kiến trúc sản xuất.
+Vòng tự soát: sửa hidden-state cascade làm lộ toast rỗng; tăng chữ phụ tối thiểu 12px; tăng vùng bấm navigation; đổi sơ đồ thành bốn bố trí riêng và làm rõ nét/legend; mobile đưa review panel trước cột bổ sung; thu gọn header enquiry; thêm ảnh nội thất đúng công năng, responsive srcset và eager ảnh đầu danh mục; sửa wording Save/Remove và Reduce detail.
 
-Sau vòng 2: bổ sung cue “Use arrows to rotate”, caption “Concept vision” cho các ảnh Spaces và giữ tên perspective trong viewer. Không tự nâng điểm review sau sửa. Packet review, manifest SHA-256 và JSON gốc giữ trong QA local. Các điểm agent là heuristic, không phải human approval, nghiên cứu người dùng hoặc bằng chứng sử dụng thật.
+Vòng theo vai trò: người xem mobile cần thấy CTA và hiểu loại không gian; người kiểm accessibility cần nhãn khớp chữ hiển thị, native dialogs và focus; chủ design system cần shared shell, card, field, tokens và hành vi nhất quán. Lỗi label-content-name mismatch do checker workspace tìm ra đã được sửa và đưa `wcag21a` vào regression.
 
-## GitHub Actions
+Vòng độc lập: fresh-session agents chỉ xem packet ảnh/brief/rubric, không đọc source hoặc điểm tự chấm. Packet đầu: **4.07/5**, min **3.5**. Packet sau tìm ra HF-3 do toast che copy; đã thay thành phản hồi inline tại component. Một packet khác tìm ra nhãn Still perspective giao với caption đứng; đã tách vị trí. Đồng thời thay hai ảnh sai công năng, làm rõ Remove/Reduce detail, chỉnh framing mobile và render hero alpha để fallback giữ wordmark. Packet cuối đạt **4.15/5**, min **3.6**, 0 hard fail nhìn thấy; verifier đạt L. Kết quả được lưu trong `docs/independent-review.json`; không tự nâng điểm sau sửa. Đây là **agent-heuristic**, chưa có human approval hoặc nghiên cứu người dùng.
 
-CI chạy npm ci → lint → token/contrast → build → cài Chromium → 11 browser tests. Lượt đầu trên Ubuntu hoàn thành build/lint và 10/11 tests nhưng test GPU hết budget 30s. Đã chuyển so sánh camera/pixel sang reduced-motion để kiểm state ổn định trên software GPU, giữ nguyên assertions và không bỏ test; runtime camera đồng thời chuyển sang interpolation theo thời gian. Một lượt sau chạm giới hạn assertion mặc định 5s khi compile shader, nên CI dùng loading budget 15s/assertion và 60s/test; local giữ 5s/30s. Không thêm timeout/retry vào application để che lỗi. Kết quả mới cần đối chiếu tại PR theo SHA mới nhất, không dùng kết quả commit trước thay cho commit mới.
+| Dấu hiệu soát ảnh | Kết luận | Vị trí / vai trò |
+| --- | --- | --- |
+| AI-01 Neon/high-chroma cạnh tranh | not present | Toàn bộ page family; navy/white và amber tiết chế |
+| AI-02 Dark + glow trang trí | clearly purposeful | Dark là brand brief; ánh sáng nằm trong kiến trúc, không aurora/glow UI |
+| AI-03 Emoji thay icon | not present | Dùng chữ/ký hiệu đơn sắc, accessible names cho actions |
+| AI-04 Gradient tím mặc định | not present | Không gradient UI; ảnh thật giữ màu gốc |
+| AI-05 Card/card lồng | clearly purposeful | Space cards để chọn/so sánh; dùng grid, typography và hairline, không card bo lồng nhau |
+| AI-06 Thanh màu trái nhiều block | not present | Enquiry dùng tiến trình ngang; không rainbow left bars |
+| AI-07 Status dot không nguồn | not present | Không online/availability dot; dùng status text từ runtime thật |
 
-**PASS tại source commit `2030df25af009456e1b196bcd634045349420767`**, [GitHub Actions run #2](https://github.com/Ngh1aa/Lava/actions/runs/41587168865). Các commit tài liệu sau đó không thay application source; xem check của HEAD tại PR để biết trạng thái mới nhất.
+## Performance
 
-## UNKNOWN và giới hạn còn lại
+| Trang / chế độ | Performance | Accessibility | LCP | TBT | CLS |
+| --- | ---: | ---: | --- | --- | --- |
+| home / mobile | 93 | 100 | 3.2 s | 10 ms | 0 |
+| home / desktop | 100 | 100 | 0.6 s | 10 ms | 0.042 |
+| spaces / mobile | 96 | 100 | 2.8 s | 0 ms | 0.001 |
+| spaces / desktop | 100 | 100 | 0.6 s | 0 ms | 0.002 |
 
-- Chưa human/product approval, usability research, screen reader thủ công hoặc real iOS/Android/Safari/Firefox device testing.
-- Chưa kiểm việc gửi thư trong email app thật; mặc định chỉ tải file. Không có backend/inbox dự án thực, availability, đơn giá hay dữ liệu thương mại.
-- Zoom 200% bằng browser thật / trình đọc màn hình chưa được xác minh đầy đủ. Kiểm 320px reflow và short viewport không được đánh đồng với coverage này.
-- Ảnh Unsplash là ảnh tham khảo của các công trình khác, có credit và link gốc; không phải ảnh chụp LAVA hay bằng chứng dự án đã xây dựng.
-- Visual model có thể tiếp tục nâng cấp nếu có GLB/BIM hoặc vật liệu/ảnh công trình thật. Đã giữ giới hạn GPU và accessibility thay vì thêm hậu kỳ nặng.
-- Không có public deployment hoặc domain được cấu hình; không merge main.
+Lượt đo ở source `11ffdfe`; sau đó chỉ đổi chỉ báo accordion và copy Privacy. Best Practices và SEO đều 100 ở bốn lượt. Điểm dao động theo điều kiện lab, không suy từ đó thành field CWV tốt.
 
-## Artifacts
+Lighthouse 13.6.0, Chrome 156 headless, production HTTP local. Mobile/desktop và các route chạy **lần lượt**, không browser QA khác trong lúc đo. Mobile giữ still trước khi yêu cầu 3D; desktop tự tải hero. Đây là hành vi sản phẩm, không chế độ riêng cho benchmark.
 
-`qa/screenshots/` chứa các ảnh render thật theo viewport, hai hướng hero, các section chính, fallback và touch-3D. `qa/review/` và `qa/review-2/` giữ hai packet độc lập. `qa/` được gitignore để không đẩy screenshot tham khảo/trace nặng lên source; ảnh tóm tắt của LAVA được lưu ở `docs/previews/`. Báo cáo và ảnh đầy đủ được đóng gói riêng trong output bàn giao local.
+Số đo cuối được trích từ JSON gốc vào `docs/qa-summary.json`: Home và Spaces, mobile/desktop, Performance/Accessibility/Best Practices/SEO và LCP/TBT/CLS. Không dùng các điểm 99/100 từ bản landing cũ cho bản này. Báo cáo HTML/JSON nằm trong QA archive. Điểm lab không chứng minh Core Web Vitals/INP ở người dùng thật; mobile LCP vẫn cần theo dõi khi có hosting và dữ liệu field.
+
+Vite cảnh báo chunk Three.js >500 KB minified. Chunk đã lazy-split (~136 KB gzip), application JS ~11 KB gzip, DPR giới hạn, render dừng khi idle/ngoài viewport/tab ẩn, scene có cleanup. Không tăng ngưỡng để giấu cảnh báo. Ảnh thật có WebP 640/960/full, chọn theo layout/DPR, self-host; không tải ảnh stock từ bên ngoài ở runtime.
+
+## Những phần chưa xác minh / chưa kết nối
+
+- **UNKNOWN:** thiết bị iOS/Android thật, Safari/Firefox, screen reader thủ công, browser zoom/text-only 200% và field CWV. Reflow 320px đã kiểm riêng, không gọi đó là thử text-only zoom.
+- **CHƯA CÓ:** inbox xác thực, dịch vụ gửi enquiry, CRM, booking, vị trí, diện tích/giá/availability và model kiến trúc sản xuất. Không mô phỏng thành công các dịch vụ này.
+- Mô hình 3D là architectural study procedural, còn đơn giản ở cây/vật liệu so với ảnh kiến trúc thật. Đây là giới hạn craft còn lại.
+- Chế độ mailto chỉ xuất hiện nếu có `VITE_CONTACT_EMAIL` hợp lệ; chưa có inbox thật nên không xác minh giao thư end-to-end.
+- Production host phải cấu hình trailing slash, index theo thư mục và error document 404. Static `/Lava/` đã kiểm browser; chưa có public deployment.
+- CI/PR theo SHA mới nhất, không dùng kết quả của commit trước để tự nhận HEAD xanh. Không merge main trong lần bàn giao này.

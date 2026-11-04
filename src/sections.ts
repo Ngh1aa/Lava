@@ -4,8 +4,8 @@ export const heroSection = () => `
     <section class="hero" aria-labelledby="hero-title" data-screen="Hero">
       <div class="hero-wordmark" aria-hidden="true">LAVA</div>
       <div class="hero-note">${c.heroNote.join("<br>")}</div>
-      <div class="scene hero-scene" id="hero-scene" role="img" aria-label="Interactive three-dimensional view of LAVA's cantilevered architecture" aria-busy="true">
-        <img class="scene-fallback" src="/images/hero.webp" alt="" width="1600" height="1000" fetchpriority="high" />
+      <div class="scene hero-scene" id="hero-scene" role="img" aria-label="Interactive view of Modern Office Building by CN Entertainment" aria-busy="true">
+        <picture><source media="(max-width: 767px)" srcset="/images/hero-mobile.webp"><img class="scene-fallback" src="/images/hero.webp" alt="" width="1600" height="1000" fetchpriority="high" /></picture>
       </div>
       <div class="hero-bottom">
         <div class="hero-copy"><h1 id="hero-title">${c.hero.join("<br>")}</h1><a class="round-link" href="/architecture/"><span class="round-arrow" aria-hidden="true">↗</span><span>Explore LAVA</span></a></div>
@@ -34,7 +34,7 @@ export const architectureSection = () => `
     <section class="architecture" id="architecture" aria-labelledby="architecture-title" data-screen="Architecture">
       <h2 class="sr-only" id="architecture-title">Interactive architecture</h2>
       <div class="showcase" id="showcase">
-        <div class="scene architecture-scene" id="architecture-scene" role="img" aria-label="LAVA architectural model with selectable camera perspectives and lighting" aria-busy="true"><img class="scene-fallback" src="/images/exterior.webp" alt="" width="1600" height="1000" loading="lazy" /></div>
+        <div class="scene architecture-scene" id="architecture-scene" role="img" aria-label="Modern Office Building reference model with selectable camera perspectives and lighting" aria-busy="true"><picture><source media="(max-width: 767px)" srcset="/images/exterior-mobile.webp"><img class="scene-fallback" src="/images/exterior.webp" alt="" width="1600" height="1000" loading="lazy" /></picture></div>
         <button class="activate-scene viewer-activate" type="button" data-activate="viewer" hidden>Explore in 3D <span aria-hidden="true">↗</span></button><div class="showcase-tools"><div class="light-switch" role="group" aria-label="Architectural lighting"><button type="button" data-light="dusk" aria-pressed="true">Dusk</button><button type="button" data-light="day" aria-pressed="false">Daylight</button></div><button class="quality-toggle" type="button" aria-pressed="false">Reduce detail</button></div>
         <button class="activate-scene viewer-deactivate" type="button" data-deactivate="viewer" hidden>Still view</button><div class="showcase-caption"><span id="view-number">01 / 03 The arrival</span><span id="showcase-status" role="status">Preparing the perspective</span><div class="camera-controls"><button type="button" data-orbit="-1" aria-label="Rotate building left"><span aria-hidden="true">←</span></button><button type="button" data-orbit="1" aria-label="Rotate building right"><span aria-hidden="true">→</span></button></div></div>
       </div>
@@ -42,6 +42,7 @@ export const architectureSection = () => `
         <div class="view-tabs" role="tablist" aria-label="Architectural perspectives">${c.views.map((v, i) => `<button type="button" id="tab-${v.id}" role="tab" aria-selected="${i === 0}" aria-controls="view-description" tabindex="${i === 0 ? "0" : "-1"}" data-view="${v.id}"><span>0${i + 1}</span>${v.label}</button>`).join("")}</div>
         <div class="view-description" id="view-description" role="tabpanel" aria-labelledby="tab-arrival" tabindex="0"><h3>${c.views[0].title}</h3><p>${c.views[0].description}</p></div>
       </div>
+      <p class="model-credit section">3D: Modern Office Building by CN Entertainment / CC BY 4.0. <a class="text-link" href="/credits/#model-credit">Model source &amp; adaptations ↗</a></p>
     </section>
 `;
 

@@ -63,3 +63,7 @@ Mobile reflow thành một cột, CTA và save cùng ngữ cảnh, chọn tầng
 UIUX AI Workspace main `5404c183e2e6d09261ddb97b238e09ab56bd5a8a`, đã đối chiếu remote ngày 04/11/2026, working tree chỉ đọc và sạch. Track L + brownfield: kiểm kê owner/ADN, FLOW scenarios, thêm route và state tại nguồn, xóa code cũ, screenshot 6 viewport, taste/static/flow/overlay check và review ảnh độc lập. Skills áp dụng thêm: brownfield-redesign, information-architecture, ux-structure-and-flow-design, responsive-and-device-strategy, state/error recovery, visual-design-direction, design-system-and-components, ui-craft-and-visual-qa, design-critique-and-rationale.
 
 Kết quả kiểm chứng được ghi riêng trong `QA.md`. Checker tĩnh không thay thế browser flow. Điểm review agent không phải kiểm thử người dùng hoặc phê duyệt thiết kế.
+
+### Asset update 04/11/2026
+
+Mô hình procedural ở mốc mở rộng trước đã được thay bằng Modern Office Building, CN Entertainment, CC BY 4.0. Bản đồ màn, ID không gian, zoning sketches và enquiry flow giữ nguyên; model tham khảo được ghi nguồn riêng và không được mô tả là phương án sáu tầng nguyên bản. Chi tiết tại [ASSETS.md](ASSETS.md).

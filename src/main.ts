@@ -248,7 +248,8 @@ function initScenes() {
     const fallbackImage = $<HTMLImageElement>(
       "#architecture-scene .scene-fallback",
     );
-    fallbackImage.src = asset(index === 2 ? "structure.webp" : "exterior.webp");
+    fallbackImage.src = asset(`${view.still}.webp`);
+    $<HTMLSourceElement>("#architecture-scene source").srcset = asset(`${view.still}-mobile.webp`);
     viewer?.setView(index);
   }
   $$<HTMLButtonElement>("[data-view]").forEach((tab, index) => {

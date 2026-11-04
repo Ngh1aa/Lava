@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import { RoomEnvironment } from "three/addons/environments/RoomEnvironment.js";
-import { createArchitecture } from "./architecture";
+import { loadArchitecture } from "./architecture";
 import { content } from "./content";
 
 export type SceneController = {
@@ -55,27 +55,9 @@ export function createScene(
   if (!options.hero) scene.background = new THREE.Color("#0c1521");
   if (!options.hero) scene.fog = new THREE.Fog("#0c1521", 28, 72);
   const camera = new THREE.PerspectiveCamera(33, 1, 0.1, 150);
-  const model = createArchitecture();
-  scene.add(model.group);
-  // The introductory scene uses direct light. Environment prefiltering is reserved for the explorer.
+  const loading = new AbortController();
+  let model: Awaited<ReturnType<typeof loadArchitecture>> | undefined;
   let environment: THREE.WebGLRenderTarget | undefined;
-  if (!options.hero) {
-    const pmrem = new THREE.PMREMGenerator(renderer);
-    const room = new RoomEnvironment();
-    environment = pmrem.fromScene(room, 0.04);
-    scene.environment = environment.texture;
-    scene.environmentIntensity = 0.35;
-    room.dispose();
-    pmrem.dispose();
-  } else {
-    model.group.traverse((object) => {
-      if (
-        object instanceof THREE.Mesh &&
-        object.material instanceof THREE.MeshStandardMaterial
-      )
-        object.material.metalness = Math.min(object.material.metalness, 0.2);
-    });
-  }
 
   const hemisphere = new THREE.HemisphereLight("#b8d3e6", "#171411", 1.6);
   const key = new THREE.DirectionalLight("#e0d7c6", 3.4);
@@ -103,24 +85,6 @@ export function createScene(
   ground.position.y = -0.3;
   ground.receiveShadow = true;
   scene.add(ground);
-  // A subdued mirrored silhouette reads as water without a second render pass.
-  const reflection = model.group.clone();
-  reflection.scale.y = -1;
-  reflection.position.y = -0.65;
-  reflection.traverse((object) => {
-    if (object instanceof THREE.Mesh) {
-      const original = object.material as THREE.Material;
-      const material = original.clone();
-      material.transparent = true;
-      material.opacity = options.hero ? 0.035 : 0.08;
-      material.depthWrite = false;
-      object.material = material;
-      object.castShadow = false;
-      object.receiveShadow = false;
-    }
-  });
-  if (!options.hero) scene.add(reflection);
-
   const reduced = matchMedia("(prefers-reduced-motion: reduce)");
   const desiredPosition = new THREE.Vector3();
   const desiredTarget = new THREE.Vector3(0, 2.2, 0);
@@ -264,14 +228,45 @@ export function createScene(
   document.addEventListener("visibilitychange", visibility);
   reduced.addEventListener("change", requestRender);
   resize();
-  void renderer
-    .compileAsync(scene, camera)
-    .then(() => {
+  void loadArchitecture(loading.signal)
+    .then(async (loaded) => {
+      if (disposed) {
+        loaded.dispose();
+        return;
+      }
+      model = loaded;
+      model.setDay(day);
+      scene.add(model.group);
+      if (!options.hero) {
+        const pmrem = new THREE.PMREMGenerator(renderer);
+        const room = new RoomEnvironment();
+        environment = pmrem.fromScene(room, 0.04);
+        scene.environment = environment.texture;
+        scene.environmentIntensity = 0.45;
+        room.dispose();
+        pmrem.dispose();
+      } else {
+        // Direct light keeps the introductory scene inexpensive to initialize.
+        model.group.traverse((object) => {
+          if (!(object instanceof THREE.Mesh)) return;
+          const materials = Array.isArray(object.material)
+            ? object.material
+            : [object.material];
+          materials.forEach((material: THREE.Material) => {
+            if (material instanceof THREE.MeshStandardMaterial)
+              material.metalness = Math.min(material.metalness, 0.2);
+          });
+        });
+      }
+      await renderer.compileAsync(scene, camera);
+      if (disposed) return;
       compiled = true;
       requestRender();
     })
     .catch(() => {
+      if (disposed) return;
       visible = false;
+      host.setAttribute("aria-busy", "false");
       options.onError();
     });
 
@@ -290,8 +285,7 @@ export function createScene(
       hemisphere.intensity = day ? 3.5 : 1.6;
       key.intensity = day ? 5 : 3.4;
       renderer.toneMappingExposure = day ? 1.1 : 0.95;
-      model.warm.emissiveIntensity = day ? 0.06 : 0.48;
-      model.light.color.set(day ? "#b9a68b" : "#f2cc8f");
+      model?.setDay(day);
       (ground.material as THREE.MeshStandardMaterial).color.set(
         day ? "#56616a" : "#0d1923",
       );
@@ -320,24 +314,10 @@ export function createScene(
       host.removeEventListener("pointerup", pointerUp);
       host.removeEventListener("pointercancel", pointerUp);
       renderer.domElement.removeEventListener("webglcontextlost", lost);
-      const geometries = new Set<THREE.BufferGeometry>();
-      const materials = new Set<THREE.Material>();
-      scene.traverse((object) => {
-        if (object instanceof THREE.Mesh) {
-          geometries.add(object.geometry);
-          const material = object.material as THREE.Material | THREE.Material[];
-          (Array.isArray(material) ? material : [material]).forEach((m) =>
-            materials.add(m),
-          );
-        }
-      });
-      reflection.traverse((object) => {
-        if (object instanceof THREE.Mesh)
-          materials.add(object.material as THREE.Material);
-      });
-      geometries.forEach((g) => g.dispose());
-      materials.forEach((m) => m.dispose());
-      model.concreteTexture.dispose();
+      loading.abort();
+      model?.dispose();
+      ground.geometry.dispose();
+      ground.material.dispose();
       environment?.dispose();
       renderer.dispose();
       renderer.domElement.remove();

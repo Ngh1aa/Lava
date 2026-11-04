@@ -33,3 +33,7 @@ Một điểm táo bạo: building 3D dưới wordmark khổ lớn. Ba điểm k
 5. WebGL lỗi/context lost → static fallback và thông báo; reduced motion/low quality vẫn khám phá được bằng nút.
 
 Các trạng thái áp dụng: loading/ready/fallback; menu closed/open; view selected; gallery closed/open; form empty/invalid/download-ready. Không có login hoặc giao dịch cần xác nhận.
+
+## Cập nhật mô hình — 04/11/2026
+
+Theo yêu cầu tìm mô hình miễn phí, hero/viewer hiện dùng Modern Office Building của CN Entertainment (CC BY 4.0), thay procedural study ban đầu. Giữ ADN navy, editorial type và camera/lighting. Silhouette chuyển sang công trình compact với khung trắng gấp khúc, kính và cladding tối. Chương trình sáu tầng là phương án không gian riêng, không phải cấu trúc đã xác minh của model tham khảo. Nguồn và sửa đổi: [ASSETS.md](ASSETS.md).

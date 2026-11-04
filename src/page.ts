@@ -1,4 +1,4 @@
-import { content as c } from "./content.ts";
+import { content as c, architectureModel } from "./content.ts";
 import { spaces, spaceById, planSvg, type Space } from "./spaces.ts";
 import {
   heroSection,
@@ -17,7 +17,7 @@ export function pageDescription(path: string) {
     "/project/":
       "Discover the vision, principles and six-level architectural idea behind LAVA.",
     "/architecture/":
-      "Explore the original LAVA architectural model in 3D, from three perspectives and two lighting conditions.",
+      "Explore a licensed Modern Office Building reference model in 3D, from three perspectives and two lighting conditions.",
     "/spaces/":
       "Explore four spatial concepts for work, meeting and open-air moments. Filter by use or level and save your selection.",
     "/experience/":
@@ -57,7 +57,7 @@ function contact() {
     ],
     [
       "Are these photographs of LAVA?",
-      "The photographs are real architectural references by credited photographers. The interactive model and zoning plans are original LAVA concept work.",
+      "The photographs and the licensed 3D building are credited architectural references. The six-level spatial programme and zoning sketches are independent LAVA proposals, not floor plans of the reference model.",
     ],
   ]
     .map(
@@ -67,7 +67,7 @@ function contact() {
     .join("")}</div></section>`;
 }
 function credits() {
-  return `${heading("Image credits", "Real places.<br>Shared inspiration.", "These photographs are architectural references. They illustrate material, light and atmosphere; they do not depict the LAVA concept.")}<section class="credits-list section">${c.gallery.map((p, i) => `<article><img src="/images/${p.image}" ${responsivePhoto(i, "(max-width: 767px) calc(100vw - 40px), 40vw")} alt="${p.alt}" width="${p.width}" height="${p.height}" loading="lazy"><div><span class="eyebrow">0${i + 1} / ${p.category}</span><h2>${p.photographer}</h2><p>${p.alt}</p>${link(p.source, "Original photograph on Unsplash")}</div></article>`).join("")}<p>Photography is used under the <a class="text-link" href="https://unsplash.com/license">Unsplash License ↗</a>. The procedural 3D model and spatial sketches were created for LAVA. Manrope is licensed under the SIL Open Font License.</p></section>`;
+  return `${heading("Asset credits", "Real places.<br>Shared inspiration.", "These photographs are architectural references. They illustrate material, light and atmosphere; they do not depict the LAVA concept.")}<section class="credits-list section">${c.gallery.map((p, i) => `<article><img src="/images/${p.image}" ${responsivePhoto(i, "(max-width: 767px) calc(100vw - 40px), 40vw")} alt="${p.alt}" width="${p.width}" height="${p.height}" loading="lazy"><div><span class="eyebrow">0${i + 1} / ${p.category}</span><h2>${p.photographer}</h2><p>${p.alt}</p>${link(p.source, "Original photograph on Unsplash")}</div></article>`).join("")}<p>Photography is used under the <a class="text-link" href="https://unsplash.com/license">Unsplash License ↗</a>. The spatial sketches were created for LAVA; the reference building is credited below. Manrope is licensed under the SIL Open Font License.</p><article id="model-credit"><img src="/images/structure.webp" alt="Modern Office Building by CN Entertainment, adapted with LAVA lighting" width="1600" height="1000" loading="lazy"><div><span class="eyebrow">3D architectural reference</span><h2>${architectureModel.title}</h2><p>By ${architectureModel.author}. Licensed under <a class="text-link" href="${architectureModel.license}">CC BY 4.0</a>. Adapted for LAVA with reflective glazing, warm lighting, new framing and a hidden source ground plane. The author does not endorse LAVA.</p><p>This reference building is separate from LAVA’s proposed six-level spatial programme and original zoning sketches.</p>${link(architectureModel.source, "Original model on Sketchfab")}</div></article></section>`;
 }
 function privacy() {
   return `${heading("Privacy", "Your perspective.<br>Your information.", "A straightforward explanation of the information used by this concept website.")}<section class="policy-content section"><h2>Saved spaces</h2><p>Your saved space choices stay in this browser. Use “Clear selection” on Saved spaces to remove them. Your name, email and message are not stored with this list.</p><h2>Enquiry drafts</h2><p>Your contact details, message and selected spaces stay in the current browser tab while you review and edit. Closing the tab normally ends that draft session. Use “Clear my draft” on the final step to remove it immediately.</p><h2>Sharing an enquiry</h2><p>Downloading creates a text file on your device. No enquiry is submitted to a server. If a contact email is configured, the email link opens your own app with a draft. You review and send it there.</p><h2>Other connections</h2><p>This website does not include analytics or advertising scripts. Images and fonts are served with the site. External photograph credits and project links open the original providers, whose own policies apply. The hosting provider may maintain standard access logs.</p>${link("/contact/", "About the concept")}</section>`;
@@ -76,7 +76,7 @@ export function pageTitle(path: string) {
   const s = path.startsWith("/spaces/")
     ? spaceById(path.split("/")[2] ?? "")
     : undefined;
-  return `${s?.name ?? { "/": "A different perspective", "/project/": "The project", "/architecture/": "Architecture", "/spaces/": "Explore spaces", "/experience/": "The experience", "/gallery/": "Image collection", "/saved/": "Saved spaces", "/enquiry/": "Your enquiry", "/enquiry/review/": "Review your enquiry", "/enquiry/ready/": "Ready to share", "/contact/": "Contact", "/credits/": "Image credits", "/privacy/": "Privacy" }[path] ?? "Page not found"} — LAVA`;
+  return `${s?.name ?? { "/": "A different perspective", "/project/": "The project", "/architecture/": "Architecture", "/spaces/": "Explore spaces", "/experience/": "The experience", "/gallery/": "Image collection", "/saved/": "Saved spaces", "/enquiry/": "Your enquiry", "/enquiry/review/": "Review your enquiry", "/enquiry/ready/": "Ready to share", "/contact/": "Contact", "/credits/": "Asset credits", "/privacy/": "Privacy" }[path] ?? "Page not found"} — LAVA`;
 }
 export function renderPage(path = "/") {
   const s = path.startsWith("/spaces/")
@@ -191,10 +191,10 @@ function header(path: string) {
   return `<a class="skip-link" href="#main">Skip to content</a><header class="header" id="top"><a class="header-brand" href="/" aria-label="LAVA home">LAVA<span class="brand-mark" aria-hidden="true">/</span></a><nav class="desktop-nav" aria-label="Main navigation">${nav.map(([id, label]) => `<a href="/${id}/" ${path.startsWith(`/${id}/`) ? 'aria-current="page"' : ""}>${label}</a>`).join("")}</nav><div class="header-actions"><a class="saved-link" href="/saved/" aria-label="Saved 0 spaces"><span aria-hidden="true">◇</span><span class="saved-label">Saved</span> <span data-saved-count>0</span></a><a class="header-contact" href="/enquiry/">Enquire <span aria-hidden="true">↗</span></a><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu">Menu <span class="menu-lines" aria-hidden="true"></span></button></div></header><dialog class="mobile-menu" id="mobile-menu" aria-label="Navigation"><div class="menu-top"><span>LAVA /</span><button class="menu-close" type="button">Close <span aria-hidden="true">×</span></button></div><nav aria-label="Mobile navigation">${[...nav, ["saved", "Saved spaces"], ["contact", "Contact"]].map(([id, label], i) => `<a href="/${id}/" ${path.startsWith(`/${id}/`) ? 'aria-current="page"' : ""}><span class="menu-number">0${i + 1}</span>${label}</a>`).join("")}</nav><p>${c.tagline}</p></dialog>`;
 }
 function footer() {
-  return `<footer class="footer section"><div class="footer-top"><a href="#top">Back to the beginning <span aria-hidden="true">↑</span></a><nav aria-label="Footer navigation">${link("/contact/", "Contact")}${link("/credits/", "Image credits")}${link("/privacy/", "Privacy")}</nav></div><div class="footer-wordmark">LAVA</div><div class="footer-bottom"><span>© ${new Date().getFullYear()} LAVA</span><span>Independent architectural concept</span><a href="https://github.com/Ngh1aa/Lava" target="_blank" rel="noopener noreferrer">Project source ↗</a></div></footer>`;
+  return `<footer class="footer section"><div class="footer-top"><a href="#top">Back to the beginning <span aria-hidden="true">↑</span></a><nav aria-label="Footer navigation">${link("/contact/", "Contact")}${link("/credits/", "Asset credits")}${link("/privacy/", "Privacy")}</nav></div><div class="footer-wordmark">LAVA</div><div class="footer-bottom"><span>© ${new Date().getFullYear()} LAVA</span><span>Independent architectural concept</span><a href="https://github.com/Ngh1aa/Lava" target="_blank" rel="noopener noreferrer">Project source ↗</a></div></footer>`;
 }
 function home() {
-  return `${heroSection()}${visionSection()}<section class="home-index section"><div class="section-top"><span>The project, in perspective</span><span>Explore the chapters</span></div><div class="chapter-grid"><a href="/project/"><span>01 / The idea</span><h2>One place.<br>Many possibilities.</h2><p>Discover the thinking behind LAVA.</p><span class="chapter-arrow" aria-hidden="true">↗</span></a><a href="/architecture/"><img src="/images/structure.webp" width="1600" height="1000" alt="Original LAVA architecture concept"><span>02 / Architecture</span><h2>A study<br>in balance.</h2><span class="chapter-arrow" aria-hidden="true">↗</span></a></div></section><section class="home-spaces section"><div class="section-top"><span>03 / Find your space</span>${link("/spaces/", "Explore all spaces")}</div><h2>Made for the way<br>you want to be.</h2><div class="catalogue-grid">${spaces
+  return `${heroSection()}${visionSection()}<section class="home-index section"><div class="section-top"><span>The project, in perspective</span><span>Explore the chapters</span></div><div class="chapter-grid"><a href="/project/"><span>01 / The idea</span><h2>One place.<br>Many possibilities.</h2><p>Discover the thinking behind LAVA.</p><span class="chapter-arrow" aria-hidden="true">↗</span></a><a href="/architecture/"><img src="/images/structure.webp" width="1600" height="1000" alt="Modern Office Building reference by CN Entertainment"><span>02 / Architecture</span><h2>A study<br>in balance.</h2><span class="chapter-arrow" aria-hidden="true">↗</span></a></div></section><section class="home-spaces section"><div class="section-top"><span>03 / Find your space</span>${link("/spaces/", "Explore all spaces")}</div><h2>Made for the way<br>you want to be.</h2><div class="catalogue-grid">${spaces
     .filter((s) => s.id === "gallery-lounge" || s.id === "open-terrace")
     .map((s) => spaceCard(s))
     .join(
@@ -205,18 +205,18 @@ function project() {
   return `${heading("The project", "A place for<br>what comes next.", c.overview.body)}${photo(0, "project-cover", true)}<section class="project-story section"><span class="eyebrow">01 / The idea</span><h2>Between the city<br>and a quieter world.</h2><div class="story-copy"><p>${c.statement}</p><p>The concept unfolds as a vertical neighbourhood: a shared arrival, adaptable workplaces and a rooftop landscape. Each level adds another way to experience the whole.</p><p class="concept-note">LAVA is an independent design concept. Location, areas, pricing and availability have not been established. Photography illustrates architectural references.</p></div></section>${overviewSection()}<section class="project-principles section"><span class="eyebrow">02 / The principles</span>${c.experiences.map((e, i) => `<article><span>0${i + 1}</span><h3>${e.title}</h3><p>${e.body}</p></article>`).join("")}</section>${nextChapter("02", "The idea, taking shape.", "/architecture/", "Explore the architecture")}`;
 }
 function architecture() {
-  return `${heading("Architecture", "Form follows<br>possibility.", "Explore the original six-level concept. Move between three perspectives, change the light or rotate the building. A still perspective is always available.")}${architectureSection()}<section class="material-study section"><div><span class="eyebrow">A deliberate material language</span><h2>Weight.<br>Warmth. Rhythm.</h2></div><dl>${[
+  return `${heading("Architecture", "Form follows<br>possibility.", "Explore Modern Office Building, a licensed architectural reference by CN Entertainment. Change perspective, light or rotation. The six-level LAVA spatial programme is a separate design proposal.")}${architectureSection()}<section class="material-study section"><div><span class="eyebrow">A deliberate material language</span><h2>Weight.<br>Warmth. Rhythm.</h2></div><dl>${[
     [
-      "Concrete",
-      "Horizontal planes establish the silhouette and provide deep shelter.",
+      "Charcoal cladding",
+      "Dark planes wrap the building and establish its strong silhouette.",
     ],
     [
-      "Bronze-toned fins",
-      "A fine vertical rhythm gives depth to the glazed facade.",
+      "A white frame",
+      "An angular border draws the eye to the projecting glazed corner.",
     ],
     [
-      "Planted edges",
-      "Green thresholds soften the transition between inside and outside.",
+      "Corner glazing",
+      "Slender mullions create a fine rhythm across the broad glass surfaces.",
     ],
   ]
     .map(([t, d], i) => `<div><dt>0${i + 1} / ${t}</dt><dd>${d}</dd></div>`)

@@ -71,8 +71,8 @@ export const content = {
     facts: [
       {
         value: "06",
-        label: "Terraced levels",
-        detail: "A landscape in the sky",
+        label: "Proposed concept levels",
+        detail: "Independent spatial programme",
       },
       {
         value: "03",
@@ -89,29 +89,32 @@ export const content = {
   views: [
     {
       id: "arrival",
+      still: "exterior",
       label: "The arrival",
       title: "An open invitation.",
       description:
-        "A lifted ground plane opens the building to its surroundings. Above it, horizontal terraces frame a changing play of light.",
+        "Slender columns lift the glazed corner above the entrance. An angular white frame gives the arrival its distinctive silhouette.",
       position: [16, 9, 19],
       target: [0, 2.2, 0],
     },
     {
-      id: "terraces",
-      label: "The terraces",
-      title: "Room to step outside.",
+      id: "facade",
+      still: "facade-view",
+      label: "The facade",
+      title: "A frame for the light.",
       description:
-        "Each level steps back to make space for open air. Deep overhangs create shade, while planted edges soften the geometry.",
-      position: [-14, 11, 16],
+        "Dark cladding and long bands of glazing wrap the building. Move around the corner to explore the contrast between solid surfaces and reflected light.",
+      position: [-15, 8, 16],
       target: [0, 2.3, 0],
     },
     {
       id: "structure",
+      still: "structure",
       label: "The structure",
       title: "Clarity in every line.",
       description:
-        "Slender bronze fins meet weighty concrete planes. Repetition gives the facade rhythm; the spaces between give it depth.",
-      position: [12, 5.5, 10],
+        "A continuous white frame cuts across the facade. Slender mullions give the corner glazing its rhythm, above the columns that support the projecting volume.",
+      position: [13, 5.5, 14],
       target: [0, 2.8, 0],
     },
   ],
@@ -169,3 +172,11 @@ export type ViewId = (typeof content.views)[number]["id"];
 export const contactEmail = import.meta.env?.VITE_CONTACT_EMAIL?.trim() ?? "";
 export const asset = (file: string) =>
   `${document.documentElement.dataset.root ?? import.meta.env.BASE_URL ?? "/"}images/${file}`;
+
+/** Licensed external reference, not an original LAVA building or verified property. */
+export const architectureModel = {
+  title: "Modern Office Building",
+  author: "CN Entertainment",
+  source: "https://sketchfab.com/3d-models/modern-office-building-3f54b8d7a7064b0da523c49187efcf60",
+  license: "https://creativecommons.org/licenses/by/4.0/",
+} as const;

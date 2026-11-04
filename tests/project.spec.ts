@@ -208,6 +208,13 @@ test("nested static deployment loads assets, navigation, saved state and enquiry
     await expect(page.locator("[data-shortlist-count]")).toHaveText(
       "1 saved space",
     );
+    // GLB URLs must follow the same nested mount as HTML, fonts and photographs.
+    await page.goto(`http://127.0.0.1:${address.port}/Lava/architecture/`);
+    await page.locator("#showcase").scrollIntoViewIfNeeded();
+    await expect(page.locator("#architecture-scene")).toHaveAttribute(
+      "data-render",
+      "webgl",
+    );
     expect(errors).toEqual([]);
   } finally {
     await context.close();

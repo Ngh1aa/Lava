@@ -1,0 +1,29 @@
+Modern Office Building
+Copyright: CN Entertainment
+License: Creative Commons Attribution 4.0 International (CC BY 4.0)
+https://creativecommons.org/licenses/by/4.0/
+
+Original model and author:
+https://sketchfab.com/3d-models/modern-office-building-3f54b8d7a7064b0da523c49187efcf60
+https://sketchfab.com/cn-entertainment
+
+License verified against the public Sketchfab API on 2026-11-04:
+https://api.sketchfab.com/v3/models/3f54b8d7a7064b0da523c49187efcf60
+The GLB asset.extras also preserves the author's name, source URL and CC-BY-4.0 license.
+
+Public download mirror: Allen Institute for AI, Objaverse collection
+https://huggingface.co/datasets/allenai/objaverse/resolve/main/glbs/000-011/3f54b8d7a7064b0da523c49187efcf60.glb
+Collection: https://huggingface.co/datasets/allenai/objaverse (database ODC-By; individual model CC BY 4.0).
+
+Bundled file: models/modern-office.glb (1,719,000 bytes, original binary unchanged)
+SHA256: 3b4770f1d403b09da953a743c9fdeba00418a86b91fde96bb967de9e84c0a387
+
+Runtime adaptations for LAVA: source ground plane hidden; building normalized and reframed;
+reflective glazing replaces transmission; glazing backing colors and emissive lighting adjusted;
+new environment, lighting and three camera perspectives. Still images are renders of this adaptation.
+No endorsement by the creator is implied. LAVA's six-level spatial programme is a separate concept,
+not a claim about this reference building. Attribution appears on /architecture/ and /credits/#model-credit.
+
+CC BY 4.0 permits sharing and adaptation, including commercial use, provided appropriate credit,
+a license link and an indication of changes are supplied. No additional restrictions are applied.
+Full legal code: https://creativecommons.org/licenses/by/4.0/legalcode.en

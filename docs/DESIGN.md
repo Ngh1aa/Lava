@@ -49,3 +49,7 @@ Hero sân khấu → statement chữ lớn → overview số đếm mô hình �
 3. Hai fresh-session agents chỉ nhận ảnh, brief và rubric qua review packet. Vòng đầu 3.75/5, HF-3 từ Skip link hiện trong ảnh mobile; thay cách ẩn offscreen bằng clipping ngoài trạng thái focus và chụp lại. Vòng hai 4.05/5, không hard fail nhìn thấy, chiều 6 = 4; packet verifier xác nhận đạt ngưỡng XL. Interaction và Craft vẫn 3.5, cần tiếp tục polish khi có model sản xuất thực. Sau đó bổ sung cue xoay bằng nút và nhãn Concept vision; không tự tăng điểm review sau các chỉnh sửa này.
 
 Đây là **agent-heuristic**, không phải nghiên cứu người dùng hay duyệt của chủ dự án. Hướng vẫn **CHƯA DUYỆT**. Ảnh không chứng minh screen reader, motion hay backend; bằng chứng hành vi nằm riêng trong browser tests và QA.
+
+## Cập nhật asset theo yêu cầu — 04/11/2026
+
+Procedural study ở các vòng thiết kế đầu đã được thay bằng GLB Modern Office Building / CN Entertainment / CC BY 4.0. Dùng GLTFLoader có sẵn trong Three.js, không thêm dependency; chỉnh framing, kính và ánh sáng, render lại still desktop/mobile cùng ba góc nhìn. Thông tin vật liệu và nội dung viewer được đổi theo model mới; không nhận công trình của tác giả là nguyên bản LAVA. Các điểm review độc lập phía trên thuộc bộ ảnh trước thay model, không dùng làm điểm chất lượng của phiên bản GLB. Lượt mới được kiểm qua browser, ảnh render và Lighthouse, không tự chấm điểm hay gọi là đã duyệt.

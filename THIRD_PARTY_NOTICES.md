@@ -9,3 +9,5 @@
 Photography sources, attribution and original model assets are recorded in [docs/ASSETS.md](docs/ASSETS.md).
 
 - Real architecture photographs: Rasmus Lauridsen, Sébastien Lavalaye, Caio Arbulu, Maik Winnecke, Israel Andrade and Nastuh Abootalebi via Unsplash, used under the [Unsplash License](https://unsplash.com/license). Individual photo pages, local assets, responsive derivatives and credit locations are recorded in docs/ASSETS.md.
+
+- **Modern Office Building**, CN Entertainment, [original model](https://sketchfab.com/3d-models/modern-office-building-3f54b8d7a7064b0da523c49187efcf60), [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Distributed through the public Ai2 Objaverse collection (database attribution: Allen Institute for AI; ODC-By). Original GLB and embedded attribution are preserved; LAVA adapts runtime glazing, lighting, scale/framing and hides the source paving. No endorsement is implied. [Full provenance and adaptations](public/licenses/Modern-Office-Building.txt). Credits are displayed on the Architecture and Asset credits pages, including rendered stills.

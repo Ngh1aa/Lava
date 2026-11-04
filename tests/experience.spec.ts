@@ -84,9 +84,9 @@ test("real WebGL viewer responds to camera, lighting, power and keyboard tabs", 
   const canvas = page.locator("#architecture-scene canvas");
   await page.waitForTimeout(700);
   const before = await canvas.screenshot();
-  await page.getByRole("tab", { name: "The terraces" }).click();
+  await page.getByRole("tab", { name: "The facade" }).click();
   await expect(
-    page.getByRole("heading", { name: "Room to step outside." }),
+    page.getByRole("heading", { name: "A frame for the light." }),
   ).toBeVisible();
   await page.waitForTimeout(700);
   expect((await canvas.screenshot()).equals(before)).toBe(false);
@@ -100,7 +100,7 @@ test("real WebGL viewer responds to camera, lighting, power and keyboard tabs", 
   await expect(
     page.getByRole("button", { name: "Reduce detail", exact: true }),
   ).toHaveAttribute("aria-pressed", "true");
-  await page.getByRole("tab", { name: "The terraces" }).focus();
+  await page.getByRole("tab", { name: "The facade" }).focus();
   await page.keyboard.press("ArrowRight");
   await expect(
     page.getByRole("tab", { name: "The structure" }),

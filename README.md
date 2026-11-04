@@ -1,6 +1,6 @@
 # LAVA — A different perspective
 
-Website dự án kiến trúc với **17 trang HTML riêng**, công trình WebGL nguyên bản, danh mục không gian, shortlist và enquiry ba bước. Nhận diện midnight navy, Manrope và ảnh chụp thật có nguồn.
+Website dự án kiến trúc với **17 trang HTML riêng**, mô hình kiến trúc GLB có giấy phép, danh mục không gian, shortlist và enquiry ba bước. Nhận diện midnight navy, Manrope và ảnh chụp thật có nguồn.
 
 ![LAVA project experience](docs/previews/project-spaces.webp)
 
@@ -57,12 +57,20 @@ Vite 8, TypeScript 6 strict, Three.js r187, native CSS, IntersectionObserver/rAF
 | `src/journey.ts` | Bộ lọc, shortlist, autosave, review và tải file |
 | `src/content.ts` | Brand content, camera perspectives, ảnh và nguồn credit |
 | `src/main.ts` | Motion, menu, lifecycle scene và gallery keyboard/touch |
-| `src/architecture.ts`, `src/scene.ts` | Hình học, vật liệu, camera, GPU và fallback |
+| `src/architecture.ts`, `src/scene.ts` | Tải GLB, vật liệu, camera, GPU và fallback |
 | `src/brand.css`, `src/style.css` | Semantic tokens và stylesheet nguồn duy nhất |
 | `vite.config.ts` | Prerender HTML riêng, relative assets, canonical/404 preview |
 | `tests/` | Regression hành vi, responsive, accessibility và static subdirectory hosting |
 
-Build tạo sẵn nội dung HTML cho mọi URL. Các trang có thể refresh/deep-link mà không cần client router hoặc SPA rewrite. JavaScript ứng dụng khoảng 10 KB gzip; scene riêng khoảng 136 KB gzip. Trên touch/Save-Data, ảnh still được dùng trước; chỉ tải WebGL khi yêu cầu. Scene ngừng render khi đứng yên/ngoài viewport/tab ẩn, giới hạn DPR 1.5 (Reduce detail: 1), có cleanup và fallback/context-loss handling.
+Build tạo sẵn nội dung HTML cho mọi URL. Các trang có thể refresh/deep-link mà không cần client router hoặc SPA rewrite. JavaScript ứng dụng khoảng 10 KB gzip; scene + GLTFLoader riêng khoảng 157 KB gzip. Trên touch/Save-Data, ảnh still được dùng trước; chỉ tải WebGL khi yêu cầu. Scene ngừng render khi đứng yên/ngoài viewport/tab ẩn, giới hạn DPR 1.5 (Reduce detail: 1), có cleanup và fallback/context-loss handling.
+
+## Mô hình 3D miễn phí
+
+**Modern Office Building — CN Entertainment**, [Sketchfab](https://sketchfab.com/3d-models/modern-office-building-3f54b8d7a7064b0da523c49187efcf60), **CC BY 4.0**. GLB 1.72 MB tự host tại `public/models/modern-office.glb`; tải qua bản phân phối công khai Objaverse của Ai2, không cần tài khoản. Nguồn và license đối chiếu cả Sketchfab API lẫn metadata nhúng trong GLB. [Provenance, quyền sử dụng và thay đổi](public/licenses/Modern-Office-Building.txt).
+
+Hero và viewer cùng tải GLB bằng addon GLTFLoader của Three.js. Giữ hình học của tác giả, chỉnh kính/ánh sáng/camera theo LAVA và ẩn nền sân nguồn để công trình có tỷ lệ phù hợp. Ba ảnh still được render lại từ cùng mô hình. Scene có tải bất đồng bộ, hủy fetch khi dispose, giải phóng geometry/material/texture/ImageBitmap và fallback nếu GLB lỗi hoặc WebGL không dùng được. Trên mobile, model chỉ tải sau khi bấm 3D.
+
+Đây là **mô hình tham khảo có credit**, không phải thiết kế kiến trúc độc quyền của LAVA. Chương trình không gian sáu tầng và zoning sketches là đề xuất riêng, không phải bản vẽ hay số liệu xác thực của công trình này. Phần enquiry vẫn tải file trên thiết bị vì chưa có inbox/backend kinh doanh xác thực.
 
 ## Dữ liệu và enquiry
 

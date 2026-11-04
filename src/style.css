@@ -580,6 +580,12 @@ dialog::backdrop {
   padding-block: 40px 80px;
   border-bottom: 1px solid var(--ds-border-subtle);
 }
+.model-credit {
+  padding-block: 20px 0;
+  color: var(--ds-text-secondary);
+  font-size: 12px;
+  line-height: 1.8;
+}
 .view-tabs {
   grid-column: span 6;
   display: grid;
@@ -2265,7 +2271,7 @@ main[data-page^="/enquiry/"] .page-heading h1 {
     inset: 16% -8% 18% -8%;
   }
   .hero-scene .scene-fallback {
-    padding-inline: 7%;
+    object-fit: contain;
   }
   .hero-bottom {
     display: block;
@@ -2378,7 +2384,10 @@ main[data-page^="/enquiry/"] .page-heading h1 {
     height: 430px;
   }
   .architecture-scene {
-    inset: 20px -18% 0;
+    inset: 20px 0 0;
+  }
+  .architecture-scene .scene-fallback {
+    object-fit: contain;
   }
   .showcase-tools {
     top: 16px;

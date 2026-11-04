@@ -32,10 +32,19 @@ Cập nhật 04/11/2026 theo yêu cầu dùng **ảnh chụp thật trên mạng
 
 | File | Nguồn | Quyền / mục đích |
 | --- | --- | --- |
-| `images/hero.webp` | Render alpha từ scene hero nguyên bản | Giữ nền trong suốt để wordmark không bị nền ảnh che trong chế độ still/WebGL fallback. Pixel alpha góc được kiểm trong browser. |
-| `images/exterior.webp`, `images/structure.webp` | Render từ công trình procedural trong `src/architecture.ts` | Nội dung gốc; phục vụ fallback của trải nghiệm 3D, không trình bày như ảnh chụp. Tái tạo ba ảnh model bằng dev server + `node scripts/render-assets.mjs`. |
+| `images/hero.webp` | Render alpha từ Modern Office Building, CN Entertainment, CC BY 4.0 | Giữ nền trong suốt để wordmark không bị nền ảnh che trong chế độ still/WebGL fallback. Pixel alpha góc được kiểm trong browser. |
+| `images/exterior.webp`, `images/structure.webp` | Render từ GLB Modern Office Building trong `src/architecture.ts` | Bản render thích ứng theo CC BY 4.0; phục vụ fallback của trải nghiệm 3D, không trình bày như ảnh chụp. Tái tạo bộ ảnh model bằng dev server + `node scripts/render-assets.mjs`. |
 | `favicon.svg` | Wordmark hình học LAVA | Nội dung gốc, không lấy logo bên thứ ba. |
 | Manrope Latin 400/500/600/700 | Manrope Project Authors qua Fontsource | SIL OFL 1.1; `public/licenses/Manrope-OFL.txt`. |
 | Three.js | Three.js authors | MIT; `public/licenses/Three-MIT.txt`. |
 
 Không lấy tài sản từ Likova. Các ảnh imagegen trước đây đã được thay trong source hiện tại; provenance cũ chỉ còn trong Git history. Không dùng chúng làm ảnh hiện hành.
+
+## Mô hình 3D thay thế procedural study — 04/11/2026
+
+- **Modern Office Building**, tác giả **CN Entertainment**, [trang gốc](https://sketchfab.com/3d-models/modern-office-building-3f54b8d7a7064b0da523c49187efcf60). [Sketchfab API](https://api.sketchfab.com/v3/models/3f54b8d7a7064b0da523c49187efcf60) xác nhận downloadable, 2,985 faces, license CC Attribution và link CC BY 4.0. Không lấy model của Likova.
+- File `public/models/modern-office.glb`: 1,719,000 bytes. Bản tải công khai từ [Ai2 Objaverse](https://huggingface.co/datasets/allenai/objaverse/resolve/main/glbs/000-011/3f54b8d7a7064b0da523c49187efcf60.glb); database ghi nguồn Allen Institute for AI (ODC-By), từng model theo giấy phép riêng. GLB nhúng đúng title/author/source/CC-BY-4.0 trong `asset.extras`, giữ nguyên binary và metadata.
+- SHA256: `3b4770f1d403b09da953a743c9fdeba00418a86b91fde96bb967de9e84c0a387`.
+- [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) cho phép chia sẻ/chỉnh sửa, kể cả thương mại, với credit, link giấy phép và chỉ rõ sửa đổi. [Notice đi cùng asset](../public/licenses/Modern-Office-Building.txt).
+- Thích ứng runtime: ẩn nền sân nguồn, chuẩn hóa tỷ lệ/đặt camera; thay transmission bằng reflective glass để giảm render pass; chỉnh màu backing và emissive, môi trường và ánh sáng. Không thêm tầng để giả mô hình gốc là thiết kế LAVA. Chương trình sáu tầng và zoning là đề xuất độc lập.
+- `hero.webp`, `exterior.webp`, `facade-view.webp`, `structure.webp` và bốn bản `*-mobile.webp` được render lại từ GLB này bằng dev server + `node scripts/render-assets.mjs`. Credit trên `/architecture/` và `/credits/#model-credit` áp dụng cho cả GLB và ảnh render. Model và ảnh đều tự host, không gọi Sketchfab/Hugging Face khi mở website.

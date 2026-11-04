@@ -353,7 +353,7 @@ dialog::backdrop {
 .scene-status {
   font-size: 12px;
   position: absolute;
-  right: var(--gutter);
+  right: calc(var(--gutter) + 40px);
   bottom: 120px;
   max-width: 200px;
   text-align: right;

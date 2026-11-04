@@ -39,7 +39,9 @@ test("save feedback stays clear of shortlist actions on mobile", async ({
       name: "Remove The gallery lounge from saved spaces",
     })
     .click();
-  const feedback = await page.locator("[data-save-feedback]").boundingBox();
+  const feedback = await page
+    .locator("[data-save-feedback]:visible")
+    .boundingBox();
   expect(feedback).not.toBeNull();
   for (const action of await page
     .locator("main a:visible, main button:visible")
@@ -465,7 +467,7 @@ test("disabled browser storage gives honest recovery without losing the form", a
       exact: true,
     })
     .click();
-  await expect(page.locator("[data-save-feedback]")).toContainText(
+  await expect(page.locator("[data-save-feedback]:visible")).toContainText(
     "could not save",
   );
   await expect(page.locator("[data-saved-count]")).toHaveText("0");

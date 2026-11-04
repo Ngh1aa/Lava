@@ -1,6 +1,10 @@
 import { spaceById, planSvg } from "./spaces";
 import { contactEmail } from "./content";
 
+// brownfield-allow: Native state updates fill feedback slots rendered by page.ts,
+// selected-space rows and enquiry review values. They do not replace page layout
+// or move rendered components; query + append is progressive enhancement here.
+
 const one = <T extends HTMLElement = HTMLElement>(selector: string) =>
   document.querySelector<T>(selector);
 const all = <T extends HTMLElement = HTMLElement>(selector: string) =>
@@ -87,11 +91,13 @@ const draftBody = (d: Draft) =>
 export function initJourney() {
   let saved = readSaved();
   let feedbackTimer: ReturnType<typeof setTimeout> | undefined;
-  let feedbackAnchor: HTMLElement | null = null;
-  function placeFeedback() {
-    const feedback = one("[data-save-feedback]")!;
-    const anchor = one(".saved-content .results-line") ?? feedbackAnchor;
-    anchor?.after(feedback);
+  let feedbackHost: HTMLElement | null = null;
+  function getFeedback() {
+    const feedback =
+      one(".saved-content > [data-save-feedback]") ?? feedbackHost!;
+    all("[data-save-feedback]").forEach((host) => {
+      if (host !== feedback) host.hidden = true;
+    });
     return feedback;
   }
   function refreshSaved() {
@@ -137,7 +143,7 @@ export function initJourney() {
     try {
       localStorage.setItem(SAVED, JSON.stringify(next));
     } catch {
-      const feedback = placeFeedback();
+      const feedback = getFeedback();
       feedback.hidden = false;
       feedback.textContent =
         "Your browser could not save this selection. Open the space and enquire directly instead.";
@@ -145,7 +151,7 @@ export function initJourney() {
     }
     saved = next;
     refreshSaved();
-    const feedback = placeFeedback();
+    const feedback = getFeedback();
     feedback.hidden = false;
     feedback.textContent = message;
     if (allowUndo) {
@@ -173,9 +179,14 @@ export function initJourney() {
   refreshSaved();
   all<HTMLButtonElement>("[data-save]").forEach((button) =>
     button.addEventListener("click", () => {
-      feedbackAnchor =
-        button.closest(".catalogue-card")?.querySelector(".card-meta") ??
-        button.closest(".detail-title");
+      feedbackHost =
+        button
+          .closest(".catalogue-card")
+          ?.querySelector("[data-save-feedback]") ??
+        button
+          .closest(".detail-heading")
+          ?.querySelector("[data-save-feedback]") ??
+        null;
       const id = button.dataset.save!;
       const active = saved.includes(id);
       setSaved(

@@ -2,7 +2,18 @@
 
 Cập nhật 04/11/2026. Bản build Vite production phục vụ qua HTTP local `http://127.0.0.1:4173/`. Branch `feat/lava-architectural-experience`; [PR #1](https://github.com/Ngh1aa/Lava/pull/1). Không có production deployment được xác nhận; hướng thiết kế **CHƯA DUYỆT** bởi chủ dự án.
 
-## Kiểm chứng kỹ thuật và hành vi
+## Cập nhật GLB — kiểm chứng mới nhất
+
+Source `1324000617d70a28980b4d1503622497a301e73a`. Thay procedural study bằng Modern Office Building / CN Entertainment / CC BY 4.0. Model tự host 1.72 MB; credit và các điều chỉnh được ghi trong ASSETS và license notice.
+
+- **PASS:** lint, TypeScript/build, 53 tokens / 20 contrast pairs; **35/35 Playwright**, 0 skipped/flaky/unexpected. Kết quả gốc: `qa/model-update/tests-final.json`.
+- **PASS:** GLB thực sự được vẽ (kiểm pixels), metadata/credit, ba camera, lighting/quality/orbit, touch on-demand, still theo từng view/mobile; GLB 503 hoặc hỏng đều có fallback và không pageerror. Static mount `/Lava/` tải được GLB.
+- **PASS trong phạm vi kiểm:** 17 routes tại bảy chiều rộng; axe page families và state hiện có; ảnh render thật ở 375/390/768/1280/1440/1920. Console capture 0 lỗi. Đã xem ảnh hero, viewer, mobile still/WebGL, daylight và credit. Viewer mobile bỏ overscan gây crop; poster mobile render riêng.
+- Workspace static checker: 3 HTML bị ảnh hưởng, 0 lỗi; cảnh báo `#0000` do CSS build dùng transparent. Taste Architecture: 0 lỗi, 3 cảnh báo đã xem; chữ credit bắt đầu x=20px, cảnh báo mép là box paragraph; mô tả là nội dung góc nhìn theo brief. Không sửa checker.
+- Lighthouse production local, Chrome headless, chạy tuần tự, **Home Performance 99 mobile / 100 desktop**, Accessibility / Best Practices / SEO 100 cả hai. Mobile LCP 2.1 s, TBT 0 ms, CLS 0.008; desktop LCP 0.7 s, TBT 0 ms, CLS 0.041. Lượt đầu desktop 86 / TBT 320 ms; đã bỏ room prefilter trong hero, giữ cho explorer và đo lại. Báo cáo `qa/model-update/lighthouse-optimized-*`.
+- Điểm review độc lập và bảng đo bên dưới thuộc baseline trước thay GLB. Không dùng chúng làm điểm review của model mới. Kết quả hiện hành nằm ở `modelUpdate` trong qa-summary.json. Đây là đo lab; thiết bị thật, screen reader thủ công, field CWV và public deployment vẫn UNKNOWN.
+
+## Kiểm chứng kỹ thuật và hành vi (baseline nhiều trang)
 
 | Kiểm tra | Kết quả | Phạm vi / bằng chứng |
 | --- | --- | --- |
@@ -75,13 +86,13 @@ Lighthouse 13.6.0, Chrome 156 headless, production HTTP local. Mobile/desktop v�
 
 Số đo cuối được trích từ JSON gốc vào `docs/qa-summary.json`: Home và Spaces, mobile/desktop, Performance/Accessibility/Best Practices/SEO và LCP/TBT/CLS. Không dùng các điểm 99/100 từ bản landing cũ cho bản này. Báo cáo HTML/JSON nằm trong QA archive. Điểm lab không chứng minh Core Web Vitals/INP ở người dùng thật; mobile LCP vẫn cần theo dõi khi có hosting và dữ liệu field.
 
-Vite cảnh báo chunk Three.js >500 KB minified. Chunk đã lazy-split (~136 KB gzip), application JS ~11 KB gzip, DPR giới hạn, render dừng khi idle/ngoài viewport/tab ẩn, scene có cleanup. Không tăng ngưỡng để giấu cảnh báo. Ảnh thật có WebP 640/960/full, chọn theo layout/DPR, self-host; không tải ảnh stock từ bên ngoài ở runtime.
+Vite cảnh báo chunk Three.js >500 KB minified. Chunk đã lazy-split (~157 KB gzip), application JS ~11 KB gzip, DPR giới hạn, render dừng khi idle/ngoài viewport/tab ẩn, scene có cleanup. Không tăng ngưỡng để giấu cảnh báo. Ảnh thật có WebP 640/960/full, chọn theo layout/DPR, self-host; không tải ảnh stock từ bên ngoài ở runtime.
 
 ## Những phần chưa xác minh / chưa kết nối
 
 - **UNKNOWN:** thiết bị iOS/Android thật, Safari/Firefox, screen reader thủ công, browser zoom/text-only 200% và field CWV. Reflow 320px đã kiểm riêng, không gọi đó là thử text-only zoom.
 - **CHƯA CÓ:** inbox xác thực, dịch vụ gửi enquiry, CRM, booking, vị trí, diện tích/giá/availability và model kiến trúc sản xuất. Không mô phỏng thành công các dịch vụ này.
-- Mô hình 3D là architectural study procedural, còn đơn giản ở cây/vật liệu so với ảnh kiến trúc thật. Đây là giới hạn craft còn lại.
+- Mô hình 3D hiện là architectural reference được cấp phép; không phải công trình thực hoặc thiết kế độc quyền LAVA. Zoning sáu tầng là đề xuất riêng.
 - Chế độ mailto chỉ xuất hiện nếu có `VITE_CONTACT_EMAIL` hợp lệ; chưa có inbox thật nên không xác minh giao thư end-to-end.
 - Production host phải cấu hình trailing slash, index theo thư mục và error document 404. Static `/Lava/` đã kiểm browser; chưa có public deployment.
 - CI/PR theo SHA mới nhất, không dùng kết quả của commit trước để tự nhận HEAD xanh. Không merge main trong lần bàn giao này.

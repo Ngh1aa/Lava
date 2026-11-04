@@ -186,7 +186,7 @@
             "display": "10 ms"
           },
           "cumulative-layout-shift": {
-            "value": 0.00002784351962040732,
+            "value": 2.784351962040732e-05,
             "display": "0"
           }
         }
@@ -288,5 +288,59 @@
     "Field Core Web Vitals",
     "Real inbox delivery",
     "Production deployment"
-  ]
+  ],
+  "legacyScope": "Existing fields describe the pre-GLB multi-page baseline. See modelUpdate for current source verification.",
+  "modelUpdate": {
+    "sourceCommit": "1324000617d70a28980b4d1503622497a301e73a",
+    "tests": {
+      "startTime": "2026-11-04T05:08:36.210Z",
+      "duration": 89038.94099999999,
+      "expected": 35,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "result": "PASS",
+    "modelBytes": 1719000,
+    "modelSHA256": "3b4770f1d403b09da953a743c9fdeba00418a86b91fde96bb967de9e84c0a387",
+    "screenshots": "qa/model-update, six requested widths, still/WebGL, dusk/day, three cameras",
+    "consoleErrors": [],
+    "staticErrors": 0,
+    "tasteErrors": 0,
+    "tasteWarnings": 3,
+    "warningReview": "Credit glyph starts at x=20px; element-box edge heuristic is a false positive. Architectural text describes the selected view.",
+    "lighthouseHome": {
+      "mobile": {
+        "fetchTime": "2026-11-04T05:07:19.250Z",
+        "scores": {
+          "performance": 99,
+          "accessibility": 100,
+          "best-practices": 100,
+          "seo": 100
+        },
+        "metrics": {
+          "largest-contentful-paint": "2.1Â s",
+          "total-blocking-time": "0Â ms",
+          "cumulative-layout-shift": "0.008"
+        }
+      },
+      "desktop": {
+        "fetchTime": "2026-11-04T05:07:26.933Z",
+        "scores": {
+          "performance": 100,
+          "accessibility": 100,
+          "best-practices": 100,
+          "seo": 100
+        },
+        "metrics": {
+          "largest-contentful-paint": "0.7Â s",
+          "total-blocking-time": "0Â ms",
+          "cumulative-layout-shift": "0.041"
+        }
+      }
+    },
+    "firstDesktopPerformance": 86,
+    "optimization": "Hero uses direct light; room-environment prefiltering reserved for viewer.",
+    "independentReview": "No new independent score for GLB; earlier scores apply only to the prior image packet."
+  }
 }

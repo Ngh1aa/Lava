@@ -28,8 +28,10 @@ test("all required viewport widths reflow, load assets and expose the hero CTA",
       ),
       `horizontal overflow at ${width}`,
     ).toBe(true);
-    await page.locator("#enquiry").scrollIntoViewIfNeeded();
-    await expect(page.locator(".form-submit")).toBeVisible();
+    await page.locator(".home-spaces").scrollIntoViewIfNeeded();
+    await expect(
+      page.getByRole("link", { name: "Explore all spaces" }),
+    ).toBeVisible();
     const badImages = await page
       .locator("main img")
       .evaluateAll((images) =>
@@ -62,8 +64,10 @@ test("mobile navigation, Escape and anchor focus work", async ({ page }) => {
     .getByRole("link", { name: "Architecture" })
     .click();
   await expect(page.locator("#mobile-menu")).not.toBeVisible();
-  await expect(page.locator("#architecture-title")).toBeFocused();
-  await expect(page).toHaveURL(/#architecture$/);
+  await expect(page.getByRole("heading", { level: 1 })).toContainText(
+    "Form follows",
+  );
+  await expect(page).toHaveURL(/\/architecture\/$/);
 });
 
 test("real WebGL viewer responds to camera, lighting, power and keyboard tabs", async ({
@@ -71,7 +75,7 @@ test("real WebGL viewer responds to camera, lighting, power and keyboard tabs", 
 }) => {
   // Assert camera/render differences in the stable supported mode, including on software GPUs in CI.
   await page.emulateMedia({ reducedMotion: "reduce" });
-  await page.goto("/");
+  await page.goto("/architecture/");
   await page.locator("#showcase").scrollIntoViewIfNeeded();
   await expect(page.locator("#architecture-scene")).toHaveAttribute(
     "data-render",
@@ -90,9 +94,11 @@ test("real WebGL viewer responds to camera, lighting, power and keyboard tabs", 
   await expect(
     page.getByRole("button", { name: "Daylight", exact: true }),
   ).toHaveAttribute("aria-pressed", "true");
-  await page.getByRole("button", { name: "Low power", exact: true }).click();
+  await page
+    .getByRole("button", { name: "Reduce detail", exact: true })
+    .click();
   await expect(
-    page.getByRole("button", { name: "Low power", exact: true }),
+    page.getByRole("button", { name: "Reduce detail", exact: true }),
   ).toHaveAttribute("aria-pressed", "true");
   await page.getByRole("tab", { name: "The terraces" }).focus();
   await page.keyboard.press("ArrowRight");
@@ -107,7 +113,7 @@ test("real WebGL viewer responds to camera, lighting, power and keyboard tabs", 
 test("gallery opens the correct image, supports keys and restores focus", async ({
   page,
 }) => {
-  await page.goto("/");
+  await page.goto("/gallery/");
   const opener = page.getByRole("link", { name: "Open A warm welcome" });
   await opener.click();
   await expect(
@@ -134,14 +140,15 @@ test("gallery opens the correct image, supports keys and restores focus", async 
   await page.keyboard.press("ArrowLeft");
   await page.keyboard.press("Escape");
   await expect(opener).toBeFocused();
-  await page.getByRole("link", { name: "View The gallery lounge" }).click();
+  await page.goto("/spaces/gallery-lounge/");
+  await page.getByRole("link", { name: "Open A warm welcome" }).click();
   await expect(page.locator("#lightbox-title")).toHaveText("A warm welcome");
 });
 
 test("enquiry validates, retains input, downloads exact details and never claims delivery", async ({
   page,
 }) => {
-  await page.goto("/");
+  await page.goto("/enquiry/?space=gallery-lounge");
   await page.locator(".form-submit").click();
   await expect(page.locator("#name")).toBeFocused();
   await expect(page.locator("#email-error")).toHaveText(
@@ -162,8 +169,15 @@ test("enquiry validates, retains input, downloads exact details and never claims
   page.on("request", (r) => {
     if (r.method() !== "GET") requestUrls.push(r.url());
   });
-  const downloadPromise = page.waitForEvent("download");
   await page.locator(".form-submit").click();
+  await expect(page).toHaveURL(/\/enquiry\/review\/$/);
+  await expect(page.locator("[data-review-details]")).toContainText(
+    "The gallery lounge",
+  );
+  await page.getByRole("button", { name: "Prepare enquiry" }).click();
+  await expect(page).toHaveURL(/\/enquiry\/ready\/$/);
+  const downloadPromise = page.waitForEvent("download");
+  await page.getByRole("button", { name: "Download enquiry" }).click();
   const download = await downloadPromise;
   expect(download.suggestedFilename()).toBe("LAVA-enquiry.txt");
   const stream = await download.createReadStream();
@@ -173,7 +187,7 @@ test("enquiry validates, retains input, downloads exact details and never claims
   expect(text).toContain("LAVA QA");
   expect(text).toContain("qa@example.com");
   expect(text).toContain("A conversation about the architecture.");
-  await expect(page.locator("#form-status")).toContainText(
+  await expect(page.locator("[data-enquiry-status]")).toContainText(
     "It has not been sent",
   );
   expect(requestUrls).toEqual([]);
@@ -190,6 +204,7 @@ test("reduced motion, unavailable WebGL and context loss retain the experience",
   );
   await expect(page.locator("html")).not.toHaveClass(/js-motion/);
   await expect(page.locator(".scene-fallback").first()).toBeVisible();
+  await page.goto("/architecture/?view=still");
   await page.locator("#showcase").scrollIntoViewIfNeeded();
   await expect(
     page.getByRole("button", { name: "Daylight", exact: true }),
@@ -245,13 +260,15 @@ test("axe WCAG AA on desktop, mobile menu, form errors and gallery", async ({
     expect(
       (
         await new AxeBuilder({ page })
-          .withTags(["wcag2a", "wcag2aa", "wcag21aa"])
+          .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"])
           .analyze()
       ).violations,
     ).toEqual([]);
   await audit();
+  await page.goto("/enquiry/");
   await page.locator(".form-submit").click();
   await audit();
+  await page.goto("/gallery/");
   await page.getByRole("link", { name: "Open The blue hour" }).click();
   await audit();
   await page.keyboard.press("Escape");
@@ -289,6 +306,7 @@ test("touch devices load 3D on request and gallery accepts a swipe", async ({
   await expect(
     page.getByRole("button", { name: "View in 3D", exact: true }),
   ).toBeFocused();
+  await page.goto("http://127.0.0.1:4173/architecture/");
   await page.locator("#showcase").scrollIntoViewIfNeeded();
   await expect(
     page.getByRole("button", { name: "Daylight", exact: true }),
@@ -303,6 +321,7 @@ test("touch devices load 3D on request and gallery accepts a swipe", async ({
   await expect(
     page.getByRole("button", { name: "Daylight", exact: true }),
   ).toBeEnabled();
+  await page.goto("http://127.0.0.1:4173/gallery/");
   await page.getByRole("link", { name: "Open The blue hour" }).click();
   const cdp = await context.newCDPSession(page);
   const bounds = await page.locator(".lightbox-stage").boundingBox();
@@ -333,11 +352,15 @@ test("without JavaScript the narrative and image links work, enquiry cannot leak
   await expect(
     page.getByRole("heading", { name: "A different perspective." }),
   ).toBeVisible();
+  await page.goto("http://127.0.0.1:4173/enquiry/");
   await expect(page.locator(".form-submit")).toBeDisabled();
+  await page.goto("http://127.0.0.1:4173/gallery/");
   await page.getByRole("link", { name: "Open The blue hour" }).click();
   await expect(page).toHaveURL(/arrival.webp$/);
   await page.goBack();
-  await expect(page.locator("#hero-title")).toBeVisible();
+  await expect(page.getByRole("heading", { level: 1 })).toContainText(
+    "A collection",
+  );
   await context.close();
 });
 

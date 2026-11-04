@@ -8,7 +8,49 @@ try {
     viewport: { width: 1600, height: 1100 },
     reducedMotion: "reduce",
   });
-  await page.goto(process.env.BASE_URL ?? "http://127.0.0.1:5173/");
+  await page.goto(
+    new URL("architecture/", process.env.BASE_URL ?? "http://127.0.0.1:5173/")
+      .href,
+  );
+  const heroData = await page.evaluate(
+    async (moduleUrl) => {
+      const { createScene } = await import(moduleUrl);
+      const host = document.createElement("div");
+      Object.assign(host.style, {
+        position: "fixed",
+        inset: "0",
+        width: "1600px",
+        height: "1000px",
+      });
+      document.body.append(host);
+      let controller;
+      const data = await new Promise((resolve, reject) => {
+        controller = createScene(host, {
+          hero: true,
+          onReady() {
+            resolve(
+              host
+                .querySelector("canvas")
+                .toDataURL("image/webp", 0.88)
+                .split(",")[1],
+            );
+          },
+          onError() {
+            reject(new Error("Hero export failed"));
+          },
+        });
+      });
+      controller.destroy();
+      host.remove();
+      return data;
+    },
+    new URL("src/scene.ts", process.env.BASE_URL ?? "http://127.0.0.1:5173/")
+      .href,
+  );
+  await fs.writeFile(
+    "public/images/hero.webp",
+    Buffer.from(heroData, "base64"),
+  );
   await page.locator("#architecture").scrollIntoViewIfNeeded();
   await page.locator('#architecture-scene[data-render="webgl"]').waitFor();
   await page.locator("#showcase").scrollIntoViewIfNeeded();

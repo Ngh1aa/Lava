@@ -150,7 +150,7 @@ export function createScene(
       desiredTarget.set(0, 2.15, 0);
     }
     const narrow = width / height < 1.2;
-    const distanceScale = narrow ? 1.27 : 1;
+    const distanceScale = narrow ? (options.hero ? 1.45 : 1.27) : 1;
     desiredPosition.multiplyScalar(distanceScale);
     desiredPosition.applyAxisAngle(
       THREE.Object3D.DEFAULT_UP,

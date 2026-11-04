@@ -4,6 +4,7 @@ import desktop from "lighthouse/core/config/desktop-config.js";
 import fs from "node:fs/promises";
 
 await fs.mkdir("qa", { recursive: true });
+const prefix = process.env.REPORT_PREFIX ?? "lighthouse";
 const chrome = await chromeLauncher.launch({
   chromePath:
     process.env.CHROME_PATH ??
@@ -27,8 +28,8 @@ try {
       mode === "desktop" ? desktop : undefined,
     );
     if (!result) throw new Error("Lighthouse did not return a report");
-    await fs.writeFile(`qa/lighthouse-${mode}.json`, result.report[0]);
-    await fs.writeFile(`qa/lighthouse-${mode}.html`, result.report[1]);
+    await fs.writeFile(`qa/${prefix}-${mode}.json`, result.report[0]);
+    await fs.writeFile(`qa/${prefix}-${mode}.html`, result.report[1]);
     console.log(
       mode,
       JSON.stringify({

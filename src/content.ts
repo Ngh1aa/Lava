@@ -1,5 +1,23 @@
 /** Real photographs used as architectural references, not photographs of the LAVA concept. */
 const photography = {
+  workplace: {
+    image: "workplace.webp",
+    width: 1600,
+    height: 1067,
+    alt: "People working at shared desks beneath pendant lighting in an open-plan office",
+    photographer: "Israel Andrade",
+    source:
+      "https://unsplash.com/photos/people-sitting-on-chair-in-front-of-computer-YI_9SivVt_s",
+  },
+  meeting: {
+    image: "meeting.webp",
+    width: 1600,
+    height: 1068,
+    alt: "Sunlit conference room with a wooden table, pink upholstered chairs and floor-to-ceiling glazing",
+    photographer: "Nastuh Abootalebi",
+    source:
+      "https://unsplash.com/photos/pink-dining-table-with-four-chairs-inside-room-J1rNS2qv8BQ",
+  },
   arrival: {
     image: "arrival.webp",
     width: 1600,
@@ -97,20 +115,6 @@ export const content = {
       target: [0, 2.8, 0],
     },
   ],
-  spaces: [
-    {
-      title: "Space to connect.",
-      name: "The gallery lounge",
-      ...photography.lounge,
-      body: "A quiet material study. Concrete, soft daylight and a place to pause inspire LAVA's approach to shared interiors.",
-    },
-    {
-      title: "A pause, above it all.",
-      name: "The open terrace",
-      ...photography.terrace,
-      body: "An open-air study of proportion, shade and the relationship between architecture and its surroundings.",
-    },
-  ],
   experiences: [
     {
       title: "Light as a material",
@@ -146,6 +150,16 @@ export const content = {
       title: "A study of form",
       category: "Facade reference",
     },
+    {
+      ...photography.workplace,
+      title: "Room for focus",
+      category: "Interior reference",
+    },
+    {
+      ...photography.meeting,
+      title: "Ideas around a table",
+      category: "Interior reference",
+    },
   ],
 };
 
@@ -154,4 +168,4 @@ export type ViewId = (typeof content.views)[number]["id"];
 /** No invented contact destination. Supply a verified inbox at build time. */
 export const contactEmail = import.meta.env?.VITE_CONTACT_EMAIL?.trim() ?? "";
 export const asset = (file: string) =>
-  `${import.meta.env.BASE_URL ?? "/"}images/${file}`;
+  `${document.documentElement.dataset.root ?? import.meta.env.BASE_URL ?? "/"}images/${file}`;

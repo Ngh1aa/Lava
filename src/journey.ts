@@ -1,4 +1,4 @@
-import { spaceById, planSvg } from "./spaces";
+import { spaceById } from "./spaces";
 import { contactEmail } from "./content";
 
 // brownfield-allow: Native state updates fill feedback slots rendered by page.ts,
@@ -295,22 +295,9 @@ export function initJourney() {
         if (!el.hidden) count++;
       });
       one("[data-photo-count]")!.textContent =
-        `${count} architectural ${count === 1 ? "reference" : "references"}`;
+        `${count} Harpa ${count === 1 ? "photograph" : "photographs"}`;
     }),
   );
-  all<HTMLButtonElement>("[data-download-plan]").forEach((button) => {
-    button.disabled = false;
-    button.addEventListener("click", () => {
-      const space = spaceById(button.dataset.downloadPlan ?? "");
-      if (space)
-        download(
-          planSvg(space, true),
-          `LAVA-${space.id}-concept.svg`,
-          "image/svg+xml;charset=utf-8",
-        );
-    });
-  });
-
   const workspace = one("[data-enquiry-step]");
   if (!workspace) return;
   // Re-read tab storage after history restoration, including a draft cleared on a later page.

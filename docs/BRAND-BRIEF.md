@@ -37,3 +37,23 @@ Các trạng thái áp dụng: loading/ready/fallback; menu closed/open; view se
 ## Cập nhật mô hình — 04/11/2026
 
 Theo yêu cầu tìm mô hình miễn phí, hero/viewer hiện dùng Modern Office Building của CN Entertainment (CC BY 4.0), thay procedural study ban đầu. Giữ ADN navy, editorial type và camera/lighting. Silhouette chuyển sang công trình compact với khung trắng gấp khúc, kính và cladding tối. Chương trình sáu tầng là phương án không gian riêng, không phải cấu trúc đã xác minh của model tham khảo. Nguồn và sửa đổi: [ASSETS.md](ASSETS.md).
+
+## Công trình đã chốt — 05/11/2026
+
+**ĐÃ CHỐT CÔNG TRÌNH:** Axel Springer Campus — OMA, Berlin. Quyết định trực tiếp của chủ dự án; không đồng nghĩa đã duyệt giao diện mới.
+
+LAVA chuyển từ concept đa nguồn sang một trải nghiệm biên tập về công trình này. Giữ brand LAVA / navy / Syncopate Bold, thể hiện rõ tên công trình và OMA. Không trình bày đây là thiết kế do LAVA tạo ra hoặc website chính thức của Axel Springer/OMA.
+
+Trang chủ hướng ngắn 4–5 section: công trình; câu chuyện thiết kế; ba điểm kiến trúc; một lối vào không gian/thư viện; liên hệ. Animation tập trung hero và trang kiến trúc. Bộ lọc mặt bằng, shortlist và enquiry ba bước không còn là trọng tâm của navigation mới.
+
+Nguồn nội dung chính: https://www.oma.com/projects/axel-springer-campus . Các chủ đề có nguồn: atrium đường chéo, các tầng giật cấp tạo không gian làm việc chung, meeting bridge, mái và quan hệ với khu phố. Không gán sáu tầng của concept cũ cho công trình này. Không lấy model Modern Office Building hiện tại để mô tả Axel Springer.
+
+Nguồn ảnh đã kiểm riêng tại Wikimedia Commons (CC BY-SA 4.0):
+- Gunnar Klack, ảnh công trình ngày 19/08/2025: https://commons.wikimedia.org/wiki/File:2025-08-19-Axel-Springer-Campus-Berlin-Kreuzberg.jpg
+- Lukas Beck, ảnh ngày 10/05/2023: https://commons.wikimedia.org/wiki/File:Berlin_Axel-Springer-Hochhaus_lub_2023-05-10_img02_Neubau.jpg
+
+Bản gốc tải để xem và chuẩn bị tại qa/axel/ (không phát hành lên website). Nếu dùng: ghi tác giả, trang nguồn, CC BY-SA 4.0, thao tác resize/crop; các bản ảnh thích ứng giữ cùng giấy phép. Bộ ảnh Laurian Ghinitoiu / Courtesy OMA trên OMA/ArchDaily chưa được xác minh quyền tái sử dụng cho LAVA, không tải vào source/public. Album nội thất và mô hình 3D đúng công trình: CHƯA XÁC MINH. Giao diện hiện tại chưa được coi là bản triển khai cho công trình đã chốt.
+
+## Quyết định hiện hành — Harpa, 05/11/2026
+
+Chủ dự án đã thay lựa chọn Axel Springer bằng Harpa Concert Hall, Reykjavík. Phần chốt Axel bên trên là lịch sử quyết định, đã được thay thế. LAVA giữ navy / Syncopate / Manrope, chuyển trang chủ thành bốn section. Tòa nhà, Architecture, Spaces và Gallery tập trung một công trình. Dùng sáu ảnh đúng Harpa có giấy phép Pexels/Unsplash. Không gán model văn phòng hoặc zoning sáu tầng cho Harpa. Chưa có model 3D phù hợp được cấp phép nên không đưa viewer giả vào trải nghiệm hiện hành. Brand LAVA là independent architectural study, không giả website chính thức của Harpa.

@@ -1,3 +1,20 @@
+# QA hiện hành — Harpa, 05/11/2026
+
+Phạm vi hiện hành thay thế mọi kết quả baseline bên dưới: website ảnh thật tập trung Harpa, trang chủ bốn section, không còn WebGL/model văn phòng hoặc sơ đồ thuê văn phòng. Các bài test gắn riêng với sản phẩm cũ đã được thay bằng suite Harpa.
+
+- PASS: TypeScript strict/build, ESLint và design token/contrast checker.
+- PASS: 12 browser tests; 17 route tại 320/375/390/768/1280/1440/1920px; menu mobile/focus/Escape, gallery ảnh đúng + credit + bộ lọc + keyboard, enquiry validation/review/download không POST.
+- PASS: axe WCAG 2.1 A/AA tự động trên tám page family. Đây không phải chứng nhận WCAG hoặc kiểm screen reader thủ công.
+- PASS: ảnh render thật trang chủ tại 375/390/768/1280/1440/1920; Project, Architecture, Spaces, Gallery desktop. Đã xem ảnh desktop/mobile và chỉnh độ tương phản nhãn hero, tỷ lệ ảnh Spaces. Capture không ghi nhận pageerror.
+- PASS: runtime dependency audit 0 vulnerabilities. Dev tooling có cảnh báo npm audit, chưa xử lý ngoài phạm vi thay công trình.
+- Lighthouse production local, Chrome headless Windows, chạy tuần tự: số đo hiện hành trong qa-summary.json, báo cáo qa/harpa/lighthouse-optimized-*. Lighthouse không phải dữ liệu Core Web Vitals ngoài thực tế. Lượt đầu mobile 80 được cải thiện bằng hoãn ảnh lightbox đang đóng và thêm srcset cho ảnh chương.
+- UNKNOWN: thiết bị iOS/Android thật, screen reader thủ công, field CWV, deployment công khai. Không có backend/inbox, booking hoặc 3D Harpa được xác minh. Enquiry chỉ chuẩn bị và tải file cục bộ.
+- Lựa chọn Harpa đã được người dùng chốt; visual design mới CHƯA DUYỆT.
+
+## Lịch sử QA — không áp dụng cho bản Harpa
+
+Các số liệu, 3D, zoning, leasing, review độc lập và scenario bên dưới chỉ mô tả phiên bản trước khi chuyển Harpa. Không dùng chúng để tuyên bố coverage hoặc điểm đo hiện hành.
+
 # LAVA — QA cho website dự án nhiều trang
 
 Cập nhật 04/11/2026. Bản build Vite production phục vụ qua HTTP local `http://127.0.0.1:4173/`. Branch `feat/lava-architectural-experience`; [PR #1](https://github.com/Ngh1aa/Lava/pull/1). Không có production deployment được xác nhận; hướng thiết kế **CHƯA DUYỆT** bởi chủ dự án.

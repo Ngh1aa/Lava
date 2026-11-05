@@ -63,25 +63,6 @@ try {
         });
     }
     if ([390, 1440].includes(width)) {
-      await page.goto(new URL("architecture/", base).href);
-      await page.locator("#showcase").scrollIntoViewIfNeeded();
-      if (await page.locator('[data-activate="viewer"]').isVisible())
-        await page.locator('[data-activate="viewer"]').click();
-      await page.locator('#architecture-scene[data-render="webgl"]').waitFor();
-      await page.locator("#showcase").screenshot({
-        path: `qa/project-screenshots/architecture-webgl-${width}.png`,
-      });
-      await page.goto(new URL("", base).href);
-      if (await page.locator('[data-activate="hero"]').isVisible())
-        await page.locator('[data-activate="hero"]').click();
-      await page.locator('#hero-scene[data-render="webgl"]').waitFor();
-      await page.screenshot({
-        path: `qa/project-screenshots/home-webgl-${width}.png`,
-      });
-      await page.goto(new URL("spaces/?use=Work&level=06", base).href);
-      await page
-        .locator("[data-filter-empty]")
-        .screenshot({ path: `qa/project-screenshots/no-results-${width}.png` });
       await page.goto(new URL("enquiry/", base).href);
       await page.locator("#name").fill("");
       await page.locator("#email").fill("");

@@ -250,6 +250,69 @@ dialog::backdrop {
   isolation: isolate;
   overflow: hidden;
 }
+.harpa-hero {
+  position: relative;
+  isolation: isolate;
+  min-height: min(760px, calc(100svh - 80px));
+  padding: 28px var(--gutter) 64px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+.harpa-hero > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: -2;
+}
+.harpa-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--ds-surface-page) 35%, transparent), transparent 45%, color-mix(in srgb, var(--ds-surface-page) 90%, transparent));
+}
+.harpa-hero-top {
+  position: absolute;
+  inset: 24px var(--gutter) auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  font-size: 12px;
+}
+.harpa-title-brand {
+  position: absolute;
+  top: 72px;
+  left: var(--gutter);
+  font-family: var(--font-display);
+  font-size: 26vw;
+  line-height: 0.8;
+  letter-spacing: -0.045em;
+}
+.harpa-hero-copy h1 {
+  font-size: clamp(48px, 6vw, 92px);
+  line-height: 1;
+  letter-spacing: -0.055em;
+  margin: 20px 0 28px;
+}
+.harpa-photo-credit {
+  position: absolute;
+  bottom: 16px;
+  right: var(--gutter);
+  font-size: 12px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+@media (max-width: 767px) {
+  .harpa-hero { min-height: calc(100svh - 72px); padding-bottom: 90px; }
+  .harpa-hero > img { object-position: 55% center; }
+  .harpa-title-brand { top: 80px; }
+  .harpa-hero-copy h1 { font-size: clamp(48px, 12vw, 72px); }
+}
 .hero-wordmark {
   position: relative;
   z-index: -1;
@@ -1075,6 +1138,9 @@ main[data-page^="/enquiry/"] .page-heading h1 {
   background: var(--ds-action-disabled-bg);
   color: var(--ds-action-disabled-text);
 }
+.home-index { padding-block: 72px; }
+.project-story.home-intro { padding-block: 72px; }
+.harpa-hero-copy > .eyebrow { color: var(--ds-text-primary); background: var(--ds-surface-page); padding: 4px 8px; }
 .chapter-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1082,7 +1148,7 @@ main[data-page^="/enquiry/"] .page-heading h1 {
   border-top: 1px solid var(--ds-border-subtle);
 }
 .chapter-grid > a {
-  min-height: 520px;
+  min-height: 420px;
   padding: 48px 40px;
   position: relative;
   overflow: hidden;
@@ -1122,7 +1188,6 @@ main[data-page^="/enquiry/"] .page-heading h1 {
   bottom: 32px;
   font-size: 40px;
 }
-.home-index,
 .home-spaces,
 .related-spaces {
   padding-block: var(--space-section);
@@ -1372,6 +1437,14 @@ main[data-page^="/enquiry/"] .page-heading h1 {
   margin-left: 30px;
   font-size: 13px;
 }
+.catalogue-card > a > img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+.catalogue-card > a > .eyebrow { display: block; margin-top: 20px; }
+.catalogue-card > a > h2 { font-size: clamp(32px, 4vw, 64px); line-height: 1.08; margin-block: 16px; }
+.catalogue-card > a > .text-link { margin-top: 20px; }
 .empty-state {
   padding: 72px 24px 100px;
   text-align: center;
@@ -1878,7 +1951,7 @@ main[data-page^="/enquiry/"] .page-heading h1 {
     grid-template-columns: 1fr;
   }
   .chapter-grid > a {
-    min-height: 380px;
+    min-height: 300px;
     padding: 32px 0;
   }
   .chapter-grid > a:first-child {

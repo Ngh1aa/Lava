@@ -1,29 +1,11 @@
 {
-  "schemaVersion": 2,
-  "date": "2026-11-04",
-  "sourceCommit": "a26d432e7de072448b51427aafa2b8484e4be696",
-  "sourceFingerprint": "81369a24e8d4047ab13638040debf4b0eb8ccf9458e5dbafadc974ce626f9a1c",
-  "fullRegressionSource": "11ffdfe295bcddfff387d14f55f4c68ab9bce038",
-  "performanceMeasuredSource": "11ffdfe295bcddfff387d14f55f4c68ab9bce038",
-  "laterChanges": "Shared accordion marker styling and plain-language privacy copy; all page-family accessibility checks repeated.",
-  "measuredBuild": "Vite production HTTP local, Chrome 156 headless Windows; Lighthouse runs sequential without other browser QA.",
+  "schemaVersion": 3,
+  "date": "2026-11-05",
+  "scope": "Harpa photographic architectural study; supersedes historical model/leasing QA",
+  "source": "Harpa working tree after e91308b; implementation and QA committed together",
   "tests": {
     "result": "PASS",
-    "playwright": 32,
-    "skipped": 0,
-    "unexpected": 0,
-    "flaky": 0,
-    "durationMs": 81493.692,
-    "supplementalAccessibility": {
-      "startTime": "2026-11-04T04:28:06.265Z",
-      "duration": 17645.73,
-      "expected": 2,
-      "skipped": 0,
-      "unexpected": 0,
-      "flaky": 0
-    }
-  },
-  "responsive": {
+    "playwright": 12,
     "routes": 17,
     "widths": [
       320,
@@ -34,7 +16,11 @@
       1440,
       1920
     ],
-    "captureWidths": [
+    "axePageFamilies": 8
+  },
+  "captures": {
+    "directory": "qa/harpa/screens",
+    "homeWidths": [
       375,
       390,
       768,
@@ -42,305 +28,64 @@
       1440,
       1920
     ],
-    "captureDirectory": "qa/project-screenshots"
-  },
-  "design": {
-    "tokens": 53,
-    "contrastPairs": 20,
-    "result": "PASS"
-  },
-  "workspace": {
-    "commit": "5404c183e2e6d09261ddb97b238e09ab56bd5a8a",
-    "readOnly": true,
-    "staticErrors": 0,
-    "flowStaticErrors": 0,
-    "flowRuntimeChecker": "UNKNOWN, covered separately by browser scenarios",
-    "overlay": [
-      {
-        "level": "warning",
-        "rule": "dom-patch",
-        "path": "src/journey.ts",
-        "message": "File JS mới tìm phần tử đã render rồi chèn hoặc sửa HTML. Sửa ở renderer, template hoặc component đang sinh ra phần tử đó để markup đúng ngay từ đầu."
-      },
-      {
-        "level": "info",
-        "rule": "summary",
-        "path": null,
-        "message": "CSS: +1291 / -397 dòng; file CSS sửa 1, thêm 0, xoá 0; !important ròng +0."
-      }
+    "additionalDesktop": [
+      "project",
+      "architecture",
+      "spaces",
+      "gallery"
     ],
-    "taste": [
-      {
-        "page": "http://127.0.0.1:4173/project/?view=still",
-        "errors": 0,
-        "warnings": 8,
-        "axe": "RUN"
-      },
-      {
-        "page": "http://127.0.0.1:4173/architecture/?view=still",
-        "errors": 0,
-        "warnings": 8,
-        "axe": "RUN"
-      },
-      {
-        "page": "http://127.0.0.1:4173/experience/?view=still",
-        "errors": 0,
-        "warnings": 2,
-        "axe": "RUN"
-      },
-      {
-        "page": "http://127.0.0.1:4173/gallery/?view=still",
-        "errors": 0,
-        "warnings": 10,
-        "axe": "RUN"
-      },
-      {
-        "page": "http://127.0.0.1:4173/saved/?view=still",
-        "errors": 0,
-        "warnings": 26,
-        "axe": "RUN"
-      },
-      {
-        "page": "http://127.0.0.1:4173/enquiry/?view=still",
-        "errors": 0,
-        "warnings": 22,
-        "axe": "RUN"
-      },
-      {
-        "page": "http://127.0.0.1:4173/enquiry/review/?view=still",
-        "errors": 0,
-        "warnings": 30,
-        "axe": "RUN"
-      },
-      {
-        "page": "http://127.0.0.1:4173/enquiry/ready/?view=still",
-        "errors": 0,
-        "warnings": 42,
-        "axe": "RUN"
-      },
-      {
-        "page": "http://127.0.0.1:4173/contact/?view=still",
-        "errors": 0,
-        "warnings": 30,
-        "axe": "RUN"
-      },
-      {
-        "page": "http://127.0.0.1:4173/credits/?view=still",
-        "errors": 0,
-        "warnings": 8,
-        "axe": "RUN"
-      },
-      {
-        "page": "http://127.0.0.1:4173/privacy/?view=still",
-        "errors": 0,
-        "warnings": 44,
-        "axe": "RUN"
-      },
-      {
-        "page": "http://127.0.0.1:4173/spaces/?view=still",
-        "errors": 0,
-        "warnings": 12,
-        "axe": "RUN"
-      },
-      {
-        "page": "http://127.0.0.1:4173/spaces/gallery-lounge/?view=still",
-        "errors": 0,
-        "warnings": 34,
-        "axe": "RUN"
-      },
-      {
-        "page": "http://127.0.0.1:4173/spaces/workplace/?view=still",
-        "errors": 0,
-        "warnings": 34,
-        "axe": "RUN"
-      }
-    ]
+    "pageErrors": 0
   },
-  "review": {
-    "kind": "agent-heuristic",
-    "independent": true,
-    "average": 4.15,
-    "minimum": 3.6,
-    "hardFails": 0,
-    "images": 20,
-    "userApproval": "CHƯA DUYỆT"
+  "checks": {
+    "strictTypeScriptBuild": "PASS",
+    "eslint": "PASS",
+    "designTokensContrast": "PASS",
+    "runtimeDependencyAudit": "PASS, 0 vulnerabilities",
+    "devDependencyAudit": "14 moderate advisories, not addressed in this scope"
   },
   "lighthouse": {
-    "home": {
-      "mobile": {
-        "time": "2026-11-04T04:25:27.057Z",
-        "version": "13.6.0",
-        "scores": {
-          "performance": 93,
-          "accessibility": 100,
-          "best-practices": 100,
-          "seo": 100
-        },
-        "metrics": {
-          "largest-contentful-paint": {
-            "value": 3242.6884,
-            "display": "3.2 s"
-          },
-          "total-blocking-time": {
-            "value": 11,
-            "display": "10 ms"
-          },
-          "cumulative-layout-shift": {
-            "value": 2.784351962040732e-05,
-            "display": "0"
-          }
-        }
+    "mobile": {
+      "time": "2026-11-05T04:18:36.140Z",
+      "version": "13.6.0",
+      "environment": "Local Vite production preview, Chrome headless Windows; lab only",
+      "scores": {
+        "performance": 95,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
       },
-      "desktop": {
-        "time": "2026-11-04T04:25:34.710Z",
-        "version": "13.6.0",
-        "scores": {
-          "performance": 100,
-          "accessibility": 100,
-          "best-practices": 100,
-          "seo": 100
-        },
-        "metrics": {
-          "largest-contentful-paint": {
-            "value": 615.1983,
-            "display": "0.6 s"
-          },
-          "total-blocking-time": {
-            "value": 13,
-            "display": "10 ms"
-          },
-          "cumulative-layout-shift": {
-            "value": 0.04155826988728529,
-            "display": "0.042"
-          }
-        }
+      "metrics": {
+        "largest-contentful-paint": "2.9 s",
+        "total-blocking-time": "0 ms",
+        "cumulative-layout-shift": "0.005"
       }
     },
-    "spaces": {
-      "mobile": {
-        "time": "2026-11-04T04:25:48.345Z",
-        "version": "13.6.0",
-        "scores": {
-          "performance": 96,
-          "accessibility": 100,
-          "best-practices": 100,
-          "seo": 100
-        },
-        "metrics": {
-          "largest-contentful-paint": {
-            "value": 2757.8918,
-            "display": "2.8 s"
-          },
-          "total-blocking-time": {
-            "value": 0,
-            "display": "0 ms"
-          },
-          "cumulative-layout-shift": {
-            "value": 0.001198840901154186,
-            "display": "0.001"
-          }
-        }
+    "desktop": {
+      "time": "2026-11-05T04:18:43.763Z",
+      "version": "13.6.0",
+      "environment": "Local Vite production preview, Chrome headless Windows; lab only",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
       },
-      "desktop": {
-        "time": "2026-11-04T04:25:55.850Z",
-        "version": "13.6.0",
-        "scores": {
-          "performance": 100,
-          "accessibility": 100,
-          "best-practices": 100,
-          "seo": 100
-        },
-        "metrics": {
-          "largest-contentful-paint": {
-            "value": 553.2816,
-            "display": "0.6 s"
-          },
-          "total-blocking-time": {
-            "value": 0,
-            "display": "0 ms"
-          },
-          "cumulative-layout-shift": {
-            "value": 0.001922671964849102,
-            "display": "0.002"
-          }
-        }
+      "metrics": {
+        "largest-contentful-paint": "0.8 s",
+        "total-blocking-time": "0 ms",
+        "cumulative-layout-shift": "0.008"
       }
     }
   },
-  "dependencyAudit": {
-    "info": 0,
-    "low": 0,
-    "moderate": 0,
-    "high": 0,
-    "critical": 0,
-    "total": 0
+  "workspace": {
+    "commit": "5404c183e2e6d09261ddb97b238e09ab56bd5a8a",
+    "readOnly": true
   },
-  "ci": {
-    "implementationSource": "6973610d02e1458dcd2e5da2bb788bd98b2ec2e6",
-    "verifiedRun": "https://github.com/Ngh1aa/Lava/actions/runs/41772414789",
-    "result": "PASS at the stated source; consult PR checks for current HEAD"
-  },
-  "unknown": [
-    "Manual screen reader",
-    "Safari/Firefox",
-    "Physical mobile devices",
-    "Text-only 200% zoom",
-    "Field Core Web Vitals",
-    "Real inbox delivery",
-    "Production deployment"
-  ],
-  "legacyScope": "Existing fields describe the pre-GLB multi-page baseline. See modelUpdate for current source verification.",
-  "modelUpdate": {
-    "sourceCommit": "1324000617d70a28980b4d1503622497a301e73a",
-    "tests": {
-      "startTime": "2026-11-04T05:08:36.210Z",
-      "duration": 89038.94099999999,
-      "expected": 35,
-      "skipped": 0,
-      "unexpected": 0,
-      "flaky": 0
-    },
-    "result": "PASS",
-    "modelBytes": 1719000,
-    "modelSHA256": "3b4770f1d403b09da953a743c9fdeba00418a86b91fde96bb967de9e84c0a387",
-    "screenshots": "qa/model-update, six requested widths, still/WebGL, dusk/day, three cameras",
-    "consoleErrors": [],
-    "staticErrors": 0,
-    "tasteErrors": 0,
-    "tasteWarnings": 3,
-    "warningReview": "Credit glyph starts at x=20px; element-box edge heuristic is a false positive. Architectural text describes the selected view.",
-    "lighthouseHome": {
-      "mobile": {
-        "fetchTime": "2026-11-04T05:07:19.250Z",
-        "scores": {
-          "performance": 99,
-          "accessibility": 100,
-          "best-practices": 100,
-          "seo": 100
-        },
-        "metrics": {
-          "largest-contentful-paint": "2.1Â s",
-          "total-blocking-time": "0Â ms",
-          "cumulative-layout-shift": "0.008"
-        }
-      },
-      "desktop": {
-        "fetchTime": "2026-11-04T05:07:26.933Z",
-        "scores": {
-          "performance": 100,
-          "accessibility": 100,
-          "best-practices": 100,
-          "seo": 100
-        },
-        "metrics": {
-          "largest-contentful-paint": "0.7Â s",
-          "total-blocking-time": "0Â ms",
-          "cumulative-layout-shift": "0.041"
-        }
-      }
-    },
-    "firstDesktopPerformance": 86,
-    "optimization": "Hero uses direct light; room-environment prefiltering reserved for viewer.",
-    "independentReview": "No new independent score for GLB; earlier scores apply only to the prior image packet."
-  }
+  "limits": [
+    "No verified Harpa 3D model",
+    "No enquiry backend or business inbox",
+    "No public deployment in this delivery",
+    "Real device, screen reader and field CWV UNKNOWN",
+    "Harpa selection approved; visual design CHUA DUYET"
+  ]
 }

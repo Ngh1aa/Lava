@@ -1,182 +1,140 @@
-/** Real photographs used as architectural references, not photographs of the LAVA concept. */
+/** Photographs of Harpa, individually verified and credited. */
 const photography = {
-  workplace: {
-    image: "workplace.webp",
-    width: 1600,
-    height: 1067,
-    alt: "People working at shared desks beneath pendant lighting in an open-plan office",
-    photographer: "Israel Andrade",
-    source:
-      "https://unsplash.com/photos/people-sitting-on-chair-in-front-of-computer-YI_9SivVt_s",
+  "arrival": {
+    "image": "harpa-0.webp",
+    "width": 1600,
+    "height": 1200,
+    "alt": "Harpa Concert Hall reflected in water at dusk in Reykjavik",
+    "photographer": "Bogdan Giurca",
+    "source": "https://www.pexels.com/photo/concert-hall-in-reykjavik-21700767/",
+    "license": "https://www.pexels.com/license/"
   },
-  meeting: {
-    image: "meeting.webp",
-    width: 1600,
-    height: 1068,
-    alt: "Sunlit conference room with a wooden table, pink upholstered chairs and floor-to-ceiling glazing",
-    photographer: "Nastuh Abootalebi",
-    source:
-      "https://unsplash.com/photos/pink-dining-table-with-four-chairs-inside-room-J1rNS2qv8BQ",
+  "lounge": {
+    "image": "harpa-1.webp",
+    "width": 1600,
+    "height": 1067,
+    "alt": "Sunlight through the geometric glass facade into Harpa foyer",
+    "photographer": "Bernd Dittrich",
+    "source": "https://unsplash.com/photos/the-sun-shines-through-the-windows-of-a-modern-building-8d_mSO1rN1s",
+    "license": "https://unsplash.com/license"
   },
-  arrival: {
-    image: "arrival.webp",
-    width: 1600,
-    height: 757,
-    alt: "Copenhagen Opera House illuminated with warm interior light at night",
-    photographer: "Rasmus Lauridsen",
-    source:
-      "https://unsplash.com/photos/modern-building-illuminated-at-night-with-warm-interior-lighting-bsTw-CKKhx4",
+  "terrace": {
+    "image": "harpa-2.webp",
+    "width": 1600,
+    "height": 1280,
+    "alt": "Harpa Concert Hall exterior under an overcast Reykjavik sky",
+    "photographer": "Phil Evenden",
+    "source": "https://www.pexels.com/photo/harpa-concert-hall-in-reykjavik-iceland-architecture-34340714/",
+    "license": "https://www.pexels.com/license/"
   },
-  lounge: {
-    image: "lounge.webp",
-    width: 1280,
-    height: 1280,
-    alt: "Concrete interior and leather bench beside a large window at Lugdunum Museum in Lyon",
-    photographer: "Sébastien Lavalaye",
-    source:
-      "https://unsplash.com/photos/a-modern-bench-sits-beside-a-large-window-kXKQEhfd06o",
+  "facade": {
+    "image": "harpa-3.webp",
+    "width": 1600,
+    "height": 1067,
+    "alt": "Geometric glass facade of Harpa Concert Hall",
+    "photographer": "Peter Holmboe",
+    "source": "https://www.pexels.com/photo/detail-of-the-harpa-facade-in-reykjavik-iceland-18121504/",
+    "license": "https://www.pexels.com/license/"
   },
-  terrace: {
-    image: "terrace.webp",
-    width: 898,
-    height: 2000,
-    alt: "Steel roof, glass facade and open terrace at Neue Nationalgalerie in Berlin",
-    photographer: "Caio Arbulu",
-    source:
-      "https://unsplash.com/photos/modern-building-with-a-large-terrace-under-a-blue-sky-bvx2_DCO9GA",
+  "workplace": {
+    "image": "harpa-4.webp",
+    "width": 1600,
+    "height": 2133,
+    "alt": "Geometric ceiling inside Harpa Concert Hall",
+    "photographer": "Matheus Bertelli",
+    "source": "https://www.pexels.com/photo/contemporary-metal-ceiling-of-building-hall-4558566/",
+    "license": "https://www.pexels.com/license/"
   },
-  facade: {
-    image: "facade.webp",
-    width: 1600,
-    height: 1067,
-    alt: "Black and white photograph of an illuminated geometric facade in Hamburg",
-    photographer: "Maik Winnecke",
-    source:
-      "https://unsplash.com/photos/modern-building-facade-illuminated-at-night-U2YVQBUMq40",
-  },
+  "meeting": {
+    "image": "harpa-5.webp",
+    "width": 1600,
+    "height": 1908,
+    "alt": "Detailed glass facade of Harpa Concert Hall",
+    "photographer": "Bernd Dittrich",
+    "source": "https://unsplash.com/photos/a-building-that-has-many-windows-in-it-IioKNx7RyTg",
+    "license": "https://unsplash.com/license"
+  }
 } as const;
 
 /** All LAVA project claims remain conceptual; reference photography is credited separately. */
 export const content = {
   brand: "LAVA",
   tagline: "Architecture in a different light",
-  heroNote: ["An architectural concept.", "A new kind of place."],
-  hero: ["A different", "perspective."],
-  vision: ["Extraordinary spaces.", "Everyday possibilities."],
+  heroNote: ["Harpa Concert Hall.", "Reykjavík, Iceland."],
+  hero: ["A symphony", "of light."],
+  vision: ["Shaped by Iceland.", "Made for everyone."],
   statement:
-    "An exploration of balance. Between the monumental and the human. The energy of a shared space and the quiet of a moment to yourself.",
+    "Harpa brings music, gathering and a crystalline facade to Reykjavík’s harbour. This independent LAVA study explores one building through its form, light and public spaces.",
   overview: {
-    heading: "A place to see things differently.",
-    body: "A composition of open terraces, generous interiors and shifting perspectives. LAVA brings work, culture and connection into one architectural idea.",
+    heading: "One building. Many ways to see.",
+    body: "Harpa Concert Hall and Conference Centre, Reykjavík. Designed by Henning Larsen and Batteríið Architects, with the facade developed with Olafur Eliasson.",
     facts: [
       {
-        value: "06",
-        label: "Proposed concept levels",
-        detail: "Independent spatial programme",
+        value: "2011",
+        label: "Opened in Reykjavík",
+        detail: "A cultural landmark on the harbour",
       },
       {
-        value: "03",
-        label: "Architectural perspectives",
-        detail: "One connected whole",
+        value: "2013",
+        label: "Mies van der Rohe Award",
+        detail: "Architecture recognised across Europe",
       },
       {
         value: "01",
         label: "Continuous experience",
-        detail: "From arrival to rooftop",
+        detail: "Music, light and public life",
       },
     ],
   },
-  views: [
-    {
-      id: "arrival",
-      still: "exterior",
-      label: "The arrival",
-      title: "An open invitation.",
-      description:
-        "Slender columns lift the glazed corner above the entrance. An angular white frame gives the arrival its distinctive silhouette.",
-      position: [16, 9, 19],
-      target: [0, 2.2, 0],
-    },
-    {
-      id: "facade",
-      still: "facade-view",
-      label: "The facade",
-      title: "A frame for the light.",
-      description:
-        "Dark cladding and long bands of glazing wrap the building. Move around the corner to explore the contrast between solid surfaces and reflected light.",
-      position: [-15, 8, 16],
-      target: [0, 2.3, 0],
-    },
-    {
-      id: "structure",
-      still: "structure",
-      label: "The structure",
-      title: "Clarity in every line.",
-      description:
-        "A continuous white frame cuts across the facade. Slender mullions give the corner glazing its rhythm, above the columns that support the projecting volume.",
-      position: [13, 5.5, 14],
-      target: [0, 2.8, 0],
-    },
-  ],
   experiences: [
     {
       title: "Light as a material",
-      body: "Deep reveals and slender fins shape the daylight. As evening arrives, warm interiors bring another layer of the architecture into view.",
+      body: "The faceted glass envelope changes with daylight, weather and the harbour around it.",
     },
     {
-      title: "A dialogue with nature",
-      body: "Planted terraces, reflective water and open sky form a softer edge to the building. Nature becomes part of the route through it.",
+      title: "An Icelandic geometry",
+      body: "The facade draws on the interlocking basalt formations of the Icelandic coast.",
     },
     {
-      title: "A more human scale",
-      body: "The broad silhouette gives way to intimate places to sit, meet and pause. A monumental idea, experienced one moment at a time.",
+      title: "A shared cultural home",
+      body: "The foyer brings everyday public life into the building alongside concerts and conferences.",
     },
   ],
   gallery: [
     {
       ...photography.arrival,
-      title: "The blue hour",
-      category: "Exterior reference",
+      title: "Harbour at dusk",
+      category: "Exterior photograph",
     },
     {
       ...photography.lounge,
-      title: "A warm welcome",
-      category: "Interior reference",
+      title: "Light in the foyer",
+      category: "Interior photograph",
     },
     {
       ...photography.terrace,
-      title: "Between earth and sky",
-      category: "Open-air reference",
+      title: "The crystalline silhouette",
+      category: "Exterior photograph",
     },
     {
       ...photography.facade,
-      title: "A study of form",
-      category: "Facade reference",
+      title: "Geometry of glass",
+      category: "Facade photograph",
     },
     {
       ...photography.workplace,
-      title: "Room for focus",
-      category: "Interior reference",
+      title: "Above the foyer",
+      category: "Interior photograph",
     },
     {
       ...photography.meeting,
-      title: "Ideas around a table",
-      category: "Interior reference",
+      title: "The reflective envelope",
+      category: "Facade photograph",
     },
   ],
 };
-
-export type ViewId = (typeof content.views)[number]["id"];
 
 /** No invented contact destination. Supply a verified inbox at build time. */
 export const contactEmail = import.meta.env?.VITE_CONTACT_EMAIL?.trim() ?? "";
 export const asset = (file: string) =>
   `${document.documentElement.dataset.root ?? import.meta.env.BASE_URL ?? "/"}images/${file}`;
-
-/** Licensed external reference, not an original LAVA building or verified property. */
-export const architectureModel = {
-  title: "Modern Office Building",
-  author: "CN Entertainment",
-  source: "https://sketchfab.com/3d-models/modern-office-building-3f54b8d7a7064b0da523c49187efcf60",
-  license: "https://creativecommons.org/licenses/by/4.0/",
-} as const;

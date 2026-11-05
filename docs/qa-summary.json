@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 3,
+  "date": "2026-11-05",
+  "scope": "Harpa extended editorial homepage and shared page polish",
+  "source": "Working tree after 7cc8769138637b5bf7968e27cc1f6c7e6d13373f",
+  "tests": {
+    "result": "PASS",
+    "playwright": 15,
+    "routes": 17,
+    "widths": [
+      320,
+      375,
+      390,
+      768,
+      1280,
+      1440,
+      1920
+    ],
+    "axePageFamilies": 11,
+    "axeMode": "reduced motion to audit settled content; separate motion/reduced-motion behavior test",
+    "durationSeconds": 60
+  },
+  "captures": {
+    "directory": "qa/harpa-polish/final-shots",
+    "pageFamilies": 11,
+    "widths": [
+      390,
+      1440
+    ],
+    "additionalStates": "Enquiry invalid/review/ready at 390",
+    "homeResponsiveDirectory": "qa/harpa-polish/responsive",
+    "homeWidths": [
+      375,
+      390,
+      768,
+      1280,
+      1440,
+      1920
+    ]
+  },
+  "checks": {
+    "strictTypeScriptBuild": "PASS",
+    "eslint": "PASS",
+    "designTokensContrast": "PASS",
+    "runtimeDependencyAudit": "PASS, 0 vulnerabilities",
+    "devDependencyAudit": "14 moderate advisories, not addressed in this scope"
+  },
+  "lighthouse": {
+    "mobile": {
+      "time": "2026-11-05T04:56:30.266Z",
+      "version": "13.6.0",
+      "environment": "Local Vite production preview Chrome headless Windows; sequential lab only",
+      "scores": {
+        "performance": 94,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "largest-contentful-paint": "3.1 s",
+        "total-blocking-time": "70 ms",
+        "cumulative-layout-shift": "0.005"
+      }
+    },
+    "desktop": {
+      "time": "2026-11-05T04:56:40.086Z",
+      "version": "13.6.0",
+      "environment": "Local Vite production preview Chrome headless Windows; sequential lab only",
+      "scores": {
+        "performance": 99,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "largest-contentful-paint": "1.0 s",
+        "total-blocking-time": "0 ms",
+        "cumulative-layout-shift": "0.008"
+      }
+    }
+  },
+  "workspace": {
+    "commit": "5404c183e2e6d09261ddb97b238e09ab56bd5a8a",
+    "readOnly": true,
+    "overlay": "0 errors, 0 warnings against 7cc8769",
+    "taste": "Home four widths strict dark, 0 errors; warnings individually reviewed in DESIGN.md"
+  },
+  "limits": [
+    "No verified Harpa 3D model",
+    "No enquiry backend or business inbox",
+    "No public deployment in this delivery",
+    "Real device, screen reader and field CWV UNKNOWN",
+    "Harpa selection approved; visual design CHUA DUYET"
+  ],
+  "performanceMeasuredSource": "Final runtime source, reports qa/harpa-polish/lighthouse-final-*",
+  "sourceFingerprint": "fb909759a0bf4b78acc523cbac5e0a38be10e899b2a119598faf895debb16b09",
+  "visualReview": {
+    "kind": "agent-heuristic",
+    "initialAverage": 3.85,
+    "followUpAverageBeforeHeroContrastFix": 4.0,
+    "remainingFollowUpFindings": "Hero metadata contrast on bright sky at 390 and 1440",
+    "fixVerification": "Pixel samples after correction: minimum 8.20:1 across both labels and widths",
+    "humanApproval": "CHUA DUYET"
+  }
+}

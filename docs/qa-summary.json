@@ -2,7 +2,7 @@
   "schemaVersion": 3,
   "date": "2026-11-05",
   "scope": "Harpa photographic architectural study; supersedes historical model/leasing QA",
-  "source": "Harpa working tree after e91308b; implementation and QA committed together",
+  "source": "1225a967af21368f4fb963dc985cdacd4817caaa; later Spaces-only image height correction",
   "tests": {
     "result": "PASS",
     "playwright": 12,
@@ -87,5 +87,6 @@
     "No public deployment in this delivery",
     "Real device, screen reader and field CWV UNKNOWN",
     "Harpa selection approved; visual design CHUA DUYET"
-  ]
+  ],
+  "performanceMeasuredSource": "1225a967af21368f4fb963dc985cdacd4817caaa"
 }

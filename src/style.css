@@ -1439,6 +1439,7 @@ main[data-page^="/enquiry/"] .page-heading h1 {
 }
 .catalogue-card > a > img {
   width: 100%;
+  height: auto;
   aspect-ratio: 4 / 5;
   object-fit: cover;
 }

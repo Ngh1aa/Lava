@@ -4,7 +4,7 @@ Website biên tập về **một công trình cụ thể: Harpa Concert Hall, Re
 
 ## Trải nghiệm hiện hành
 
-Trang chủ bốn section: hero ảnh thật, giới thiệu ngắn, hai lối khám phá Architecture/Spaces, Gallery. Navigation chính: The building, Architecture, Spaces, Gallery, Contact. Sáu ảnh của cùng công trình, tự host với bản 640/960/1600 và credit theo ảnh.
+Trang chủ bảy section: hero ảnh thật, giới thiệu công trình, hồ sơ dự án, hai chương Architecture/Spaces, nghiên cứu mặt đứng, đời sống công cộng và Gallery. Navigation chính: The building, Architecture, Spaces, Gallery, Contact. Sáu ảnh của cùng công trình, tự host với bản 640/960/1600 và credit theo ảnh.
 
 Trang Architecture đọc hình khối/mặt đứng/ánh sáng bằng ảnh thật. Spaces là bốn góc đọc kiến trúc, không phải inventory cho thuê. Không có zoning hoặc số tầng tưởng tượng. Viewer văn phòng cũ đã bỏ: **chưa có mô hình Harpa 3D có quyền sử dụng được xác minh**.
 
@@ -31,6 +31,6 @@ npm test
 
 Vite / TypeScript strict, CSS tokens, native dialog và browser storage. Không có dependency 3D chưa sử dụng. Source: src/page.ts (routes), src/content.ts (ảnh/nguồn/nội dung), src/spaces.ts (các góc đọc không gian), src/main.ts (menu/gallery), src/journey.ts (luồng legacy), src/style.css và brand.css.
 
-Các test viewer GLB, bộ lọc leasing và zoning cũ không còn áp dụng; được thay bằng regression Harpa (17 routes, 7 widths, đúng ảnh/credit, menu/focus, gallery, enquiry và axe). Không dùng kết quả Lighthouse/independent review của concept cũ để chấm bản Harpa. Đo và giới hạn hiện hành: docs/QA.md.
+Các test viewer GLB, bộ lọc leasing và zoning cũ không còn áp dụng; được thay bằng regression Harpa (17 routes, 7 widths, đúng ảnh/credit, menu/focus, gallery, enquiry, project facts không chồng chữ, CTA SVG và axe). Không dùng kết quả Lighthouse/independent review của concept cũ để chấm bản Harpa. Đo và giới hạn hiện hành: docs/QA.md.
 
 Nguồn và giấy phép: [ASSETS](docs/ASSETS.md), [notices](THIRD_PARTY_NOTICES.md). UIUX Workspace dùng chỉ đọc; hướng dẫn craft đã áp dụng trong vòng chuyển công trình này. Branch feat/lava-architectural-experience, [PR #1](https://github.com/Ngh1aa/Lava/pull/1); không tự merge main.

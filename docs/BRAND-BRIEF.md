@@ -57,3 +57,8 @@ Bản gốc tải để xem và chuẩn bị tại qa/axel/ (không phát hành 
 ## Quyết định hiện hành — Harpa, 05/11/2026
 
 Chủ dự án đã thay lựa chọn Axel Springer bằng Harpa Concert Hall, Reykjavík. Phần chốt Axel bên trên là lịch sử quyết định, đã được thay thế. LAVA giữ navy / Syncopate / Manrope, chuyển trang chủ thành bốn section. Tòa nhà, Architecture, Spaces và Gallery tập trung một công trình. Dùng sáu ảnh đúng Harpa có giấy phép Pexels/Unsplash. Không gán model văn phòng hoặc zoning sáu tầng cho Harpa. Chưa có model 3D phù hợp được cấp phép nên không đưa viewer giả vào trải nghiệm hiện hành. Brand LAVA là independent architectural study, không giả website chính thức của Harpa.
+
+
+## Mở rộng biên tập — yêu cầu mới nhất 05/11/2026
+
+Trang chủ dài hơn với bảy section có nội dung hữu ích; thay thế giới hạn bốn section bên trên. Giữ công trình Harpa và nhận diện. Chỉnh chu các trang còn lại bằng cấu trúc editorial, chữ và ảnh cân đối, đường khám phá liên quan, CTA SVG và thông tin thật. Thiết kế mở rộng CHƯA DUYỆT.

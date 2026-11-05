@@ -1,3 +1,17 @@
+# QA hiện hành — mở rộng Harpa, 05/11/2026
+
+- PASS: strict TypeScript/build, ESLint, 54 tokens / 20 contrast pairs.
+- PASS: 15 Playwright tests, 17 routes × 7 widths; includes project facts non-overlap, SVG CTA, related-space destinations, official visit link, gallery/menu/focus, enquiry download and actual/reduced reveal behavior.
+- PASS: automated axe WCAG 2.1 A/AA on 11 page families with reduced motion (settled content). Earlier audit sampled a fade-in transition and reported transient low contrast; audited settled content and tested animation independently. Intermediate builds during an earlier test caused an HTTP failure; final suite ran against a stable build.
+- PASS: Workspace overlay checker 0 errors / 0 warnings. Taste home four widths strict dark: zero errors, editorial warning rationale in DESIGN.md.
+- Real renders: 11 page families at mobile/desktop, plus enquiry invalid/review/ready mobile. Homepage captures at six required widths. The initial fullpage capture omitted the first gallery image; final capture forces image painting and actual image screenshot confirms the photograph. Mobile Project number overlap and credit link spacing corrected at their source.
+- Lighthouse current production local: Performance 94 mobile / 99 desktop; Accessibility, Best Practices and SEO 100 both. Mobile LCP 3.1s / TBT 70ms / CLS .005; desktop LCP 1.0s / TBT 0ms / CLS .008. Mobile LCP remains above 2.5s target in this simulated lab. This is not field CWV.
+- UNKNOWN: real-device / screen-reader validation, field CWV, public deployment. No Harpa model or enquiry backend is claimed. User visual approval CHƯA DUYỆT.
+
+Independent image review confirmed the Project overlap, Gallery image and Credits spacing fixes. It found hero metadata contrast at about 4.3:1 on the earlier render. Increased the existing photographic scrim at the top. Pixel samples across both labels and 390/1440px gave a minimum 8.20:1 on the final render. Final hero screenshots are in qa/harpa-polish/hero-*.png. Desktop validation screenshot was not verified in the review packet. Automated form behavior passed.
+
+## Previous Harpa baseline — historical
+
 # QA hiện hành — Harpa, 05/11/2026
 
 Phạm vi hiện hành thay thế mọi kết quả baseline bên dưới: website ảnh thật tập trung Harpa, trang chủ bốn section, không còn WebGL/model văn phòng hoặc sơ đồ thuê văn phòng. Các bài test gắn riêng với sản phẩm cũ đã được thay bằng suite Harpa.

@@ -80,9 +80,9 @@ export const content = {
         detail: "Architecture recognised across Europe",
       },
       {
-        value: "01",
-        label: "Continuous experience",
-        detail: "Music, light and public life",
+        value: "04",
+        label: "Auditoriums",
+        detail: "Music and conference spaces",
       },
     ],
   },

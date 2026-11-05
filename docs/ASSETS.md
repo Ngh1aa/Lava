@@ -18,3 +18,5 @@ Nguồn tải ảnh Unsplash: photo-1704574999803-e00c1ec3ec4e và photo-1704575
 Syncopate Bold: Brian J. Bonislawsky / Astigmatic, Apache 2.0; public/fonts/syncopate-bold.woff2 và public/licenses/Syncopate-Apache-2.0.txt. Manrope: SIL OFL, Fontsource. favicon.svg: wordmark LAVA nguyên bản.
 
 Mô hình Modern Office Building, ảnh concept cũ và các nguồn không phải Harpa đã rời bản phát hành hiện hành. Lịch sử nguồn vẫn có trong Git. Chưa xác minh được model 3D đúng Harpa có quyền phù hợp; không dùng công trình khác để thay thế.
+
+Ảnh hero mobile `harpa-0-mobile.webp`: crop chân dung từ chính ảnh Bogdan Giurca (640×1280), cùng nguồn và Pexels License. Không tạo chi tiết mới. Crop riêng giúp mặt đứng rõ hơn ở màn hình hẹp mà không tải ảnh desktop đầy đủ.

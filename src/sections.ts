@@ -2,7 +2,7 @@ import { content as c } from "./content.ts";
 
 export const overviewSection = () => `
     <section class="overview section" id="overview" aria-labelledby="overview-title" data-screen="Overview">
-      <div class="overview-intro" data-reveal><h2 id="overview-title">${c.overview.heading}</h2><p>${c.overview.body}</p></div>
+      <div class="overview-intro" data-reveal><h2 id="overview-title">${c.overview.heading}</h2></div>
       <dl class="facts" data-reveal>${c.overview.facts.map((f) => `<div><dd>${f.value}</dd><dt>${f.label}</dt><dd class="fact-detail">${f.detail}</dd></div>`).join("")}</dl>
     </section>
 `;

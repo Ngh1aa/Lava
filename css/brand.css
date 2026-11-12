@@ -64,8 +64,9 @@
   --ds-elevation-raised: none;
   --ds-size-control-sm: 44px;
 
-  /* Một họ chữ cho cả trang (TASTE.md): Source Serif 4, ba độ đậm 300/400/600 */
-  --ds-font-family-sans: "Source Serif 4", Georgia, "Times New Roman", serif;
+  /* Một họ chữ cho cả trang (TASTE.md): Archivo. Tiêu đề giãn rộng 112–125%, đậm 700–800;
+     thân chữ độ rộng thường, 400. Cứng, vuông vức như chữ trên bản vẽ kết cấu. */
+  --ds-font-family-sans: "Archivo", "Helvetica Neue", Helvetica, sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {

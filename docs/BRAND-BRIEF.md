@@ -33,6 +33,9 @@ nằm trong danh sách cấm của `CRAFT.md` ("nền kem với điểm nhấn �
 
 ## 5. Chữ
 
+> Cập nhật 12/11/2026: nội dung chuyển sang tiếng Anh; font đổi sang **Archivo** (OFL) theo yêu cầu
+> "cứng rắn, mạnh mẽ, hợp kiến trúc". Tiêu đề 700–800 giãn 112–125%, thân 400. Phần dưới là bản đầu.
+
 - Font: **Source Serif 4** (OFL), một họ cho cả trang theo `TASTE.md`; độ đậm 300 (tiêu đề), 400 (thân), 600 (nhãn, nút).
 - Có tiếng Việt và ký tự ₫ (đã kiểm trong `design-system/fonts/manifest.json` của workspace).
 - Trang tham khảo dùng Cormorant Garamond với dòng thứ hai in nghiêng, kèm DM Sans. Không dùng vì `TASTE.md`

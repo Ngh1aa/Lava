@@ -1,5 +1,28 @@
 # Ghi chú thiết kế và bàn giao
 
+## Cập nhật 12/11/2026: tiếng Anh, font Archivo, chuyển động
+
+Theo yêu cầu chủ repo:
+
+- **Ngôn ngữ:** toàn bộ nội dung, nhãn, thông báo lỗi, `alt`, `aria-label` và trang pháp lý chuyển sang
+  tiếng Anh (`lang="en"`). `chinh-sach.html` đổi tên thành `legal.html`.
+- **Font:** thay Source Serif 4 bằng **Archivo** (variable, trục `wdth` 62–125 và `wght` 100–900, OFL).
+  Vẫn một họ chữ theo TASTE: tiêu đề 700–800, giãn 112–125%, hero viết hoa; thân chữ 400, độ rộng thường.
+  Cảm giác cứng, vuông vức như chữ trên bản vẽ kết cấu và biển hiệu công trình.
+- **Chuyển động** (tắt hết khi bật giảm chuyển động; JS lỗi thì sau 3 giây nội dung tự hiện):
+  hero trồi từng dòng sau mặt cắt; ảnh tràn màn trôi chậm (parallax); vạch kẻ trên số chương tự kẻ ra như
+  nét vẽ kỹ thuật; tiêu đề lộ qua mặt nạ cắt; ảnh mở từ dưới lên và thu từ phóng to về; số liệu đếm lên;
+  thanh thời gian di chuyển dài dần; mặt bằng tự vẽ đường đồng mức, khối nhà hiện, chấm bật lên lần lượt,
+  chấm đang chọn có vòng xung nhịp; ảnh loại căn mờ chéo khi đổi tab; header ẩn khi cuộn xuống, hiện khi
+  cuộn lên; gạch chân nav kéo dài khi rê chuột.
+- Lỗi tìm thấy khi làm và đã sửa: IntersectionObserver của Chromium coi phần tử bị `clip-path` cắt kín là
+  diện tích 0 nên tiêu đề và ảnh không bao giờ hiện; nay quan sát phần tử cha. Tiêu đề hero vỡ 4 dòng ở
+  1440 px; số "86–240 m²" tràn sang cột bên.
+- Soát lại: `taste-check` 390/768/1280/1440 px, sáng và tối, reflow 320 px, axe-core: 0 lỗi.
+  `static-check` 0 lỗi, `check-brand` 0 lỗi, `tests/flow.test.cjs` 27/27 PASS.
+- Mục bên dưới là bản ghi của lượt đầu (tiếng Việt, Source Serif 4); phần quyết định màu, bố cục, luồng,
+  dữ liệu mẫu và nguồn ảnh vẫn đúng.
+
 Cỡ việc: **M** (landing page, web marketing), quy trình theo `START-HERE.md` và `WORKFLOWS.md` của
 [uiux-ai-workspace](https://github.com/Ngh1aa/uiux-ai-workspace). Hướng thị giác: **CHƯA DUYỆT**.
 
@@ -95,7 +118,7 @@ màn 1440 px; bản thật nên thay bằng phối cảnh của chủ đầu tư
 | vi-tri-bien.jpg | Bãi biển hoàng hôn | rawpixel, "Tropical beach sunset landscape" |
 | mo-ban.jpg | Nhà gạch xám trắng | rawpixel, "Modern house, real estate" |
 
-Font Source Serif 4: SIL OFL 1.1 (`fonts/source-serif-4/OFL.txt`). Token, component và icon chép từ
+Font Archivo: SIL OFL 1.1 (`fonts/archivo/OFL.txt`), lấy từ github.com/google/fonts. Token, component và icon chép từ
 `design-system/` của uiux-ai-workspace.
 
 ## Việc còn lại để phát hành

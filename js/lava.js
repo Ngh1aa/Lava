@@ -1,13 +1,86 @@
-/* Lava: hành vi trang. Không thư viện ngoài.
- * Gửi form là MÔ PHỎNG (chưa có backend): chờ 900 ms rồi báo thành công; mất mạng thì báo lỗi
- * và giữ nguyên dữ liệu. Xem docs/DESIGN-NOTES.md mục "Phần mô phỏng". */
+/* Lava: page behaviour and motion. No external libraries.
+ * Form submission is SIMULATED (no backend yet): waits 900 ms then succeeds; offline fails and
+ * keeps the data. See docs/DESIGN-NOTES.md, "Simulated parts". */
 (() => {
   'use strict';
+  window.__lava = true; // tells the <head> failsafe that JS is running
   const $ = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* Nav đang ở chương nào */
+  /* ---------- Motion: reveal on scroll ---------- */
+  const COUNT_MS = 1400;
+  const ease = (t) => 1 - Math.pow(1 - t, 4);
+  const countUp = (el) => {
+    const target = el.dataset.count;
+    const parts = target.split('–').map(Number);
+    if (parts.some(Number.isNaN)) return;
+    const start = performance.now();
+    const tick = (now) => {
+      const k = ease(Math.min(1, (now - start) / COUNT_MS));
+      el.textContent = parts.map((n) => Math.round(n * k)).join('–');
+      if (k < 1) requestAnimationFrame(tick); else el.textContent = target;
+    };
+    requestAnimationFrame(tick);
+  };
+  const reveal = (el) => {
+    el.classList.add('is-in');
+    if (!reduceMotion) $$('[data-count]', el).concat(el.matches('[data-count]') ? [el] : []).forEach(countUp);
+  };
+  const revealEls = $$('[data-reveal]');
+  if (reduceMotion || !('IntersectionObserver' in window)) {
+    revealEls.forEach((el) => el.classList.add('is-in'));
+  } else {
+    // Clip-path reveals (mask, img) start fully clipped, and Chromium's IntersectionObserver
+    // treats a clipped box as zero area, so those watch their parent instead.
+    const byTrigger = new Map();
+    revealEls.forEach((el) => {
+      const trigger = el.matches('[data-reveal="mask"], [data-reveal="img"]') ? el.parentElement : el;
+      if (!byTrigger.has(trigger)) byTrigger.set(trigger, []);
+      byTrigger.get(trigger).push(el);
+    });
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        byTrigger.get(e.target).forEach(reveal);
+        io.unobserve(e.target);
+      });
+    }, { rootMargin: '0px 0px -10% 0px', threshold: 0 });
+    byTrigger.forEach((_, trigger) => io.observe(trigger));
+  }
+
+  /* ---------- Motion: parallax on full-bleed photos ---------- */
+  const parallax = $$('.hero__img, [data-parallax]');
+  if (!reduceMotion && parallax.length) {
+    let ticking = false;
+    const update = () => {
+      const vh = window.innerHeight;
+      parallax.forEach((img) => {
+        const box = img.parentElement.getBoundingClientRect();
+        if (box.bottom < 0 || box.top > vh) return;
+        const progress = (box.top + box.height / 2 - vh / 2) / vh; // -1..1 around the viewport centre
+        img.style.translate = `0 ${(progress * -8).toFixed(2)}%`;
+      });
+      ticking = false;
+    };
+    window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+    update();
+  }
+
+  /* ---------- Header: hides when scrolling down, returns when scrolling up ---------- */
+  const hdr = $('#hdr');
+  if (hdr) {
+    let lastY = window.scrollY;
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      const down = y > lastY && y > 320;
+      if (!hdr.contains(document.activeElement)) hdr.classList.toggle('is-hidden', down);
+      lastY = y;
+    }, { passive: true });
+    hdr.addEventListener('focusin', () => hdr.classList.remove('is-hidden'));
+  }
+
+  /* Current chapter in the nav */
   const navLinks = $$('.nav a');
   if (navLinks.length && 'IntersectionObserver' in window) {
     const byId = new Map(navLinks.map((a) => [a.getAttribute('href').slice(1), a]));
@@ -23,7 +96,7 @@
     byId.forEach((_, id) => { const s = document.getElementById(id); if (s) spy.observe(s); });
   }
 
-  /* ---------- Menu điện thoại ---------- */
+  /* ---------- Mobile menu ---------- */
   const menu = $('#mmenu');
   const menuBtn = $('.menu-btn');
   const openMenu = () => {
@@ -53,9 +126,20 @@
     });
   }
 
-  /* ---------- 02 Căn hộ: tab theo mẫu ARIA, mũi tên chuyển tab ---------- */
+  /* ---------- 02 Residences: ARIA tabs, arrow keys switch, image cross-fades ---------- */
   const tabs = $$('.unit-tab');
   const unitImg = $('#unit-img');
+  const swapImage = (src, alt) => {
+    if (!unitImg || unitImg.getAttribute('src') === src) return;
+    if (reduceMotion) { unitImg.src = src; unitImg.alt = alt; return; }
+    unitImg.classList.add('is-swapping');
+    setTimeout(() => {
+      unitImg.src = src;
+      unitImg.alt = alt;
+      const show = () => unitImg.classList.remove('is-swapping');
+      if (unitImg.complete) show(); else unitImg.addEventListener('load', show, { once: true });
+    }, 280);
+  };
   const selectTab = (tab, focus) => {
     tabs.forEach((t) => {
       const on = t === tab;
@@ -63,7 +147,7 @@
       t.tabIndex = on ? 0 : -1;
       document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
     });
-    if (unitImg && tab.dataset.img) { unitImg.src = tab.dataset.img; unitImg.alt = tab.dataset.alt || ''; }
+    if (tab.dataset.img) swapImage(tab.dataset.img, tab.dataset.alt || '');
     if (focus) tab.focus();
   };
   tabs.forEach((t, i) => {
@@ -76,14 +160,14 @@
     });
   });
 
-  /* ---------- 05 Tiện ích: chấm trên mặt bằng và danh sách cùng chọn một mục ---------- */
+  /* ---------- 05 Amenities: plan dots and list select the same item ---------- */
   const AMEN = [
-    ['Hồ bơi 25 m', 'Hồ nước mặn có làn bơi và bể trẻ em, nhìn thẳng ra vườn.', ['6:00–21:00 mỗi ngày', 'Cạnh khối C']],
-    ['Vườn trung tâm', 'Hơn 1.800 m² cỏ và cây bóng mát, bàn ăn ngoài trời cho cả bốn khối.', ['Mở cả ngày', 'Mọi khối nhìn ra vườn']],
-    ['Phòng gym', 'Khu cardio, khu tạ và một phòng tập yoga riêng có cửa kính ra vườn.', ['5:30–22:00 mỗi ngày', 'Dùng thẻ cư dân']],
-    ['Sảnh cộng đồng', 'Bếp chung và bàn dài 16 chỗ cho tiệc gia đình, đặt trước qua ban quản lý.', ['8:00–22:00 mỗi ngày', 'Đặt trước 24 giờ']],
-    ['Đường dạo bộ', 'Vòng đi bộ quanh vườn, nối ra lối đi ven biển.', ['600 m mỗi vòng', 'Có đèn ban đêm']],
-    ['Hầm xe và kho', 'Hai chỗ đỗ mỗi căn, kho riêng có khoá và trụ sạc xe điện.', ['Mở 24 giờ', 'Thẻ từ cư dân']],
+    ['25 m pool', 'A saltwater pool with lap lanes and a children’s pool, looking straight onto the garden.', ['6am–9pm daily', 'Beside Block C']],
+    ['Central garden', 'Over 1,800 m² of lawn and shade trees, with outdoor dining tables shared by all four blocks.', ['Open all day', 'Every block faces it']],
+    ['Gym', 'Cardio and weights floors plus a private yoga studio with glass doors to the garden.', ['5:30am–10pm daily', 'Resident key card']],
+    ['Residents’ lounge', 'A shared kitchen and a 16-seat table for family dinners, booked through building management.', ['8am–10pm daily', 'Book 24 hours ahead']],
+    ['Garden loop', 'A walking loop around the garden that joins the coastal path.', ['600 m per lap', 'Lit at night']],
+    ['Parking and storage', 'Two spaces per residence, a lockable storage room and EV chargers.', ['Open 24 hours', 'Resident key card']],
   ];
   const amenCtrls = $$('[data-amen]');
   const pickAmen = (i) => {
@@ -92,10 +176,12 @@
     $('#amen-name').textContent = name;
     $('#amen-desc').textContent = desc;
     $('#amen-meta').replaceChildren(...meta.map((m) => Object.assign(document.createElement('span'), { textContent: m })));
+    const detail = $('.amen__detail');
+    if (detail && !reduceMotion) detail.animate([{ opacity: 0, transform: 'translateY(8px)' }, { opacity: 1, transform: 'none' }], { duration: 380, easing: 'cubic-bezier(.16,1,.3,1)' });
   };
   amenCtrls.forEach((c) => c.addEventListener('click', () => pickAmen(Number(c.dataset.amen))));
 
-  /* ---------- Kiểm dữ liệu dùng chung ---------- */
+  /* ---------- Shared validation ---------- */
   const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
   const PHONE = /^0\d{9}$/;
   const digits = (v) => v.replace(/[\s.-]/g, '');
@@ -113,7 +199,7 @@
     if (kind === 'phone') return setError(input, !PHONE.test(digits(v)));
     return setError(input, false);
   };
-  // Sửa lỗi ngay khi người dùng gõ lại đúng
+  // Clear an error as soon as the value becomes valid
   $$('.ds-field__control[aria-describedby]').forEach((input) => {
     input.addEventListener('input', () => {
       if (input.getAttribute('aria-invalid') !== 'true') return;
@@ -122,7 +208,7 @@
     });
   });
 
-  /* Gửi mô phỏng: mất mạng thì thất bại */
+  /* Simulated send: fails when offline */
   const fakeSend = () => new Promise((resolve, reject) => {
     setTimeout(() => (navigator.onLine ? resolve() : reject(new Error('offline'))), 900);
   });
@@ -132,7 +218,11 @@
     btn.disabled = on;
     btn.setAttribute('aria-busy', String(on));
   };
-  /* ---------- Form brochure ---------- */
+  const enter = (el) => {
+    if (!reduceMotion) el.animate([{ opacity: 0, transform: 'translateY(12px)' }, { opacity: 1, transform: 'none' }], { duration: 500, easing: 'cubic-bezier(.16,1,.3,1)' });
+  };
+
+  /* ---------- Brochure form ---------- */
   const bForm = $('#brochure-form');
   const bDone = $('#brochure-done');
   if (bForm) {
@@ -145,12 +235,13 @@
       const firstBad = [name, email, phone][ok.indexOf(false)];
       if (firstBad) { firstBad.focus(); return; }
       const btn = $('button[type="submit"]', bForm);
-      busy(btn, true, 'Đang gửi…');
+      busy(btn, true, 'Sending…');
       try {
         await fakeSend();
         $('[data-out="email"]', bDone).textContent = email.value.trim();
         bForm.hidden = true;
         bDone.hidden = false;
+        enter(bDone);
         bDone.focus();
       } catch {
         netErr.hidden = false;
@@ -162,12 +253,13 @@
     $('[data-edit-brochure]').addEventListener('click', () => {
       bDone.hidden = true;
       bForm.hidden = false;
+      enter(bForm);
       email.focus();
       email.select();
     });
   }
 
-  /* ---------- Form đăng ký ba bước ---------- */
+  /* ---------- Three-step enquiry form ---------- */
   const eForm = $('#enq-form');
   const eDone = $('#enq-done');
   if (eForm) {
@@ -185,12 +277,13 @@
       phone.dataset.required = String(v === 'call');
       email.dataset.required = String(v === 'email');
     };
-    const syncNeed = () => { $('[data-need-field="xem"]', eForm).hidden = need.value !== 'xem'; };
+    const syncNeed = () => { $('[data-need-field="viewing"]', eForm).hidden = need.value !== 'viewing'; };
     $$('input[name="via"]', eForm).forEach((r) => r.addEventListener('change', syncVia));
     need.addEventListener('change', syncNeed);
     syncVia(); syncNeed();
 
     const show = (n, focus = true) => {
+      const changed = n !== cur;
       cur = n;
       steps.forEach((s) => { s.hidden = Number(s.dataset.step) !== n; });
       marks.forEach((m, i) => {
@@ -198,8 +291,9 @@
         m.classList.toggle('is-done', i + 1 < n);
       });
       netErr.hidden = true;
+      if (changed) enter(steps[n - 1]);
       if (focus) {
-        const first = $('input:not([type="radio"]):not([hidden]), select', steps[n - 1]);
+        const first = $('input:not([type="radio"]), select', steps[n - 1]);
         const target = n === 2 ? $('input[name="via"]:checked', eForm) : first;
         if (target) target.focus();
       }
@@ -216,7 +310,7 @@
     };
     $$('[data-next]', eForm).forEach((b) => b.addEventListener('click', () => { if (stepValid(cur)) show(cur + 1); }));
     $$('[data-back]', eForm).forEach((b) => b.addEventListener('click', () => show(cur - 1)));
-    // Enter trong ô nhập ở bước 1–2 đi tiếp thay vì gửi cả form
+    // Enter in a step 1–2 field moves on instead of submitting the whole form
     eForm.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' && cur < 3 && e.target.matches('input')) {
         e.preventDefault();
@@ -228,20 +322,21 @@
       e.preventDefault();
       if (cur !== 3) return;
       const btn = $('button[type="submit"]', eForm);
-      busy(btn, true, 'Đang gửi…');
+      busy(btn, true, 'Sending…');
       try {
         await fakeSend();
         const isCall = via() === 'call';
         const out = (k, v) => { $(`[data-out="${k}"]`, eDone).textContent = v; };
         out('name', name.value.trim());
-        out('contact', isCall ? `Gọi ${digits(phone.value)}` : email.value.trim());
-        out('need', need.value === 'xem' ? `${need.selectedOptions[0].text}, ${day.value}` : need.selectedOptions[0].text);
+        out('contact', isCall ? `Phone ${digits(phone.value)}` : email.value.trim());
+        out('need', need.value === 'viewing' ? `${need.selectedOptions[0].text}, ${day.value}` : need.selectedOptions[0].text);
         out('unit', unit.selectedOptions[0].text);
         out('next', isCall
-          ? 'Chuyên viên sẽ gọi trong giờ làm việc để xác nhận.'
-          : 'Chuyên viên sẽ trả lời qua email trong giờ làm việc.');
+          ? 'A consultant will call during business hours to confirm.'
+          : 'A consultant will reply by email during business hours.');
         eForm.hidden = true;
         eDone.hidden = false;
+        enter(eDone);
         eDone.focus();
       } catch {
         netErr.hidden = false;
@@ -256,8 +351,8 @@
       show(3);
     });
 
-    /* Nút "Hẹn xem nhà mẫu", "Hỏi về căn này" ở mọi nơi: điền sẵn nhu cầu và loại căn.
-       Bước bắt đầu là bước đầu tiên còn thiếu dữ liệu, không xoá gì đã nhập. */
+    /* "Request a viewing" and "Ask about this home" anywhere on the page pre-fill the enquiry.
+       Starts at the first step still missing data and never clears what was typed. */
     $$('a[data-need]').forEach((a) => a.addEventListener('click', () => {
       need.value = a.dataset.need;
       if (a.dataset.unit) unit.value = a.dataset.unit;

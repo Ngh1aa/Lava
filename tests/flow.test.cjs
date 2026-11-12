@@ -1,4 +1,4 @@
-/* Kiểm luồng bằng trình duyệt thật (Playwright). Chạy:
+/* Kiểm luồng bằng trình duyệt thật (Playwright). Run:
  *   NODE_PATH=<thư mục có playwright>/node_modules node tests/flow.test.cjs [thư-mục-ảnh]
  * Gửi form là mô phỏng: test chứng minh giao diện và luồng, không chứng minh backend. */
 const { chromium } = require('playwright');
@@ -61,26 +61,26 @@ const step = async (name, fn) => {
       assert.equal(await p.inputValue('#b-email'), 'huong@gmail.com');
     });
     await step(`${tag} căn hộ: chọn Penthouse mở đúng thông số và ảnh; phím mũi tên chuyển tab`, async () => {
-      await p.click('#tab-ph');
-      assert.equal(await p.isVisible('#panel-ph'), true);
-      assert.equal(await p.isVisible('#panel-vuon'), false);
-      assert.ok((await p.getAttribute('#unit-img', 'src')).includes('penthouse'));
-      await p.focus('#tab-ph');
+      await p.click('#tab-penthouse');
+      assert.equal(await p.isVisible('#panel-penthouse'), true);
+      assert.equal(await p.isVisible('#panel-garden'), false);
+      await p.waitForFunction(() => document.querySelector('#unit-img').getAttribute('src').includes('penthouse') && !document.querySelector('#unit-img').classList.contains('is-swapping'), null, { timeout: 3000 });
+      await p.focus('#tab-penthouse');
       await p.keyboard.press('ArrowRight');
-      assert.equal(await p.getAttribute('#tab-vuon', 'aria-selected'), 'true');
-      await p.click('#tab-ph');
+      assert.equal(await p.getAttribute('#tab-garden', 'aria-selected'), 'true');
+      await p.click('#tab-penthouse');
     });
     await step(`${tag} tiện ích: chấm trên mặt bằng và danh sách chọn cùng một mục`, async () => {
       await p.click('.dot[data-amen="2"]');
-      assert.equal(await p.textContent('#amen-name'), 'Phòng gym');
+      assert.equal(await p.textContent('#amen-name'), 'Gym');
       assert.equal(await p.getAttribute('.amen__btn[data-amen="2"]', 'aria-pressed'), 'true');
       await p.click('.amen__btn[data-amen="0"]');
       assert.equal(await p.getAttribute('.dot[data-amen="0"]', 'aria-pressed'), 'true');
-      await shot('#tien-ich', 'tien-ich');
+      await shot('#amenities', 'tien-ich');
     });
     await step(`${tag} "Hỏi về căn này" điền sẵn Tư vấn + Penthouse, mở bước 1`, async () => {
-      await p.click('#panel-ph a[data-need]');
-      assert.equal(await p.inputValue('#e-need'), 'tu-van');
+      await p.click('#panel-penthouse a[data-need]');
+      assert.equal(await p.inputValue('#e-need'), 'advice');
       assert.equal(await p.inputValue('#e-unit'), 'penthouse');
       assert.equal(await p.isVisible('[data-step="1"]'), true);
     });
@@ -93,7 +93,7 @@ const step = async (name, fn) => {
       await p.fill('#e-phone', '12345');
       await p.click('[data-step="2"] [data-next]');
       assert.equal(await p.isVisible('#e-phone-err'), true);
-      await shot('#lien-he', 'enq-step2-error');
+      await shot('#contact', 'enq-step2-error');
       await p.fill('#e-phone', '0912 345 678');
       await p.click('[data-step="2"] [data-next]');
       assert.equal(await p.isVisible('[data-step="3"]'), true);
@@ -111,16 +111,16 @@ const step = async (name, fn) => {
       assert.equal(await p.isVisible('[data-step="3"]'), true);
     });
     await step(`${tag} liên hệ: chọn Hẹn xem thì hiện ngày; gửi ra tóm tắt đúng`, async () => {
-      await p.selectOption('#e-need', 'xem');
+      await p.selectOption('#e-need', 'viewing');
       assert.equal(await p.isVisible('#e-day'), true);
-      await p.selectOption('#e-day', 'Chủ Nhật, 15/11');
-      await shot('#lien-he', 'enq-step3');
+      await p.selectOption('#e-day', 'Sunday 15 November');
+      await shot('#contact', 'enq-step3');
       await p.click('#enq-form button[type=submit]');
       await p.waitForSelector('#enq-done:not([hidden])', { timeout: 3000 });
       assert.equal(await p.textContent('[data-out=contact]'), 'bao@yahoo.com');
-      assert.equal(await p.textContent('[data-out=need]'), 'Hẹn xem nhà mẫu, Chủ Nhật, 15/11');
+      assert.equal(await p.textContent('[data-out=need]'), 'Request a viewing, Sunday 15 November');
       assert.equal(await p.textContent('[data-out=unit]'), 'Penthouse');
-      await shot('#lien-he', 'enq-done');
+      await shot('#contact', 'enq-done');
     });
     await step(`${tag} liên hệ: Sửa thông tin về bước 3, lựa chọn còn`, async () => {
       await p.click('[data-edit-enq]');
@@ -136,7 +136,7 @@ const step = async (name, fn) => {
         await p.keyboard.press('Escape');
         assert.equal(await p.isVisible('#mmenu'), false);
         await p.click('.menu-btn');
-        await p.click('#mmenu nav a[href="#vi-tri"]');
+        await p.click('#mmenu nav a[href="#location"]');
         assert.equal(await p.isVisible('#mmenu'), false);
       });
     }

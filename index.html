@@ -1,11 +1,13 @@
 <!doctype html>
-<html lang="vi">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Lava: căn hộ thấp tầng rộng như nhà riêng, cạnh biển</title>
-<meta name="description" content="64 căn hộ thấp tầng 86–240 m², bốn phút tới biển. Nhận brochure hoặc hẹn xem nhà mẫu.">
+<title>Lava: low-rise residences the size of a house, by the sea</title>
+<meta name="description" content="64 low-rise residences from 86 to 240 m², four minutes from the beach. Get the brochure or request a viewing.">
 <meta name="theme-color" content="#1f2826">
+<script>document.documentElement.classList.add('js');setTimeout(function(){if(!window.__lava)document.documentElement.classList.remove('js');},3000);</script>
+<link rel="preload" href="fonts/archivo/Archivo-wdth-wght.ttf" as="font" type="font/ttf" crossorigin>
 <link rel="stylesheet" href="fonts/fonts.css">
 <link rel="stylesheet" href="css/tokens.css">
 <link rel="stylesheet" href="css/components.css">
@@ -16,256 +18,255 @@
 <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
   <symbol id="app-i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
   <symbol id="ds-i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
-  <symbol id="ds-i-check" viewBox="0 0 24 24"><path d="M5 12.5 9.5 17 19 7.5"/></symbol>
   <symbol id="ds-i-check-circle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.25"/><path d="m8.5 12.25 2.4 2.4 4.6-4.9"/></symbol>
   <symbol id="ds-i-alert" viewBox="0 0 24 24"><path d="M12 4.5 20.5 19h-17z"/><path d="M12 10v4M12 16.75v.01"/></symbol>
   <symbol id="ds-i-phone" viewBox="0 0 24 24"><rect x="7" y="3.5" width="10" height="17" rx="2.25"/><path d="M11 17.5h2"/></symbol>
 </svg>
 
-<a class="skip" href="#main">Bỏ qua điều hướng</a>
+<a class="skip" href="#main">Skip to content</a>
 
 <header class="hdr is-solid" id="hdr">
   <div class="wrap hdr__in">
-    <a class="wordmark" href="#top" aria-label="Lava, về đầu trang">LAVA</a>
-    <nav class="nav" aria-label="Điều hướng chính">
-      <a href="#du-an"><span class="nav__n">01</span>Dự án</a>
-      <a href="#can-ho"><span class="nav__n">02</span>Căn hộ</a>
-      <a href="#luu-tru"><span class="nav__n">03</span>Lưu trữ</a>
-      <a href="#vat-lieu"><span class="nav__n">04</span>Vật liệu</a>
-      <a href="#tien-ich"><span class="nav__n">05</span>Tiện ích</a>
-      <a href="#vi-tri"><span class="nav__n">06</span>Vị trí</a>
+    <a class="wordmark" href="#top" aria-label="Lava, back to top">LAVA</a>
+    <nav class="nav" aria-label="Main">
+      <a href="#project"><span class="nav__n">01</span>Project</a>
+      <a href="#residences"><span class="nav__n">02</span>Residences</a>
+      <a href="#storage"><span class="nav__n">03</span>Storage</a>
+      <a href="#materials"><span class="nav__n">04</span>Materials</a>
+      <a href="#amenities"><span class="nav__n">05</span>Amenities</a>
+      <a href="#location"><span class="nav__n">06</span>Location</a>
     </nav>
     <div class="hdr__cta">
-      <a class="ds-button ds-button--secondary" href="#lien-he" data-need="xem">Hẹn xem nhà mẫu</a>
-      <a class="ds-button ds-button--primary" href="#brochure">Nhận brochure</a>
+      <a class="ds-button ds-button--secondary" href="#contact" data-need="viewing">Request a viewing</a>
+      <a class="ds-button ds-button--primary" href="#brochure">Get the brochure</a>
     </div>
-    <button class="icon-btn menu-btn" type="button" aria-label="Mở menu" aria-expanded="false" aria-controls="mmenu"><svg class="ds-icon" aria-hidden="true"><use href="#app-i-menu"/></svg></button>
+    <button class="icon-btn menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mmenu"><svg class="ds-icon" aria-hidden="true"><use href="#app-i-menu"/></svg></button>
   </div>
 </header>
 
 <div class="mmenu" id="mmenu" role="dialog" aria-modal="true" aria-label="Menu" hidden>
   <div class="mmenu__top">
     <a class="wordmark" href="#top">LAVA</a>
-    <button class="icon-btn" type="button" aria-label="Đóng menu" data-close-menu><svg class="ds-icon" aria-hidden="true"><use href="#ds-i-x"/></svg></button>
+    <button class="icon-btn" type="button" aria-label="Close menu" data-close-menu><svg class="ds-icon" aria-hidden="true"><use href="#ds-i-x"/></svg></button>
   </div>
-  <nav aria-label="Điều hướng trên điện thoại">
-    <a href="#du-an"><span>01</span>Dự án</a>
-    <a href="#can-ho"><span>02</span>Căn hộ</a>
-    <a href="#luu-tru"><span>03</span>Lưu trữ</a>
-    <a href="#vat-lieu"><span>04</span>Vật liệu</a>
-    <a href="#tien-ich"><span>05</span>Tiện ích</a>
-    <a href="#vi-tri"><span>06</span>Vị trí</a>
-    <a href="#lien-he"><span>07</span>Liên hệ</a>
+  <nav aria-label="Mobile">
+    <a href="#project"><span>01</span>Project</a>
+    <a href="#residences"><span>02</span>Residences</a>
+    <a href="#storage"><span>03</span>Storage</a>
+    <a href="#materials"><span>04</span>Materials</a>
+    <a href="#amenities"><span>05</span>Amenities</a>
+    <a href="#location"><span>06</span>Location</a>
+    <a href="#contact"><span>07</span>Contact</a>
   </nav>
   <div class="hero__cta on-photo">
-    <a class="ds-button ds-button--primary ds-button--lg" href="#brochure">Nhận brochure</a>
-    <a class="ds-button ds-button--secondary ds-button--lg" href="#lien-he" data-need="xem">Hẹn xem nhà mẫu</a>
+    <a class="ds-button ds-button--primary ds-button--lg" href="#brochure">Get the brochure</a>
+    <a class="ds-button ds-button--secondary ds-button--lg" href="#contact" data-need="viewing">Request a viewing</a>
   </div>
 </div>
 
 <main id="main">
 
-  <!-- Hero: một lời hứa, giá và diện tích thật, một hành động chính -->
+  <!-- Hero -->
   <section class="hero on-photo" id="top" aria-labelledby="hero-title">
-    <img class="hero__img" src="img/hero-mat-tien.jpg" width="1024" height="683" alt="Mặt tiền ốp gạch xám đậm, cửa kính lớn mở ra khoảng vườn sỏi trắng và cỏ cao" fetchpriority="high">
+    <img class="hero__img" src="img/hero-mat-tien.jpg" width="1024" height="683" alt="Dark brick façade with tall glazed doors opening onto a white gravel garden and tall grasses" fetchpriority="high">
     <div class="shade" aria-hidden="true"></div>
     <div class="hero__body">
       <div class="wrap g12">
-        <h1 class="hero__title" id="hero-title"><span>Rộng như nhà riêng.</span><span>Sống cạnh biển.</span></h1>
+        <h1 class="hero__title" id="hero-title"><span class="line"><span>Space of a house.</span></span><span class="line"><span>Sound of the sea.</span></span></h1>
         <div class="hero__foot">
-          <p class="hero__lead"><strong>64 căn hộ thấp tầng 86–240 m²</strong>, bốn phút lái xe tới biển. Giá từ 6,8 tỷ&nbsp;đồng.</p>
+          <p class="hero__lead"><strong>64 low-rise residences, 86–240 m²</strong>, four minutes’ drive to the beach. From VND&nbsp;6.8&nbsp;billion.</p>
           <div class="hero__cta">
-            <a class="ds-button ds-button--primary ds-button--lg" href="#brochure">Nhận brochure</a>
-            <a class="ds-button ds-button--secondary ds-button--lg" href="#lien-he" data-need="xem">Hẹn xem nhà mẫu</a>
+            <a class="ds-button ds-button--primary ds-button--lg" href="#brochure">Get the brochure</a>
+            <a class="ds-button ds-button--secondary ds-button--lg" href="#contact" data-need="viewing">Request a viewing</a>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Brochure: hành động chính, có trạng thái lỗi, đang gửi, đã gửi -->
+  <!-- Brochure -->
   <section class="brochure" id="brochure" aria-labelledby="brochure-title">
     <div class="wrap g12">
       <div class="brochure__copy">
-        <h2 class="brochure__title" id="brochure-title">Brochure Lava</h2>
-        <ul class="brochure__list">
-          <li><b>Mặt bằng bốn loại căn</b><span>12 trang</span></li>
-          <li><b>Bảng vật liệu hoàn thiện</b><span>6 trang</span></li>
-          <li><b>Giá và tiến độ thanh toán</b><span>4 trang</span></li>
+        <h2 class="brochure__title" id="brochure-title" data-reveal="mask">The Lava brochure</h2>
+        <ul class="brochure__list" data-reveal>
+          <li><b>Floor plans for every residence</b><span>12 pages</span></li>
+          <li><b>Finishes schedule</b><span>6 pages</span></li>
+          <li><b>Pricing and payment plan</b><span>4 pages</span></li>
         </ul>
       </div>
 
-      <div class="panel" aria-live="polite">
+      <div class="panel" aria-live="polite" data-reveal style="--d:120ms">
         <form class="form" id="brochure-form" novalidate>
           <div class="ds-banner ds-banner--danger" role="alert" data-net-error hidden>
             <svg class="ds-icon" aria-hidden="true"><use href="#ds-i-alert"/></svg>
-            <div>Chưa gửi được vì mất kết nối. Kiểm tra mạng rồi bấm gửi lại, thông tin bạn nhập vẫn còn.</div>
+            <div>Couldn’t send because you’re offline. Check your connection and send again; your details are still here.</div>
           </div>
           <div class="ds-field">
-            <label class="ds-field__label" for="b-name">Họ và tên</label>
+            <label class="ds-field__label" for="b-name">Full name</label>
             <input class="ds-field__control" id="b-name" name="name" autocomplete="name" required aria-describedby="b-name-err">
-            <p class="ds-field__error" id="b-name-err" hidden><svg class="ds-icon ds-icon--sm" aria-hidden="true"><use href="#ds-i-alert"/></svg>Nhập họ và tên để chúng tôi gọi đúng tên bạn.</p>
+            <p class="ds-field__error" id="b-name-err" hidden><svg class="ds-icon ds-icon--sm" aria-hidden="true"><use href="#ds-i-alert"/></svg>Enter your full name so we know who to address.</p>
           </div>
           <div class="ds-field">
-            <label class="ds-field__label" for="b-email">Email nhận brochure</label>
+            <label class="ds-field__label" for="b-email">Email for the brochure</label>
             <input class="ds-field__control" id="b-email" name="email" type="email" inputmode="email" autocomplete="email" required aria-describedby="b-email-err">
-            <p class="ds-field__error" id="b-email-err" hidden><svg class="ds-icon ds-icon--sm" aria-hidden="true"><use href="#ds-i-alert"/></svg>Email chưa đúng dạng, ví dụ ten@gmail.com.</p>
+            <p class="ds-field__error" id="b-email-err" hidden><svg class="ds-icon ds-icon--sm" aria-hidden="true"><use href="#ds-i-alert"/></svg>Enter a valid email, for example name@gmail.com.</p>
           </div>
           <div class="ds-field">
-            <label class="ds-field__label" for="b-phone">Số điện thoại <span class="opt">(không bắt buộc)</span></label>
+            <label class="ds-field__label" for="b-phone">Phone <span class="opt">(optional)</span></label>
             <input class="ds-field__control" id="b-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" aria-describedby="b-phone-err">
-            <p class="ds-field__error" id="b-phone-err" hidden><svg class="ds-icon ds-icon--sm" aria-hidden="true"><use href="#ds-i-alert"/></svg>Số điện thoại cần 10 chữ số, bắt đầu bằng 0.</p>
+            <p class="ds-field__error" id="b-phone-err" hidden><svg class="ds-icon ds-icon--sm" aria-hidden="true"><use href="#ds-i-alert"/></svg>Phone numbers have 10 digits and start with 0.</p>
           </div>
-          <button class="ds-button ds-button--primary ds-button--lg ds-button--block" type="submit">Nhận brochure</button>
+          <button class="ds-button ds-button--primary ds-button--lg ds-button--block" type="submit">Get the brochure</button>
         </form>
 
         <div class="done" id="brochure-done" hidden tabindex="-1">
           <svg class="ds-icon done__icon" aria-hidden="true"><use href="#ds-i-check-circle"/></svg>
-          <h3>Đã gửi brochure</h3>
-          <p>Brochure đang trên đường tới <strong data-out="email">email của bạn</strong>. Không thấy sau 10 phút thì xem thư mục Quảng cáo hoặc Spam.</p>
+          <h3>Brochure sent</h3>
+          <p>It’s on its way to <strong data-out="email">your inbox</strong>. Not there in 10 minutes? Check your Promotions or Spam folder.</p>
           <div class="form-actions">
-            <a class="ds-button ds-button--primary" href="#lien-he" data-need="xem">Hẹn xem nhà mẫu</a>
-            <button class="ds-button ds-button--tertiary" type="button" data-edit-brochure>Sửa email</button>
+            <a class="ds-button ds-button--primary" href="#contact" data-need="viewing">Request a viewing</a>
+            <button class="ds-button ds-button--tertiary" type="button" data-edit-brochure>Change email</button>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 01 Dự án -->
-  <section class="chapter" id="du-an" aria-labelledby="du-an-title">
+  <!-- 01 Project -->
+  <section class="chapter" id="project" aria-labelledby="project-title">
     <div class="wrap">
       <div class="g12 ch-head">
-        <p class="ch-rail" aria-hidden="true"><span class="ch-num">01</span><span class="ch-name">Dự án</span></p>
-        <h2 class="ch-title" id="du-an-title">Bớt việc giữ nhà, giữ trọn nếp sống.</h2>
-        <p class="ch-lead">Dành cho người rời nhà phố mà không muốn thu nhỏ cuộc sống. Mỗi căn rộng như một ngôi nhà; cây, hồ bơi, mái và mặt tiền đã có ban quản lý chăm.</p>
+        <p class="ch-rail" aria-hidden="true" data-reveal="line"><span class="ch-num">01</span><span class="ch-name">Project</span></p>
+        <h2 class="ch-title" id="project-title" data-reveal="mask">Less upkeep. All of the life.</h2>
+        <p class="ch-lead" data-reveal style="--d:120ms">For people leaving the townhouse without shrinking their lives. Every residence is the size of a home; the gardens, pool, roof and façade are cared for by building management.</p>
       </div>
       <div class="g12">
         <ul class="stats">
-          <li><span class="stat__v">64</span><span class="stat__k">căn trong đợt mở bán cuối</span></li>
-          <li><span class="stat__v">86–240<span class="stat__u">m²</span></span><span class="stat__k">diện tích mỗi căn</span></li>
-          <li><span class="stat__v">4<span class="stat__u">phút</span></span><span class="stat__k">lái xe tới biển</span></li>
+          <li data-reveal="line"><span class="stat__v" data-count="64">64</span><span class="stat__k">residences in the final release</span></li>
+          <li data-reveal="line" style="--d:120ms"><span class="stat__v"><span data-count="86–240">86–240</span><span class="stat__u">m²</span></span><span class="stat__k">per residence</span></li>
+          <li data-reveal="line" style="--d:240ms"><span class="stat__v"><span data-count="4">4</span><span class="stat__u">min</span></span><span class="stat__k">drive to the beach</span></li>
         </ul>
       </div>
-      <figure class="wide-img">
-        <img src="img/du-an-san-vuon.jpg" width="1024" height="683" alt="Dãy nhà hai tầng ốp gạch xám, mỗi căn có hiên và vườn cỏ riêng phía trước">
+      <figure class="wide-img" data-reveal="img">
+        <img src="img/du-an-san-vuon.jpg" width="1024" height="683" alt="A row of two-storey grey brick homes, each with a covered terrace and a private lawn">
       </figure>
     </div>
   </section>
 
-  <!-- 02 Căn hộ: bộ chọn loại căn, mỗi loại mở đúng thông số của nó -->
-  <section class="chapter" id="can-ho" aria-labelledby="can-ho-title">
+  <!-- 02 Residences -->
+  <section class="chapter" id="residences" aria-labelledby="residences-title">
     <div class="wrap">
       <div class="g12 ch-head">
-        <p class="ch-rail" aria-hidden="true"><span class="ch-num">02</span><span class="ch-name">Căn hộ</span></p>
-        <h2 class="ch-title" id="can-ho-title">Sân vườn riêng, không phải cắt cỏ.</h2>
+        <p class="ch-rail" aria-hidden="true" data-reveal="line"><span class="ch-num">02</span><span class="ch-name">Residences</span></p>
+        <h2 class="ch-title" id="residences-title" data-reveal="mask">A private garden. No mowing.</h2>
       </div>
       <div class="g12 units">
-        <figure class="units__media">
-          <img id="unit-img" src="img/can-san-vuon.jpg" width="1024" height="683" alt="Căn sân vườn: sân lát đá xám trước cửa kính lớn, bãi cỏ và hàng rào cây xanh">
+        <figure class="units__media" data-reveal="img">
+          <img id="unit-img" src="img/can-san-vuon.jpg" width="1024" height="683" alt="Garden residence: grey stone terrace outside wide glazing, a lawn and green hedges">
         </figure>
-        <div class="units__side">
-          <div class="unit-tabs" role="tablist" aria-label="Loại căn">
-            <button class="unit-tab" role="tab" id="tab-vuon" aria-selected="true" aria-controls="panel-vuon" data-img="img/can-san-vuon.jpg" data-alt="Căn sân vườn: sân lát đá xám trước cửa kính lớn, bãi cỏ và hàng rào cây xanh">Sân vườn <small>112–156 m²</small></button>
-            <button class="unit-tab" role="tab" id="tab-tc" aria-selected="false" aria-controls="panel-tc" tabindex="-1" data-img="img/can-tieu-chuan.jpg" data-alt="Căn tiêu chuẩn: phòng khách sáng, sàn gỗ nhạt, sofa xám và kệ thấp">Tiêu chuẩn <small>86–128 m²</small></button>
-            <button class="unit-tab" role="tab" id="tab-ph" aria-selected="false" aria-controls="panel-ph" tabindex="-1" data-img="img/can-penthouse.jpg" data-alt="Penthouse: sân thượng có hồ bơi riêng, ghế nằm và phòng khách kính nhìn ra hồ">Penthouse <small>210–240 m²</small></button>
+        <div class="units__side" data-reveal style="--d:120ms">
+          <div class="unit-tabs" role="tablist" aria-label="Residence type">
+            <button class="unit-tab" role="tab" id="tab-garden" aria-selected="true" aria-controls="panel-garden" data-img="img/can-san-vuon.jpg" data-alt="Garden residence: grey stone terrace outside wide glazing, a lawn and green hedges">Garden <small>112–156 m²</small></button>
+            <button class="unit-tab" role="tab" id="tab-standard" aria-selected="false" aria-controls="panel-standard" tabindex="-1" data-img="img/can-tieu-chuan.jpg" data-alt="Standard residence: bright living room with pale timber floor, grey sofa and a low sideboard">Standard <small>86–128 m²</small></button>
+            <button class="unit-tab" role="tab" id="tab-penthouse" aria-selected="false" aria-controls="panel-penthouse" tabindex="-1" data-img="img/can-penthouse.jpg" data-alt="Penthouse: roof terrace with a private pool, loungers and a glazed living room facing the water">Penthouse <small>210–240 m²</small></button>
           </div>
 
-          <div class="unit-panel" role="tabpanel" id="panel-vuon" aria-labelledby="tab-vuon">
-            <h3>Căn sân vườn tầng trệt</h3>
+          <div class="unit-panel" role="tabpanel" id="panel-garden" aria-labelledby="tab-garden">
+            <h3>Ground-floor garden residence</h3>
             <dl class="spec">
-              <dt>Diện tích trong nhà</dt><dd>112–156 m²</dd>
-              <dt>Phòng ngủ</dt><dd>2–3</dd>
-              <dt>Sân vườn riêng</dt><dd>tới 140 m²</dd>
-              <dt>Giá từ</dt><dd class="price">8,2 tỷ đồng</dd>
+              <dt>Interior</dt><dd>112–156 m²</dd>
+              <dt>Bedrooms</dt><dd>2–3</dd>
+              <dt>Private garden</dt><dd>up to 140 m²</dd>
+              <dt>From</dt><dd class="price">VND 8.2 billion</dd>
             </dl>
-            <a class="ds-button ds-button--secondary" href="#lien-he" data-need="tu-van" data-unit="vuon">Hỏi về căn này</a>
+            <a class="ds-button ds-button--secondary" href="#contact" data-need="advice" data-unit="garden">Ask about this home</a>
           </div>
-          <div class="unit-panel" role="tabpanel" id="panel-tc" aria-labelledby="tab-tc" hidden>
-            <h3>Căn tiêu chuẩn tầng 1–3</h3>
+          <div class="unit-panel" role="tabpanel" id="panel-standard" aria-labelledby="tab-standard" hidden>
+            <h3>Standard residence, levels 1–3</h3>
             <dl class="spec">
-              <dt>Diện tích trong nhà</dt><dd>86–128 m²</dd>
-              <dt>Phòng ngủ</dt><dd>2–3</dd>
-              <dt>Ban công</dt><dd>12–24 m²</dd>
-              <dt>Giá từ</dt><dd class="price">6,8 tỷ đồng</dd>
+              <dt>Interior</dt><dd>86–128 m²</dd>
+              <dt>Bedrooms</dt><dd>2–3</dd>
+              <dt>Balcony</dt><dd>12–24 m²</dd>
+              <dt>From</dt><dd class="price">VND 6.8 billion</dd>
             </dl>
-            <a class="ds-button ds-button--secondary" href="#lien-he" data-need="tu-van" data-unit="tieu-chuan">Hỏi về căn này</a>
+            <a class="ds-button ds-button--secondary" href="#contact" data-need="advice" data-unit="standard">Ask about this home</a>
           </div>
-          <div class="unit-panel" role="tabpanel" id="panel-ph" aria-labelledby="tab-ph" hidden>
-            <h3>Penthouse tầng 4</h3>
+          <div class="unit-panel" role="tabpanel" id="panel-penthouse" aria-labelledby="tab-penthouse" hidden>
+            <h3>Penthouse, level 4</h3>
             <dl class="spec">
-              <dt>Diện tích trong nhà</dt><dd>210–240 m²</dd>
-              <dt>Phòng ngủ</dt><dd>3–4</dd>
-              <dt>Sân thượng và hồ bơi</dt><dd>tới 120 m²</dd>
-              <dt>Giá từ</dt><dd class="price">19,5 tỷ đồng</dd>
+              <dt>Interior</dt><dd>210–240 m²</dd>
+              <dt>Bedrooms</dt><dd>3–4</dd>
+              <dt>Roof terrace and pool</dt><dd>up to 120 m²</dd>
+              <dt>From</dt><dd class="price">VND 19.5 billion</dd>
             </dl>
-            <a class="ds-button ds-button--secondary" href="#lien-he" data-need="tu-van" data-unit="penthouse">Hỏi về căn này</a>
+            <a class="ds-button ds-button--secondary" href="#contact" data-need="advice" data-unit="penthouse">Ask about this home</a>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 03 Lưu trữ -->
-  <section class="chapter" id="luu-tru" aria-labelledby="luu-tru-title">
+  <!-- 03 Storage -->
+  <section class="chapter" id="storage" aria-labelledby="storage-title">
     <div class="wrap">
       <div class="g12 ch-head">
-        <p class="ch-rail" aria-hidden="true"><span class="ch-num">03</span><span class="ch-name">Lưu trữ</span></p>
-        <h2 class="ch-title" id="luu-tru-title">Mỗi món đồ có một chỗ.</h2>
+        <p class="ch-rail" aria-hidden="true" data-reveal="line"><span class="ch-num">03</span><span class="ch-name">Storage</span></p>
+        <h2 class="ch-title" id="storage-title" data-reveal="mask">A place for everything.</h2>
       </div>
       <div class="g12">
         <ul class="rows">
-          <li><h3>Phòng thay đồ</h3><p>Có trong mọi phòng ngủ chính, tủ đóng sẵn tới trần.</p><span class="metric">6–9 m²</span></li>
-          <li><h3>Kho riêng dưới hầm</h3><p>Mỗi căn một kho có khoá, đủ cho xe đạp, ván lướt và đồ theo mùa.</p><span class="metric">4–6 m²</span></li>
-          <li><h3>Gara khoá riêng</h3><p>Dành cho penthouse, thang máy đi thẳng từ hầm lên căn.</p><span class="metric">2 xe</span></li>
+          <li data-reveal><h3>Walk-in robe</h3><p>In every main bedroom, with joinery to the ceiling.</p><span class="metric">6–9 m²</span></li>
+          <li data-reveal style="--d:100ms"><h3>Private basement storage</h3><p>A lockable room per residence, sized for bikes, boards and the off-season.</p><span class="metric">4–6 m²</span></li>
+          <li data-reveal style="--d:200ms"><h3>Private garage</h3><p>Penthouses only, with a lift straight up from the basement.</p><span class="metric">2 cars</span></li>
         </ul>
-        <figure class="storage__img">
-          <img src="img/luu-tru.jpg" width="1024" height="684" alt="Phòng thay đồ dài với tủ trắng tới trần, sàn gỗ và cửa sổ cuối phòng">
+        <figure class="storage__img" data-reveal="img">
+          <img src="img/luu-tru.jpg" width="1024" height="684" alt="Long walk-in robe with white joinery to the ceiling, timber floor and a window at the end">
         </figure>
       </div>
     </div>
   </section>
 
-  <!-- 04 Vật liệu: dải đá bazan, điểm đổi nhịp duy nhất của trang -->
-  <section class="chapter basalt" id="vat-lieu" aria-labelledby="vat-lieu-title">
+  <!-- 04 Materials -->
+  <section class="chapter basalt" id="materials" aria-labelledby="materials-title">
     <div class="wrap">
       <div class="g12 ch-head">
-        <p class="ch-rail" aria-hidden="true"><span class="ch-num">04</span><span class="ch-name">Vật liệu</span></p>
-        <h2 class="ch-title" id="vat-lieu-title">Chạm vào là thấy khác.</h2>
+        <p class="ch-rail" aria-hidden="true" data-reveal="line"><span class="ch-num">04</span><span class="ch-name">Materials</span></p>
+        <h2 class="ch-title" id="materials-title" data-reveal="mask">You feel it before you see it.</h2>
       </div>
       <div class="g12 materials">
-        <figure class="materials__img">
-          <img src="img/vat-lieu.jpg" width="683" height="1024" alt="Ghế gỗ sồi chân sơn trắng đặt trên sàn bê tông mài, tường trát xám">
+        <figure class="materials__img" data-reveal="img">
+          <img src="img/vat-lieu.jpg" width="683" height="1024" alt="Oak stool with white legs on a polished concrete floor against a rendered grey wall">
         </figure>
         <ul class="mats">
-          <li class="mat"><span class="swatch swatch--basalt" aria-hidden="true"></span><h3>Đá bazan mài</h3><p>Mặt tiền, sảnh và bậc thềm. Mát chân, không trơn khi ướt.</p></li>
-          <li class="mat"><span class="swatch swatch--oak" aria-hidden="true"></span><h3>Gỗ sồi tự nhiên</h3><p>Sàn phòng ngủ và tủ bếp, hoàn thiện dầu mờ.</p></li>
-          <li class="mat"><span class="swatch swatch--travertine" aria-hidden="true"></span><h3>Đá travertine</h3><p>Đảo bếp và mặt lavabo, cạnh mài tròn.</p></li>
-          <li class="mat"><span class="swatch swatch--tile" aria-hidden="true"></span><h3>Gạch ốp tới trần</h3><p>Toàn bộ phòng tắm, mạch nhỏ 2 mm.</p></li>
+          <li class="mat" data-reveal><span class="swatch swatch--basalt" aria-hidden="true"></span><h3>Honed basalt</h3><p>Façade, lobby and front steps. Cool underfoot, grippy when wet.</p></li>
+          <li class="mat" data-reveal style="--d:100ms"><span class="swatch swatch--oak" aria-hidden="true"></span><h3>European oak</h3><p>Bedroom floors and kitchen joinery, matt oil finish.</p></li>
+          <li class="mat" data-reveal style="--d:200ms"><span class="swatch swatch--travertine" aria-hidden="true"></span><h3>Travertine</h3><p>Kitchen island and vanity tops with eased edges.</p></li>
+          <li class="mat" data-reveal style="--d:300ms"><span class="swatch swatch--tile" aria-hidden="true"></span><h3>Floor-to-ceiling tiles</h3><p>Every bathroom, with 2 mm joints.</p></li>
         </ul>
       </div>
     </div>
   </section>
 
-  <!-- 05 Tiện ích: mặt bằng có đường đồng mức, chấm và danh sách chọn cùng một mục -->
-  <section class="chapter" id="tien-ich" aria-labelledby="tien-ich-title">
+  <!-- 05 Amenities -->
+  <section class="chapter" id="amenities" aria-labelledby="amenities-title">
     <div class="wrap">
       <div class="g12 ch-head">
-        <p class="ch-rail" aria-hidden="true"><span class="ch-num">05</span><span class="ch-name">Tiện ích</span></p>
-        <h2 class="ch-title" id="tien-ich-title">Một cộng đồng đã sẵn nếp.</h2>
+        <p class="ch-rail" aria-hidden="true" data-reveal="line"><span class="ch-num">05</span><span class="ch-name">Amenities</span></p>
+        <h2 class="ch-title" id="amenities-title" data-reveal="mask">A community already in motion.</h2>
       </div>
       <div class="g12 precinct">
-        <figure class="plan" role="group" aria-label="Mặt bằng tổng thể">
+        <figure class="plan" role="group" aria-label="Site plan" data-reveal="plan">
           <svg viewBox="0 0 800 600" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false">
             <g>
-              <ellipse class="contour" cx="560" cy="300" rx="80" ry="50" transform="rotate(-14 560 300)"/>
-              <ellipse class="contour" cx="560" cy="300" rx="150" ry="96" transform="rotate(-14 560 300)"/>
-              <ellipse class="contour" cx="550" cy="305" rx="225" ry="146" transform="rotate(-12 550 305)"/>
-              <ellipse class="contour" cx="540" cy="310" rx="305" ry="198" transform="rotate(-10 540 310)"/>
-              <ellipse class="contour" cx="525" cy="318" rx="390" ry="252" transform="rotate(-8 525 318)"/>
-              <ellipse class="contour" cx="510" cy="325" rx="480" ry="310" transform="rotate(-6 510 325)"/>
-              <ellipse class="contour" cx="90" cy="560" rx="70" ry="40"/>
-              <ellipse class="contour" cx="90" cy="560" rx="130" ry="78"/>
+              <ellipse class="contour" cx="560" cy="300" rx="80" ry="50" transform="rotate(-14 560 300)" pathLength="1"/>
+              <ellipse class="contour" cx="560" cy="300" rx="150" ry="96" transform="rotate(-14 560 300)" pathLength="1"/>
+              <ellipse class="contour" cx="550" cy="305" rx="225" ry="146" transform="rotate(-12 550 305)" pathLength="1"/>
+              <ellipse class="contour" cx="540" cy="310" rx="305" ry="198" transform="rotate(-10 540 310)" pathLength="1"/>
+              <ellipse class="contour" cx="525" cy="318" rx="390" ry="252" transform="rotate(-8 525 318)" pathLength="1"/>
+              <ellipse class="contour" cx="510" cy="325" rx="480" ry="310" transform="rotate(-6 510 325)" pathLength="1"/>
+              <ellipse class="contour" cx="90" cy="560" rx="70" ry="40" pathLength="1"/>
+              <ellipse class="contour" cx="90" cy="560" rx="130" ry="78" pathLength="1"/>
             </g>
             <rect class="green" x="240" y="200" width="320" height="170" rx="2"/>
             <path class="walk" d="M222 184 H578 V392 H222 Z"/>
@@ -278,199 +279,199 @@
             <rect class="bldg" x="240" y="414" width="150" height="76" rx="2"/>
             <rect class="bldg" x="420" y="414" width="140" height="76" rx="2"/>
             <rect class="bldg" x="80" y="470" width="120" height="60" rx="2"/>
-            <text class="label" x="180" y="120" text-anchor="middle">KHỐI A</text>
-            <text class="label" x="420" y="120" text-anchor="middle">KHỐI B</text>
-            <text class="label" x="660" y="184" text-anchor="middle">KHỐI C</text>
-            <text class="label" x="140" y="324" text-anchor="middle">KHỐI D</text>
-            <text class="label" x="742" y="530" text-anchor="end">LỐI RA BIỂN</text>
+            <text class="label" x="180" y="120" text-anchor="middle">Block A</text>
+            <text class="label" x="420" y="120" text-anchor="middle">Block B</text>
+            <text class="label" x="660" y="184" text-anchor="middle">Block C</text>
+            <text class="label" x="140" y="324" text-anchor="middle">Block D</text>
+            <text class="label" x="742" y="530" text-anchor="end">Beach access</text>
           </svg>
-          <button class="dot" type="button" style="left:82.5%;top:62.5%" data-amen="0" aria-pressed="true" aria-label="1 Hồ bơi"><span>1</span></button>
-          <button class="dot" type="button" style="left:50%;top:47.5%" data-amen="1" aria-pressed="false" aria-label="2 Vườn trung tâm"><span>2</span></button>
-          <button class="dot" type="button" style="left:61.25%;top:75%" data-amen="2" aria-pressed="false" aria-label="3 Phòng gym"><span>3</span></button>
-          <button class="dot" type="button" style="left:39.4%;top:75%" data-amen="3" aria-pressed="false" aria-label="4 Sảnh cộng đồng"><span>4</span></button>
-          <button class="dot" type="button" style="left:27.75%;top:58%" data-amen="4" aria-pressed="false" aria-label="5 Đường dạo bộ"><span>5</span></button>
-          <button class="dot" type="button" style="left:17.5%;top:83.3%" data-amen="5" aria-pressed="false" aria-label="6 Hầm xe và kho"><span>6</span></button>
+          <button class="dot" type="button" style="left:82.5%;top:62.5%" data-amen="0" aria-pressed="true" aria-label="1 Pool"><span>1</span></button>
+          <button class="dot" type="button" style="left:50%;top:47.5%" data-amen="1" aria-pressed="false" aria-label="2 Central garden"><span>2</span></button>
+          <button class="dot" type="button" style="left:61.25%;top:75%" data-amen="2" aria-pressed="false" aria-label="3 Gym"><span>3</span></button>
+          <button class="dot" type="button" style="left:39.4%;top:75%" data-amen="3" aria-pressed="false" aria-label="4 Residents’ lounge"><span>4</span></button>
+          <button class="dot" type="button" style="left:27.75%;top:58%" data-amen="4" aria-pressed="false" aria-label="5 Garden loop"><span>5</span></button>
+          <button class="dot" type="button" style="left:17.5%;top:83.3%" data-amen="5" aria-pressed="false" aria-label="6 Parking and storage"><span>6</span></button>
         </figure>
 
-        <div class="amen">
+        <div class="amen" data-reveal style="--d:120ms">
           <ul class="amen__list">
-            <li><button class="amen__btn" type="button" data-amen="0" aria-pressed="true"><b>1</b>Hồ bơi 25 m</button></li>
-            <li><button class="amen__btn" type="button" data-amen="1" aria-pressed="false"><b>2</b>Vườn trung tâm</button></li>
-            <li><button class="amen__btn" type="button" data-amen="2" aria-pressed="false"><b>3</b>Phòng gym</button></li>
-            <li><button class="amen__btn" type="button" data-amen="3" aria-pressed="false"><b>4</b>Sảnh cộng đồng</button></li>
-            <li><button class="amen__btn" type="button" data-amen="4" aria-pressed="false"><b>5</b>Đường dạo bộ</button></li>
-            <li><button class="amen__btn" type="button" data-amen="5" aria-pressed="false"><b>6</b>Hầm xe và kho</button></li>
+            <li><button class="amen__btn" type="button" data-amen="0" aria-pressed="true"><b>1</b>25 m pool</button></li>
+            <li><button class="amen__btn" type="button" data-amen="1" aria-pressed="false"><b>2</b>Central garden</button></li>
+            <li><button class="amen__btn" type="button" data-amen="2" aria-pressed="false"><b>3</b>Gym</button></li>
+            <li><button class="amen__btn" type="button" data-amen="3" aria-pressed="false"><b>4</b>Residents’ lounge</button></li>
+            <li><button class="amen__btn" type="button" data-amen="4" aria-pressed="false"><b>5</b>Garden loop</button></li>
+            <li><button class="amen__btn" type="button" data-amen="5" aria-pressed="false"><b>6</b>Parking and storage</button></li>
           </ul>
           <div class="amen__detail" aria-live="polite">
-            <h3 id="amen-name">Hồ bơi 25 m</h3>
-            <p id="amen-desc">Hồ nước mặn có làn bơi và bể trẻ em, nhìn thẳng ra vườn.</p>
-            <p class="amen__meta" id="amen-meta"><span>6:00–21:00 mỗi ngày</span><span>Cạnh khối C</span></p>
+            <h3 id="amen-name">25 m pool</h3>
+            <p id="amen-desc">A saltwater pool with lap lanes and a children’s pool, looking straight onto the garden.</p>
+            <p class="amen__meta" id="amen-meta"><span>6am–9pm daily</span><span>Beside Block C</span></p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 06 Vị trí: thời gian di chuyển, thanh dài theo số phút -->
-  <section class="chapter" id="vi-tri" aria-labelledby="vi-tri-title">
+  <!-- 06 Location -->
+  <section class="chapter" id="location" aria-labelledby="location-title">
     <div class="wrap">
       <div class="g12 ch-head">
-        <p class="ch-rail" aria-hidden="true"><span class="ch-num">06</span><span class="ch-name">Vị trí</span></p>
-        <h2 class="ch-title" id="vi-tri-title">Những chỗ quen vẫn ở gần.</h2>
+        <p class="ch-rail" aria-hidden="true" data-reveal="line"><span class="ch-num">06</span><span class="ch-name">Location</span></p>
+        <h2 class="ch-title" id="location-title" data-reveal="mask">Everything familiar, still close.</h2>
       </div>
       <div class="g12 place">
-        <figure class="place__img">
-          <img src="img/vi-tri-bien.jpg" width="1024" height="576" alt="Bãi cát lúc hoàng hôn, nước rút để lại vệt sáng trên cát, mũi đá xa xa">
+        <figure class="place__img" data-reveal="img">
+          <img src="img/vi-tri-bien.jpg" width="1024" height="576" alt="Beach at sunset, the outgoing tide leaving bright streaks on the sand, a headland in the distance">
         </figure>
         <ul class="places">
-          <li><span class="p-name">Bãi biển</span><span class="p-mode">Lái xe</span><span class="p-min">4<small>phút</small></span><span class="p-bar" aria-hidden="true"><i style="--w:27%"></i></span></li>
-          <li><span class="p-name">Chợ hải sản</span><span class="p-mode">Đi bộ</span><span class="p-min">6<small>phút</small></span><span class="p-bar" aria-hidden="true"><i style="--w:40%"></i></span></li>
-          <li><span class="p-name">Trường song ngữ</span><span class="p-mode">Lái xe</span><span class="p-min">8<small>phút</small></span><span class="p-bar" aria-hidden="true"><i style="--w:53%"></i></span></li>
-          <li><span class="p-name">Bệnh viện đa khoa</span><span class="p-mode">Lái xe</span><span class="p-min">10<small>phút</small></span><span class="p-bar" aria-hidden="true"><i style="--w:67%"></i></span></li>
-          <li><span class="p-name">Trung tâm thành phố</span><span class="p-mode">Lái xe</span><span class="p-min">15<small>phút</small></span><span class="p-bar" aria-hidden="true"><i style="--w:100%"></i></span></li>
+          <li data-reveal="bar"><span class="p-name">Beach</span><span class="p-mode">Drive</span><span class="p-min">4<small>min</small></span><span class="p-bar" aria-hidden="true"><i style="--w:27%"></i></span></li>
+          <li data-reveal="bar" style="--d:80ms"><span class="p-name">Seafood market</span><span class="p-mode">Walk</span><span class="p-min">6<small>min</small></span><span class="p-bar" aria-hidden="true"><i style="--w:40%"></i></span></li>
+          <li data-reveal="bar" style="--d:160ms"><span class="p-name">Bilingual school</span><span class="p-mode">Drive</span><span class="p-min">8<small>min</small></span><span class="p-bar" aria-hidden="true"><i style="--w:53%"></i></span></li>
+          <li data-reveal="bar" style="--d:240ms"><span class="p-name">General hospital</span><span class="p-mode">Drive</span><span class="p-min">10<small>min</small></span><span class="p-bar" aria-hidden="true"><i style="--w:67%"></i></span></li>
+          <li data-reveal="bar" style="--d:320ms"><span class="p-name">City centre</span><span class="p-mode">Drive</span><span class="p-min">15<small>min</small></span><span class="p-bar" aria-hidden="true"><i style="--w:100%"></i></span></li>
         </ul>
       </div>
     </div>
   </section>
 
-  <!-- 07 Liên hệ: form ba bước, quay lại giữ dữ liệu, màn kết quả có tóm tắt -->
-  <section class="chapter" id="lien-he" aria-labelledby="lien-he-title">
+  <!-- 07 Contact -->
+  <section class="chapter" id="contact" aria-labelledby="contact-title">
     <div class="wrap">
       <div class="g12 ch-head">
-        <p class="ch-rail" aria-hidden="true"><span class="ch-num">07</span><span class="ch-name">Liên hệ</span></p>
-        <h2 class="ch-title" id="lien-he-title">Đăng ký quan tâm</h2>
+        <p class="ch-rail" aria-hidden="true" data-reveal="line"><span class="ch-num">07</span><span class="ch-name">Contact</span></p>
+        <h2 class="ch-title" id="contact-title" data-reveal="mask">Register your interest</h2>
       </div>
       <div class="g12 contact">
-        <div class="panel" aria-live="polite">
+        <div class="panel" aria-live="polite" data-reveal>
           <form class="form" id="enq-form" novalidate>
-            <ol class="steps" aria-label="Các bước">
-              <li aria-current="step"><b>1</b><span>Bạn</span></li>
-              <li><b>2</b><span>Liên lạc</span></li>
-              <li><b>3</b><span>Nhu cầu</span></li>
+            <ol class="steps" aria-label="Steps">
+              <li aria-current="step"><b>1</b><span>You</span></li>
+              <li><b>2</b><span>Contact</span></li>
+              <li><b>3</b><span>Enquiry</span></li>
             </ol>
             <div class="ds-banner ds-banner--danger" role="alert" data-net-error hidden>
               <svg class="ds-icon" aria-hidden="true"><use href="#ds-i-alert"/></svg>
-              <div>Chưa gửi được vì mất kết nối. Kiểm tra mạng rồi bấm gửi lại, thông tin bạn nhập vẫn còn.</div>
+              <div>Couldn’t send because you’re offline. Check your connection and send again; your details are still here.</div>
             </div>
 
             <fieldset class="step" data-step="1">
-              <legend class="ds-visually-hidden">Bước 1: Bạn</legend>
+              <legend class="ds-visually-hidden">Step 1: You</legend>
               <div class="ds-field">
-                <label class="ds-field__label" for="e-name">Họ và tên</label>
+                <label class="ds-field__label" for="e-name">Full name</label>
                 <input class="ds-field__control" id="e-name" name="name" autocomplete="name" required aria-describedby="e-name-err">
-                <p class="ds-field__error" id="e-name-err" hidden><svg class="ds-icon ds-icon--sm" aria-hidden="true"><use href="#ds-i-alert"/></svg>Nhập họ và tên để chuyên viên gọi đúng tên bạn.</p>
+                <p class="ds-field__error" id="e-name-err" hidden><svg class="ds-icon ds-icon--sm" aria-hidden="true"><use href="#ds-i-alert"/></svg>Enter your full name so our consultant knows who to ask for.</p>
               </div>
-              <div class="form-actions"><button class="ds-button ds-button--primary ds-button--lg" type="button" data-next>Tiếp tục</button></div>
+              <div class="form-actions"><button class="ds-button ds-button--primary ds-button--lg" type="button" data-next>Continue</button></div>
             </fieldset>
 
             <fieldset class="step" data-step="2" hidden>
-              <legend class="ds-visually-hidden">Bước 2: Liên lạc</legend>
-              <div class="choice" role="radiogroup" aria-label="Cách liên lạc">
-                <label class="ds-check ds-check--radio"><input type="radio" name="via" value="call" checked><span class="ds-check__box" aria-hidden="true"></span><span>Gọi điện</span></label>
+              <legend class="ds-visually-hidden">Step 2: Contact</legend>
+              <div class="choice" role="radiogroup" aria-label="How should we reach you">
+                <label class="ds-check ds-check--radio"><input type="radio" name="via" value="call" checked><span class="ds-check__box" aria-hidden="true"></span><span>Phone call</span></label>
                 <label class="ds-check ds-check--radio"><input type="radio" name="via" value="email"><span class="ds-check__box" aria-hidden="true"></span><span>Email</span></label>
               </div>
               <div class="ds-field" data-via="call">
-                <label class="ds-field__label" for="e-phone">Số điện thoại</label>
+                <label class="ds-field__label" for="e-phone">Phone number</label>
                 <input class="ds-field__control" id="e-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" aria-describedby="e-phone-err">
-                <p class="ds-field__error" id="e-phone-err" hidden><svg class="ds-icon ds-icon--sm" aria-hidden="true"><use href="#ds-i-alert"/></svg>Số điện thoại cần 10 chữ số, bắt đầu bằng 0.</p>
+                <p class="ds-field__error" id="e-phone-err" hidden><svg class="ds-icon ds-icon--sm" aria-hidden="true"><use href="#ds-i-alert"/></svg>Phone numbers have 10 digits and start with 0.</p>
               </div>
               <div class="ds-field" data-via="email" hidden>
                 <label class="ds-field__label" for="e-email">Email</label>
                 <input class="ds-field__control" id="e-email" name="email" type="email" inputmode="email" autocomplete="email" aria-describedby="e-email-err">
-                <p class="ds-field__error" id="e-email-err" hidden><svg class="ds-icon ds-icon--sm" aria-hidden="true"><use href="#ds-i-alert"/></svg>Email chưa đúng dạng, ví dụ ten@gmail.com.</p>
+                <p class="ds-field__error" id="e-email-err" hidden><svg class="ds-icon ds-icon--sm" aria-hidden="true"><use href="#ds-i-alert"/></svg>Enter a valid email, for example name@gmail.com.</p>
               </div>
               <div class="form-actions between">
-                <button class="ds-button ds-button--tertiary ds-button--lg" type="button" data-back>Quay lại</button>
-                <button class="ds-button ds-button--primary ds-button--lg" type="button" data-next>Tiếp tục</button>
+                <button class="ds-button ds-button--tertiary ds-button--lg" type="button" data-back>Back</button>
+                <button class="ds-button ds-button--primary ds-button--lg" type="button" data-next>Continue</button>
               </div>
             </fieldset>
 
             <fieldset class="step" data-step="3" hidden>
-              <legend class="ds-visually-hidden">Bước 3: Nhu cầu</legend>
+              <legend class="ds-visually-hidden">Step 3: Enquiry</legend>
               <div class="ds-field">
-                <label class="ds-field__label" for="e-need">Nhu cầu</label>
+                <label class="ds-field__label" for="e-need">I’d like to</label>
                 <div class="ds-field__wrap ds-field__wrap--select">
                   <select class="ds-field__control" id="e-need" name="need">
-                    <option value="xem">Hẹn xem nhà mẫu</option>
-                    <option value="bao-gia">Nhận bảng giá chi tiết</option>
-                    <option value="tu-van">Tư vấn chọn căn</option>
+                    <option value="viewing">Request a viewing</option>
+                    <option value="pricing">Get detailed pricing</option>
+                    <option value="advice">Get help choosing a home</option>
                   </select>
                 </div>
               </div>
-              <div class="ds-field" data-need-field="xem">
-                <label class="ds-field__label" for="e-day">Ngày muốn xem</label>
+              <div class="ds-field" data-need-field="viewing">
+                <label class="ds-field__label" for="e-day">Preferred day</label>
                 <div class="ds-field__wrap ds-field__wrap--select">
                   <select class="ds-field__control" id="e-day" name="day">
-                    <option>Thứ Bảy, 14/11</option>
-                    <option>Chủ Nhật, 15/11</option>
-                    <option>Thứ Bảy, 21/11</option>
-                    <option>Chủ Nhật, 22/11</option>
+                    <option>Saturday 14 November</option>
+                    <option>Sunday 15 November</option>
+                    <option>Saturday 21 November</option>
+                    <option>Sunday 22 November</option>
                   </select>
                 </div>
               </div>
               <div class="ds-field">
-                <label class="ds-field__label" for="e-unit">Loại căn quan tâm</label>
+                <label class="ds-field__label" for="e-unit">Residence type</label>
                 <div class="ds-field__wrap ds-field__wrap--select">
                   <select class="ds-field__control" id="e-unit" name="unit">
-                    <option value="chua">Chưa chọn</option>
-                    <option value="vuon">Căn sân vườn</option>
-                    <option value="tieu-chuan">Căn tiêu chuẩn</option>
+                    <option value="unsure">Not sure yet</option>
+                    <option value="garden">Garden residence</option>
+                    <option value="standard">Standard residence</option>
                     <option value="penthouse">Penthouse</option>
                   </select>
                 </div>
               </div>
               <div class="ds-field">
-                <label class="ds-field__label" for="e-msg">Lời nhắn <span class="opt">(không bắt buộc)</span></label>
+                <label class="ds-field__label" for="e-msg">Message <span class="opt">(optional)</span></label>
                 <textarea class="ds-field__control" id="e-msg" name="msg" rows="3"></textarea>
               </div>
               <div class="form-actions between">
-                <button class="ds-button ds-button--tertiary ds-button--lg" type="button" data-back>Quay lại</button>
-                <button class="ds-button ds-button--primary ds-button--lg" type="submit">Gửi đăng ký</button>
+                <button class="ds-button ds-button--tertiary ds-button--lg" type="button" data-back>Back</button>
+                <button class="ds-button ds-button--primary ds-button--lg" type="submit">Send enquiry</button>
               </div>
             </fieldset>
           </form>
 
           <div class="done" id="enq-done" hidden tabindex="-1">
             <svg class="ds-icon done__icon" aria-hidden="true"><use href="#ds-i-check-circle"/></svg>
-            <h3>Đã nhận đăng ký</h3>
+            <h3>Enquiry received</h3>
             <dl class="summary">
-              <dt>Họ và tên</dt><dd data-out="name"></dd>
-              <dt>Liên lạc qua</dt><dd data-out="contact"></dd>
-              <dt>Nhu cầu</dt><dd data-out="need"></dd>
-              <dt>Loại căn</dt><dd data-out="unit"></dd>
+              <dt>Name</dt><dd data-out="name"></dd>
+              <dt>Contact via</dt><dd data-out="contact"></dd>
+              <dt>Enquiry</dt><dd data-out="need"></dd>
+              <dt>Residence</dt><dd data-out="unit"></dd>
             </dl>
-            <p data-out="next">Chuyên viên sẽ liên lạc trong giờ làm việc để xác nhận.</p>
+            <p data-out="next">A consultant will be in touch during business hours to confirm.</p>
             <div class="form-actions">
-              <button class="ds-button ds-button--secondary" type="button" data-edit-enq>Sửa thông tin</button>
+              <button class="ds-button ds-button--secondary" type="button" data-edit-enq>Edit details</button>
             </div>
           </div>
         </div>
 
-        <aside class="contact__side" aria-label="Liên hệ trực tiếp">
+        <aside class="contact__side" aria-label="Contact us directly" data-reveal style="--d:120ms">
           <div class="side-block">
-            <h3>Gọi chuyên viên</h3>
-            <div class="agent"><b>Trần Minh Khoa</b><a href="tel:0901234567"><svg class="ds-icon ds-icon--sm" aria-hidden="true"><use href="#ds-i-phone"/></svg>0901 234 567</a></div>
-            <div class="agent"><b>Lê Thu Hà</b><a href="tel:0902345678"><svg class="ds-icon ds-icon--sm" aria-hidden="true"><use href="#ds-i-phone"/></svg>0902 345 678</a></div>
+            <h3>Call a consultant</h3>
+            <div class="agent"><b>Tran Minh Khoa</b><a href="tel:0901234567"><svg class="ds-icon ds-icon--sm" aria-hidden="true"><use href="#ds-i-phone"/></svg>0901 234 567</a></div>
+            <div class="agent"><b>Le Thu Ha</b><a href="tel:0902345678"><svg class="ds-icon ds-icon--sm" aria-hidden="true"><use href="#ds-i-phone"/></svg>0902 345 678</a></div>
           </div>
           <div class="side-block">
-            <h3>Nhà mẫu</h3>
-            <p>12 đường Ven Biển</p>
-            <p>Thứ Hai đến Chủ Nhật, 8:00–18:00</p>
+            <h3>Display suite</h3>
+            <p>12 Ven Bien Street</p>
+            <p>Monday to Sunday, 8am–6pm</p>
           </div>
         </aside>
       </div>
     </div>
   </section>
 
-  <!-- Lời mời cuối: nhắc lời hứa, một hành động -->
+  <!-- Final call to action -->
   <section class="photo-band on-photo" aria-labelledby="final-title">
-    <img class="photo-band__img" src="img/mo-ban.jpg" width="1024" height="683" alt="Nhà hai tầng ốp gạch xám và trắng giữa vườn cây, trời nhiều mây">
+    <img class="photo-band__img" src="img/mo-ban.jpg" width="1024" height="683" alt="Two-storey home in grey and white brick among garden trees under a cloudy sky" data-parallax>
     <div class="shade" aria-hidden="true"></div>
     <div class="photo-band__body">
       <div class="wrap g12">
-        <h2 id="final-title">Đợt mở bán cuối cùng của Lava.</h2>
-        <div class="hero__cta">
-          <a class="ds-button ds-button--primary ds-button--lg" href="#brochure">Nhận brochure</a>
+        <h2 id="final-title" data-reveal="mask">The final release of Lava.</h2>
+        <div class="hero__cta" data-reveal style="--d:200ms">
+          <a class="ds-button ds-button--primary ds-button--lg" href="#brochure">Get the brochure</a>
         </div>
       </div>
     </div>
@@ -480,11 +481,11 @@
 <footer class="ftr">
   <div class="wrap g12">
     <a class="wordmark" href="#top">LAVA</a>
-    <address>Nhà mẫu: 12 đường Ven Biển<br><a href="tel:0901234567">0901 234 567</a></address>
+    <address>Display suite: 12 Ven Bien Street<br><a href="tel:0901234567">0901 234 567</a></address>
     <p class="ftr__meta">© 2026 Lava</p>
     <div class="ftr__links">
-      <a href="chinh-sach.html#bao-mat">Chính sách bảo mật</a>
-      <a href="chinh-sach.html#dieu-khoan">Điều khoản</a>
+      <a href="legal.html#privacy">Privacy policy</a>
+      <a href="legal.html#terms">Terms</a>
     </div>
   </div>
 </footer>

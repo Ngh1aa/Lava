@@ -313,7 +313,7 @@ const step = async (name, fn) => {
       assert.equal(await p.locator('.cmp').count(), 2);
       await p.click('#sl-clear');
       await p.click('dialog.lava-dialog [data-dlg-ok]');
-      assert.equal(await p.isVisible('#sl-empty'), true);
+      await p.waitForSelector('#sl-empty', { state: 'visible', timeout: 5000 });
       assert.equal(await navCount(), 0);
     });
     await step(`${tag} reset demo data: confirm lists what goes, then everything is cleared`, async () => {

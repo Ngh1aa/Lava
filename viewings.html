@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>My viewings: Lava</title>
+<meta name="description" content="Your private viewings at the Lava display suite. Reschedule or cancel.">
+<meta name="theme-color" content="#1f2826">
+<script>document.documentElement.classList.add('js');setTimeout(function(){if(!window.__lava)document.documentElement.classList.remove('js');},3000);</script>
+<link rel="preload" href="fonts/archivo/Archivo-wdth-wght.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/brand.css">
+<link rel="stylesheet" href="css/lava.css">
+</head>
+<body class="ds-root lava" data-page="viewings">
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+  <symbol id="app-i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+  <symbol id="ds-i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+  <symbol id="ds-i-check-circle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.25"/><path d="m8.5 12.25 2.4 2.4 4.6-4.9"/></symbol>
+  <symbol id="ds-i-alert" viewBox="0 0 24 24"><path d="M12 4.5 20.5 19h-17z"/><path d="M12 10v4M12 16.75v.01"/></symbol>
+  <symbol id="ds-i-phone" viewBox="0 0 24 24"><rect x="7" y="3.5" width="10" height="17" rx="2.25"/><path d="M11 17.5h2"/></symbol>
+  <symbol id="app-i-heart" viewBox="0 0 24 24"><path d="M12 19.5s-7.25-4.4-7.25-10A4.1 4.1 0 0 1 12 7a4.1 4.1 0 0 1 7.25 2.5c0 5.6-7.25 10-7.25 10z"/></symbol>
+  <symbol id="app-i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.25"/><path d="M12 7.5V12l3 2"/></symbol>
+  <symbol id="app-i-lock" viewBox="0 0 24 24"><rect x="5.5" y="10.5" width="13" height="9.5" rx="1.5"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/></symbol>
+  <symbol id="app-i-bed" viewBox="0 0 24 24"><path d="M3.5 18.5v-12M3.5 14.5h17v4M20.5 14.5V12a2.5 2.5 0 0 0-2.5-2.5h-7v5"/><circle cx="7" cy="11.5" r="1.5"/></symbol>
+  <symbol id="app-i-bath" viewBox="0 0 24 24"><path d="M3.5 12h17v2a4.5 4.5 0 0 1-4.5 4.5H8A4.5 4.5 0 0 1 3.5 14z"/><path d="M6.5 12V6.5a2 2 0 0 1 3.8-.9M7.5 18.5l-1 2M16.5 18.5l1 2"/></symbol>
+  <symbol id="app-i-area" viewBox="0 0 24 24"><path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5"/></symbol>
+  <symbol id="app-i-back" viewBox="0 0 24 24"><path d="M19 12H5m6-6-6 6 6 6"/></symbol>
+  <symbol id="app-i-prev" viewBox="0 0 24 24"><path d="m14.5 6-6 6 6 6"/></symbol>
+  <symbol id="app-i-next" viewBox="0 0 24 24"><path d="m9.5 6 6 6-6 6"/></symbol>
+  <symbol id="app-i-calendar" viewBox="0 0 24 24"><rect x="4" y="5.5" width="16" height="14.5" rx="1.5"/><path d="M4 10h16M8.5 3.5v4M15.5 3.5v4"/></symbol>
+  <symbol id="app-i-filter" viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></symbol>
+  <symbol id="app-i-pin" viewBox="0 0 24 24"><path d="M12 20.5s-6.25-5.9-6.25-11a6.25 6.25 0 0 1 12.5 0c0 5.1-6.25 11-6.25 11z"/><circle cx="12" cy="9.5" r="2.25"/></symbol>
+  <symbol id="app-i-check" viewBox="0 0 24 24"><path d="m5.5 12.5 4 4 9-9.5"/></symbol>
+</svg>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="hdr is-solid" id="hdr">
+  <div class="wrap hdr__in">
+    <a class="wordmark" href="index.html" aria-label="Lava, home">LAVA</a>
+    <nav class="nav" aria-label="Main">
+      <a href="residences.html">Residences</a>
+      <a href="location.html">Location</a>
+      <a href="developer.html">Developer</a>
+      <a href="index.html#contact">Contact</a>
+      <a href="shortlist.html">Shortlist<span class="nav__count" data-shortlist-count hidden>0</span></a>
+      <a href="viewings.html" aria-current="page">My viewings</a>
+    </nav>
+    <div class="hdr__cta">
+      <a class="ds-button ds-button--primary" href="book.html">Book a viewing</a>
+    </div>
+    <button class="icon-btn menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mmenu"><svg class="ds-icon" aria-hidden="true"><use href="#app-i-menu"/></svg></button>
+  </div>
+</header>
+
+<div class="mmenu" id="mmenu" role="dialog" aria-modal="true" aria-label="Menu" hidden>
+  <div class="mmenu__top">
+    <a class="wordmark" href="index.html">LAVA</a>
+    <button class="icon-btn" type="button" aria-label="Close menu" data-close-menu><svg class="ds-icon" aria-hidden="true"><use href="#ds-i-x"/></svg></button>
+  </div>
+  <nav aria-label="Mobile">
+    <a href="residences.html"><span>01</span>Residences</a>
+    <a href="location.html"><span>02</span>Location</a>
+    <a href="developer.html"><span>03</span>Developer</a>
+    <a href="index.html#contact"><span>04</span>Contact</a>
+    <a href="shortlist.html"><span>05</span>Shortlist<span class="nav__count" data-shortlist-count hidden>0</span></a>
+    <a href="viewings.html" aria-current="page"><span>06</span>My viewings</a>
+  </nav>
+  <div class="hero__cta on-photo">
+    <a class="ds-button ds-button--primary ds-button--lg" href="book.html">Book a viewing</a>
+    <a class="ds-button ds-button--secondary ds-button--lg" href="index.html#brochure">Get the brochure</a>
+  </div>
+</div>
+
+<main id="main" class="page">
+  <div class="wrap">
+    <div class="page-head page-head--actions">
+      <h1 class="page-title" data-reveal="mask">My viewings</h1>
+      <div class="page-head__actions" id="vw-actions" hidden>
+        <a class="ds-button ds-button--primary" href="book.html">Book a viewing</a>
+      </div>
+    </div>
+
+    <div class="g12 vw-layout">
+      <div class="vw-main">
+        <p class="listing__count" id="vw-count" aria-live="polite"></p>
+        <ul class="vw-list" id="vw-list"></ul>
+        <div class="empty empty--page" id="vw-empty" hidden>
+          <svg class="ds-icon empty__icon" aria-hidden="true"><use href="#app-i-calendar"/></svg>
+          <h2>No viewings booked</h2>
+          <a class="ds-button ds-button--primary ds-button--lg" href="book.html">Book a viewing</a>
+        </div>
+      </div>
+      <aside class="vw-side" aria-label="Display suite">
+        <div class="side-block">
+          <h2 class="side-title">Display suite</h2>
+          <p>12 Ven Bien Street</p>
+          <p>Monday to Sunday, 8am–6pm</p>
+          <div class="agent"><b>Tran Minh Khoa</b><a href="tel:0901234567"><svg class="ds-icon ds-icon--sm" aria-hidden="true"><use href="#ds-i-phone"/></svg>0901 234 567</a></div>
+        </div>
+        <div class="side-block">
+          <h2 class="side-title">Getting there</h2>
+          <p>Four minutes’ drive from the beach, with visitor parking at the Block A entrance.</p>
+          <a class="ds-button ds-button--secondary" href="location.html">See the location</a>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<footer class="ftr">
+  <div class="wrap g12">
+    <a class="wordmark" href="index.html">LAVA</a>
+    <address>Display suite: 12 Ven Bien Street<br>Monday to Sunday, 8am–6pm<br><a href="tel:0901234567">0901 234 567</a></address>
+    <nav class="ftr__nav" aria-label="Footer">
+      <a href="residences.html">Residences</a>
+      <a href="book.html">Book a viewing</a>
+      <a href="viewings.html">My viewings</a>
+      <a href="shortlist.html">Shortlist</a>
+      <a href="location.html">Location</a>
+      <a href="developer.html">Developer</a>
+    </nav>
+    <div class="ftr__links">
+      <a href="legal.html#privacy">Privacy policy</a>
+      <a href="legal.html#terms">Terms</a>
+      <button class="ftr__reset" type="button" data-reset-demo>Reset demo data</button>
+    </div>
+    <p class="ftr__meta">© 2026 Lava</p>
+  </div>
+</footer>
+
+<script src="js/data.js" defer></script>
+<script src="js/app.js" defer></script>
+<script src="js/viewings.js" defer></script>
+<script src="js/lava.js" defer></script>
+</body>
+</html>

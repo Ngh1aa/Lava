@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Location and neighbourhood: Lava</title>
+<meta name="description" content="Beach, school, hospital and city centre travel times from Lava.">
+<meta name="theme-color" content="#1f2826">
+<script>document.documentElement.classList.add('js');setTimeout(function(){if(!window.__lava)document.documentElement.classList.remove('js');},3000);</script>
+<link rel="preload" href="fonts/archivo/Archivo-wdth-wght.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/brand.css">
+<link rel="stylesheet" href="css/lava.css">
+</head>
+<body class="ds-root lava" data-page="location">
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+  <symbol id="app-i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+  <symbol id="ds-i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+  <symbol id="ds-i-check-circle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.25"/><path d="m8.5 12.25 2.4 2.4 4.6-4.9"/></symbol>
+  <symbol id="ds-i-alert" viewBox="0 0 24 24"><path d="M12 4.5 20.5 19h-17z"/><path d="M12 10v4M12 16.75v.01"/></symbol>
+  <symbol id="ds-i-phone" viewBox="0 0 24 24"><rect x="7" y="3.5" width="10" height="17" rx="2.25"/><path d="M11 17.5h2"/></symbol>
+  <symbol id="app-i-heart" viewBox="0 0 24 24"><path d="M12 19.5s-7.25-4.4-7.25-10A4.1 4.1 0 0 1 12 7a4.1 4.1 0 0 1 7.25 2.5c0 5.6-7.25 10-7.25 10z"/></symbol>
+  <symbol id="app-i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.25"/><path d="M12 7.5V12l3 2"/></symbol>
+  <symbol id="app-i-lock" viewBox="0 0 24 24"><rect x="5.5" y="10.5" width="13" height="9.5" rx="1.5"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/></symbol>
+  <symbol id="app-i-bed" viewBox="0 0 24 24"><path d="M3.5 18.5v-12M3.5 14.5h17v4M20.5 14.5V12a2.5 2.5 0 0 0-2.5-2.5h-7v5"/><circle cx="7" cy="11.5" r="1.5"/></symbol>
+  <symbol id="app-i-bath" viewBox="0 0 24 24"><path d="M3.5 12h17v2a4.5 4.5 0 0 1-4.5 4.5H8A4.5 4.5 0 0 1 3.5 14z"/><path d="M6.5 12V6.5a2 2 0 0 1 3.8-.9M7.5 18.5l-1 2M16.5 18.5l1 2"/></symbol>
+  <symbol id="app-i-area" viewBox="0 0 24 24"><path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5"/></symbol>
+  <symbol id="app-i-back" viewBox="0 0 24 24"><path d="M19 12H5m6-6-6 6 6 6"/></symbol>
+  <symbol id="app-i-prev" viewBox="0 0 24 24"><path d="m14.5 6-6 6 6 6"/></symbol>
+  <symbol id="app-i-next" viewBox="0 0 24 24"><path d="m9.5 6 6 6-6 6"/></symbol>
+  <symbol id="app-i-calendar" viewBox="0 0 24 24"><rect x="4" y="5.5" width="16" height="14.5" rx="1.5"/><path d="M4 10h16M8.5 3.5v4M15.5 3.5v4"/></symbol>
+  <symbol id="app-i-filter" viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></symbol>
+  <symbol id="app-i-pin" viewBox="0 0 24 24"><path d="M12 20.5s-6.25-5.9-6.25-11a6.25 6.25 0 0 1 12.5 0c0 5.1-6.25 11-6.25 11z"/><circle cx="12" cy="9.5" r="2.25"/></symbol>
+  <symbol id="app-i-check" viewBox="0 0 24 24"><path d="m5.5 12.5 4 4 9-9.5"/></symbol>
+</svg>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="hdr is-solid" id="hdr">
+  <div class="wrap hdr__in">
+    <a class="wordmark" href="index.html" aria-label="Lava, home">LAVA</a>
+    <nav class="nav" aria-label="Main">
+      <a href="residences.html">Residences</a>
+      <a href="location.html" aria-current="page">Location</a>
+      <a href="developer.html">Developer</a>
+      <a href="index.html#contact">Contact</a>
+      <a href="shortlist.html">Shortlist<span class="nav__count" data-shortlist-count hidden>0</span></a>
+      <a href="viewings.html">My viewings</a>
+    </nav>
+    <div class="hdr__cta">
+      <a class="ds-button ds-button--primary" href="book.html">Book a viewing</a>
+    </div>
+    <button class="icon-btn menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mmenu"><svg class="ds-icon" aria-hidden="true"><use href="#app-i-menu"/></svg></button>
+  </div>
+</header>
+
+<div class="mmenu" id="mmenu" role="dialog" aria-modal="true" aria-label="Menu" hidden>
+  <div class="mmenu__top">
+    <a class="wordmark" href="index.html">LAVA</a>
+    <button class="icon-btn" type="button" aria-label="Close menu" data-close-menu><svg class="ds-icon" aria-hidden="true"><use href="#ds-i-x"/></svg></button>
+  </div>
+  <nav aria-label="Mobile">
+    <a href="residences.html"><span>01</span>Residences</a>
+    <a href="location.html" aria-current="page"><span>02</span>Location</a>
+    <a href="developer.html"><span>03</span>Developer</a>
+    <a href="index.html#contact"><span>04</span>Contact</a>
+    <a href="shortlist.html"><span>05</span>Shortlist<span class="nav__count" data-shortlist-count hidden>0</span></a>
+    <a href="viewings.html"><span>06</span>My viewings</a>
+  </nav>
+  <div class="hero__cta on-photo">
+    <a class="ds-button ds-button--primary ds-button--lg" href="book.html">Book a viewing</a>
+    <a class="ds-button ds-button--secondary ds-button--lg" href="index.html#brochure">Get the brochure</a>
+  </div>
+</div>
+
+<main id="main" class="page">
+  <div class="wrap">
+    <div class="g12 page-head">
+      <h1 class="page-title" data-reveal="mask">Everything familiar, still close</h1>
+    </div>
+
+    <div class="g12 area">
+      <figure class="plan area__map" role="group" aria-label="Neighbourhood map" data-reveal="plan">
+        <svg viewBox="0 0 800 600" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false">
+          <g>
+            <ellipse class="contour" cx="120" cy="110" rx="70" ry="44" pathLength="1"/>
+            <ellipse class="contour" cx="120" cy="110" rx="130" ry="84" pathLength="1"/>
+            <ellipse class="contour" cx="110" cy="120" rx="200" ry="130" pathLength="1"/>
+            <ellipse class="contour" cx="100" cy="130" rx="280" ry="180" pathLength="1"/>
+            <ellipse class="contour" cx="90" cy="140" rx="360" ry="232" pathLength="1"/>
+            <ellipse class="contour" cx="80" cy="150" rx="440" ry="284" pathLength="1"/>
+          </g>
+          <path class="water" d="M640 0 C600 120 660 220 610 330 C570 420 640 510 600 600 H800 V0 Z"/>
+          <path class="walk" d="M40 470 C200 440 320 400 420 330 S560 210 640 120"/>
+          <path class="road" d="M0 380 H520 C560 380 580 360 590 330"/>
+          <path class="road" d="M300 600 V380"/>
+          <path class="road" d="M300 380 C300 260 220 180 120 120 L0 60"/>
+          <rect class="bldg lava-site" x="330" y="300" width="96" height="60" rx="2"/>
+          <text class="label label--strong" x="378" y="335" text-anchor="middle">LAVA</text>
+          <text class="label" x="700" y="560" text-anchor="middle">East Sea</text>
+          <text class="label" x="30" y="370">To city centre</text>
+        </svg>
+        <button class="dot" type="button" style="left:79%;top:46%" data-place="0" aria-pressed="true" aria-label="1 Beach"><span>1</span></button>
+        <button class="dot" type="button" style="left:62%;top:40%" data-place="1" aria-pressed="false" aria-label="2 Seafood market"><span>2</span></button>
+        <button class="dot" type="button" style="left:44%;top:78%" data-place="2" aria-pressed="false" aria-label="3 Bilingual school"><span>3</span></button>
+        <button class="dot" type="button" style="left:30%;top:56%" data-place="3" aria-pressed="false" aria-label="4 Supermarket"><span>4</span></button>
+        <button class="dot" type="button" style="left:24%;top:28%" data-place="4" aria-pressed="false" aria-label="5 General hospital"><span>5</span></button>
+        <button class="dot" type="button" style="left:8%;top:12%" data-place="5" aria-pressed="false" aria-label="6 City centre"><span>6</span></button>
+      </figure>
+
+      <div class="amen area__side" data-reveal style="--d:120ms">
+        <ul class="amen__list">
+          <li><button class="amen__btn" type="button" data-place="0" aria-pressed="true"><b>1</b>Beach<span class="amen__min">4 min</span></button></li>
+          <li><button class="amen__btn" type="button" data-place="1" aria-pressed="false"><b>2</b>Seafood market<span class="amen__min">6 min</span></button></li>
+          <li><button class="amen__btn" type="button" data-place="2" aria-pressed="false"><b>3</b>Bilingual school<span class="amen__min">8 min</span></button></li>
+          <li><button class="amen__btn" type="button" data-place="3" aria-pressed="false"><b>4</b>Supermarket<span class="amen__min">9 min</span></button></li>
+          <li><button class="amen__btn" type="button" data-place="4" aria-pressed="false"><b>5</b>General hospital<span class="amen__min">10 min</span></button></li>
+          <li><button class="amen__btn" type="button" data-place="5" aria-pressed="false"><b>6</b>City centre<span class="amen__min">15 min</span></button></li>
+        </ul>
+        <div class="amen__detail" aria-live="polite">
+          <h2 class="amen__name" id="place-name">Beach</h2>
+          <p id="place-desc">A long sandy beach with lifeguards in season and a coastal path back to the garden loop.</p>
+          <p class="amen__meta" id="place-meta"><span>4 min by car</span><span>18 min on foot</span></p>
+        </div>
+      </div>
+    </div>
+
+    <section class="g12 getting" aria-labelledby="getting-title">
+      <figure class="getting__img" data-reveal="img">
+        <img src="img/vi-tri-bien.jpg" width="1024" height="576" alt="Beach at sunset, the outgoing tide leaving bright streaks on the sand, a headland in the distance" loading="lazy">
+      </figure>
+      <div class="getting__body">
+        <h2 class="section-title" id="getting-title">Getting here</h2>
+        <ul class="rows rows--plain">
+          <li><h3>By car</h3><p>Coast Road exit at Ven Bien Street, visitor parking at the Block A entrance.</p><span class="metric">15 min</span></li>
+          <li><h3>By bus</h3><p>Route 12 from the city centre stops outside the display suite every 20 minutes.</p><span class="metric">25 min</span></li>
+          <li><h3>From the airport</h3><p>Coast Road all the way, no tolls.</p><span class="metric">35 min</span></li>
+        </ul>
+        <div class="form-actions">
+          <a class="ds-button ds-button--primary ds-button--lg" href="book.html">Book a viewing</a>
+          <a class="ds-button ds-button--secondary ds-button--lg" href="residences.html">Browse residences</a>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="ftr">
+  <div class="wrap g12">
+    <a class="wordmark" href="index.html">LAVA</a>
+    <address>Display suite: 12 Ven Bien Street<br>Monday to Sunday, 8am–6pm<br><a href="tel:0901234567">0901 234 567</a></address>
+    <nav class="ftr__nav" aria-label="Footer">
+      <a href="residences.html">Residences</a>
+      <a href="book.html">Book a viewing</a>
+      <a href="viewings.html">My viewings</a>
+      <a href="shortlist.html">Shortlist</a>
+      <a href="location.html">Location</a>
+      <a href="developer.html">Developer</a>
+    </nav>
+    <div class="ftr__links">
+      <a href="legal.html#privacy">Privacy policy</a>
+      <a href="legal.html#terms">Terms</a>
+      <button class="ftr__reset" type="button" data-reset-demo>Reset demo data</button>
+    </div>
+    <p class="ftr__meta">© 2026 Lava</p>
+  </div>
+</footer>
+
+<script src="js/data.js" defer></script>
+<script src="js/app.js" defer></script>
+<script src="js/location.js" defer></script>
+<script src="js/lava.js" defer></script>
+</body>
+</html>

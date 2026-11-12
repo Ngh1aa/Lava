@@ -1,6 +1,7 @@
-/* Lava: page behaviour and motion. No external libraries.
- * Form submission is SIMULATED (no backend yet): waits 900 ms then succeeds; offline fails and
- * keeps the data. See docs/DESIGN-NOTES.md, "Simulated parts". */
+/* Lava: motion, header, mobile menu and the home page (tabs, amenities, brochure, enquiry).
+ * Loaded last on every page. No external libraries.
+ * Form submission is SIMULATED (no server): waits 900 ms, then saves to sessionStorage through
+ * window.Lava (js/app.js); offline fails and keeps the data. See docs/DESIGN-NOTES.md. */
 (() => {
   'use strict';
   window.__lava = true; // tells the <head> failsafe that JS is running
@@ -81,7 +82,7 @@
   }
 
   /* Current chapter in the nav */
-  const navLinks = $$('.nav a');
+  const navLinks = $$('.nav a[href^="#"]');
   if (navLinks.length && 'IntersectionObserver' in window) {
     const byId = new Map(navLinks.map((a) => [a.getAttribute('href').slice(1), a]));
     const spy = new IntersectionObserver((entries) => {
@@ -238,6 +239,7 @@
       busy(btn, true, 'Sending…');
       try {
         await fakeSend();
+        if (window.Lava) window.Lava.store.enquiries.add({ ref: window.Lava.newRef(), kind: 'brochure', name: name.value.trim(), email: email.value.trim(), phone: digits(phone.value), createdAt: new Date().toISOString() });
         $('[data-out="email"]', bDone).textContent = email.value.trim();
         bForm.hidden = true;
         bDone.hidden = false;
@@ -267,7 +269,7 @@
     const marks = $$('.steps li', eForm);
     const netErr = $('[data-net-error]', eForm);
     const name = $('#e-name'), phone = $('#e-phone'), email = $('#e-email');
-    const need = $('#e-need'), day = $('#e-day'), unit = $('#e-unit');
+    const need = $('#e-need'), unit = $('#e-unit');
     let cur = 1;
 
     const via = () => $('input[name="via"]:checked', eForm).value;
@@ -277,10 +279,15 @@
       phone.dataset.required = String(v === 'call');
       email.dataset.required = String(v === 'email');
     };
-    const syncNeed = () => { $('[data-need-field="viewing"]', eForm).hidden = need.value !== 'viewing'; };
     $$('input[name="via"]', eForm).forEach((r) => r.addEventListener('change', syncVia));
-    need.addEventListener('change', syncNeed);
-    syncVia(); syncNeed();
+    syncVia();
+    // Every residence can be picked by code
+    const unitGroup = $('[data-unit-options]', eForm);
+    if (unitGroup && window.Lava) {
+      window.Lava.data.residences.forEach((r) => {
+        unitGroup.append(new Option(`${r.code}, ${window.Lava.data.TYPES[r.type].short.toLowerCase()}`, r.id));
+      });
+    }
 
     const show = (n, focus = true) => {
       const changed = n !== cur;
@@ -326,14 +333,17 @@
       try {
         await fakeSend();
         const isCall = via() === 'call';
+        const contact = isCall ? `Phone ${digits(phone.value)}` : email.value.trim();
+        const ref = window.Lava ? window.Lava.newRef() : '';
+        if (window.Lava) {
+          window.Lava.store.enquiries.add({ ref, kind: 'enquiry', name: name.value.trim(), via: via(), contact, need: need.value, unit: unit.value, msg: $('#e-msg').value.trim(), createdAt: new Date().toISOString() });
+        }
         const out = (k, v) => { $(`[data-out="${k}"]`, eDone).textContent = v; };
+        out('ref', ref);
         out('name', name.value.trim());
-        out('contact', isCall ? `Phone ${digits(phone.value)}` : email.value.trim());
-        out('need', need.value === 'viewing' ? `${need.selectedOptions[0].text}, ${day.value}` : need.selectedOptions[0].text);
+        out('contact', contact);
+        out('need', need.selectedOptions[0].text);
         out('unit', unit.selectedOptions[0].text);
-        out('next', isCall
-          ? 'A consultant will call during business hours to confirm.'
-          : 'A consultant will reply by email during business hours.');
         eForm.hidden = true;
         eDone.hidden = false;
         enter(eDone);
@@ -351,19 +361,13 @@
       show(3);
     });
 
-    /* "Request a viewing" and "Ask about this home" anywhere on the page pre-fill the enquiry.
-       Starts at the first step still missing data and never clears what was typed. */
-    $$('a[data-need]').forEach((a) => a.addEventListener('click', () => {
-      need.value = a.dataset.need;
-      if (a.dataset.unit) unit.value = a.dataset.unit;
-      syncNeed();
-      if (!eDone.hidden) { eDone.hidden = true; eForm.hidden = false; }
-      const start = !name.value.trim() ? 1 : !(via() === 'call' ? phone : email).value.trim() ? 2 : 3;
-      show(start, false);
-      setTimeout(() => {
-        const t = start === 1 ? name : start === 2 ? $('input[name="via"]:checked', eForm) : need;
-        t.focus({ preventScroll: true });
-      }, reduceMotion ? 0 : 450);
-    }));
+    /* "Ask a question" on a residence page links to index.html?ask=<id>#contact:
+       pre-select that residence and start at the first step still missing data. */
+    const ask = new URLSearchParams(window.location.search).get('ask');
+    if (ask && window.Lava && window.Lava.byId(ask)) {
+      unit.value = window.Lava.byId(ask).id;
+      need.value = 'advice';
+      show(1, false);
+    }
   }
 })();

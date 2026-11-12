@@ -1,6 +1,62 @@
 # Ghi chú thiết kế và bàn giao
 
-## Cập nhật 12/11/2026: tiếng Anh, font Archivo, chuyển động
+## Cập nhật 12/11/2026 (2): prototype nhiều trang
+
+Theo yêu cầu chủ repo: biến landing page thành website bán nhà nhiều trang, chỉ thiếu backend. Nhánh
+`feature/multipage-prototype`. Danh sách trang và luồng: [README](../README.md).
+
+**Kiến trúc thông tin.** Nav: Residences, Location, Developer, Contact (form trên trang chủ), Shortlist (có số
+đếm), My viewings; nút chính Book a viewing. Mọi nút và link dẫn tới trang hoặc trạng thái thật; test kiểm
+không còn `href="#"`. Header, menu điện thoại và footer giống nhau ở 9 trang.
+
+**Dữ liệu.** Không server. `js/data.js` là nguồn dữ liệu mẫu duy nhất. Dữ liệu của người xem ở
+`sessionStorage` (`lava.v1`: shortlist, bookings, enquiries; `lava.draft.book`; `lava.note.list` là URL danh sách
+để breadcrumb quay về đúng bộ lọc). "Reset demo data" ở footer xoá hết sau hộp xác nhận. Giờ đã kín là mẫu cố
+định theo hash ngày + giờ (khoảng 30%) cộng các giờ người xem đã đặt; ngày xem là 14 ngày kể từ ngày mai theo
+đồng hồ máy.
+
+**Lệch khỏi TASTE có chủ đích.** AGENTS.md cấm ghi chú bản mẫu trên màn; chủ repo yêu cầu trực tiếp màn xác
+nhận phải trung thực, nên ba màn kết quả (brochure, đăng ký, đặt lịch) có một dòng "This is a prototype; nothing
+was sent." và trang Privacy nói rõ dữ liệu chỉ ở sessionStorage. Nút "Reset demo data" cũng theo yêu cầu.
+
+**Kế hoạch thị giác** (giữ ADN của landing):
+
+```text
+Ngành và vật gốc:      bất động sản nhà ở cạnh biển; đá bazan, đường đồng mức, bản vẽ mặt bằng
+Một câu cảm giác:      trầm, rộng, chắc như phiến đá mài; trang con gọn như hồ sơ bán hàng
+Chữ:                   Archivo một họ; tiêu đề trang 700/112%, 36–72 px; thân 400, 17–18 / 1,6
+Màu theo vai trò:      giữ brand.css; trạng thái căn dùng badge success/warning/neutral có icon và chữ
+Hình khối:             bo 2 px mọi bề mặt, nay cả chip và badge (token ở brand.css); viền 1 px, không bóng
+Bố cục:                danh sách = bộ lọc 3 cột | lưới thẻ 9 cột; chi tiết = ảnh 7 | thông số 5 (dính),
+                       mặt bằng 8 | phòng 4; đặt lịch = form 8 | tóm tắt 4 (dính); lịch xem = danh sách 8 | phụ 3
+Card nổi bật:          không dùng
+Một điểm táo bạo:      mặt bằng SVG sinh từ diện tích và số phòng của từng căn, số phòng khớp danh sách
+Đã đối chiếu CRAFT 2:  không hero căn giữa, không ba card icon, không overline; trạng thái bằng chữ + icon
+```
+
+**Kết quả soát (12/11/2026).**
+
+- `tests/flow.test.cjs`: **45/45 PASS** (1280 sáng, 390 tối): brochure, đăng ký, lọc → chi tiết → lưu,
+  danh sách lưu (xoá, hoàn tác, xoá hết), đặt lịch đủ 4 bước (lỗi, mất mạng, xác nhận), đổi giờ, huỷ có xác
+  nhận, Reset, menu điện thoại, không link chết, không lỗi JS ở mọi trang.
+- `taste-check` ở 390/768/1280/1440, sáng và tối, `--reflow` 320, axe: **0 lỗi** ở 13 trang/trạng thái.
+  Cảnh báo còn lại: `subtitle` ở đoạn nội dung thật (mô tả vật liệu, cách đến, chủ đầu tư, điều khoản),
+  tiêu đề ngắn xuống dòng ở 390 px, bộ đếm "1 / 4" trên ảnh bị coi là card nổi bật mỏng (là thanh điều khiển ảnh).
+  Danh sách lưu và lịch xem chỉ soát được ở trạng thái rỗng (checker không nạp sessionStorage); trạng thái có
+  dữ liệu đã chụp và xem bằng mắt ở 390 và 1440.
+- `static-check` 0 lỗi ở 9 trang; `check-brand` 0 lỗi.
+- Lỗi tìm thấy khi nhìn ảnh và đã sửa: tên căn gãy "Residence B-/104" khi badge nằm cạnh tên (chuyển badge lên
+  ảnh); giá tràn 5 px ở 320 px trong danh sách chọn căn; ô lọc "2" chỉ rộng 43 px.
+
+**Dữ liệu mẫu thêm** (không phải thông tin thật): 11 căn và giá, mã căn, hướng, số chỗ đỗ xe; tên chủ đầu tư
+"Basalt Coast Development", số liệu 2009/1400/9, tiến độ, tên các đơn vị trong đội dự án, tuyến xe buýt, thời
+gian di chuyển; mặt bằng là sơ đồ minh hoạ, không theo bản vẽ thật. Không thêm ảnh mới.
+
+**Chưa làm.** Backend, email thật, lịch thật của chuyên viên, chống đặt trùng giữa nhiều người, tải brochure
+PDF, file lịch `.ics`, kiểm trên thiết bị thật và trình đọc màn hình.
+
+
+## Cập nhật 12/11/2026 (1): tiếng Anh, font Archivo, chuyển động
 
 Theo yêu cầu chủ repo:
 

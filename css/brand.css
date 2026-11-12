@@ -1,0 +1,149 @@
+/* Lava: lớp thương hiệu.
+ *
+ * Nạp SAU tokens.css và components.css. Chỉ ghi đè token ngữ nghĩa. Màu nào cũng là ĐỀ XUẤT
+ * (brand mức D, xem docs/BRAND-BRIEF.md). Soát bằng:
+ *
+ *   python design-system/scripts/check-brand.py <Lava>/css/brand.css   (chạy từ uiux-ai-workspace)
+ *
+ * Vật gốc: đá bazan (mặt đá xám xanh, mạch cắt thẳng) và đường đồng mức của bản đồ địa hình.
+ */
+
+:root {
+  /* Đá bazan: một sắc xám lục rất đậm, dùng cho 5–10% diện tích */
+  --brand-900: #161d1b;
+  --brand-800: #1f2826;
+  --brand-700: #2a3532;
+  --brand-600: #34413e;
+  --brand-100: #dde3e0;
+  --brand-50: #e8ecea;
+
+  /* Nền xám đá vôi lạnh, không phải nền kem */
+  --ds-surface-page: #edeeeb;
+  --ds-surface-raised: #f8f8f6;
+  --ds-surface-sunken: #e1e3df;
+  --ds-surface-brand-subtle: var(--brand-50);
+  --ds-surface-brand-strong: var(--brand-700);
+  --ds-text-primary: #1a1d1c;
+  --ds-text-secondary: #505654;
+  --ds-text-tertiary: #5c6260;
+  --ds-text-brand: var(--brand-700);
+  --ds-text-on-brand-strong: #ffffff;
+  --ds-border-subtle: #d2d5d1;
+  --ds-border-control: #7a807d;
+  --ds-action-disabled-bg: #dcdeda;
+  --ds-action-disabled-text: #5f6562;
+  --ds-feedback-neutral-surface: #e4e6e2;
+  --ds-feedback-neutral-border: #c9ccc8;
+  --ds-feedback-neutral-text: #343937;
+  --ds-feedback-neutral-icon: #505654;
+
+  /* Hành động */
+  --ds-action-primary-bg: var(--brand-700);
+  --ds-action-primary-bg-hover: var(--brand-800);
+  --ds-action-primary-bg-pressed: var(--brand-900);
+  --ds-action-primary-text: #ffffff;
+  --ds-action-secondary-bg: #f8f8f6;
+  --ds-action-secondary-bg-hover: #eceeea;
+  --ds-action-secondary-bg-pressed: #e1e3df;
+  --ds-action-secondary-text: #1a1d1c;
+  --ds-action-secondary-border: #7a807d;
+  --ds-action-tertiary-bg-hover: var(--brand-50);
+  --ds-action-tertiary-bg-pressed: var(--brand-100);
+  --ds-action-tertiary-text: var(--brand-700);
+  --ds-action-selected-bg: var(--brand-100);
+  --ds-action-selected-text: var(--brand-900);
+  --ds-action-selected-indicator: var(--brand-700);
+  --ds-border-focus: var(--brand-700);
+
+  /* Hình khối: cắt thẳng như phiến đá, một bán kính 2px cho mọi bề mặt */
+  --ds-shape-card: 2px;
+  --ds-card-radius: 2px;
+  --ds-shape-control: 2px;
+  --ds-shape-sheet: 2px;
+  --ds-card-border: transparent;
+  --ds-elevation-raised: none;
+  --ds-size-control-sm: 44px;
+
+  /* Một họ chữ cho cả trang (TASTE.md): Source Serif 4, ba độ đậm 300/400/600 */
+  --ds-font-family-sans: "Source Serif 4", Georgia, "Times New Roman", serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --brand-strong-dark: #33403d;
+    --brand-tint-dark: #d3ddd9;
+    --ds-surface-page: #121514;
+    --ds-surface-raised: #1b1f1e;
+    --ds-surface-sunken: #252a28;
+    --ds-surface-brand-subtle: #1e2725;
+    --ds-surface-brand-strong: var(--brand-strong-dark);
+    --ds-text-primary: #ebedea;
+    --ds-text-secondary: #b2b8b5;
+    --ds-text-tertiary: #9aa09d;
+    --ds-text-brand: var(--brand-tint-dark);
+    --ds-text-on-brand-strong: #ffffff;
+    --ds-border-subtle: #2c3230;
+    --ds-border-control: #858c89;
+    --ds-action-primary-bg: var(--brand-tint-dark);
+    --ds-action-primary-bg-hover: #e2e9e6;
+    --ds-action-primary-bg-pressed: #eef2f0;
+    --ds-action-primary-text: #161d1b;
+    --ds-action-secondary-bg: #1b1f1e;
+    --ds-action-secondary-bg-hover: #252a28;
+    --ds-action-secondary-bg-pressed: #2c3230;
+    --ds-action-secondary-text: #ebedea;
+    --ds-action-secondary-border: #7c8380;
+    --ds-action-tertiary-bg-hover: #1e2725;
+    --ds-action-tertiary-bg-pressed: #273230;
+    --ds-action-tertiary-text: var(--brand-tint-dark);
+    --ds-action-selected-bg: #273230;
+    --ds-action-selected-text: #e4ebe8;
+    --ds-action-selected-indicator: var(--brand-tint-dark);
+    --ds-border-focus: var(--brand-tint-dark);
+    --ds-action-disabled-bg: #252a28;
+    --ds-action-disabled-text: #9aa09d;
+    --ds-feedback-neutral-surface: #252a28;
+    --ds-feedback-neutral-border: #3a413e;
+    --ds-feedback-neutral-text: #d8dcda;
+    --ds-feedback-neutral-icon: #b2b8b5;
+  }
+}
+
+:root[data-theme="dark"] {
+  --brand-strong-dark: #33403d;
+  --brand-tint-dark: #d3ddd9;
+  --ds-surface-page: #121514;
+  --ds-surface-raised: #1b1f1e;
+  --ds-surface-sunken: #252a28;
+  --ds-surface-brand-subtle: #1e2725;
+  --ds-surface-brand-strong: var(--brand-strong-dark);
+  --ds-text-primary: #ebedea;
+  --ds-text-secondary: #b2b8b5;
+  --ds-text-tertiary: #9aa09d;
+  --ds-text-brand: var(--brand-tint-dark);
+  --ds-text-on-brand-strong: #ffffff;
+  --ds-border-subtle: #2c3230;
+  --ds-border-control: #858c89;
+  --ds-action-primary-bg: var(--brand-tint-dark);
+  --ds-action-primary-bg-hover: #e2e9e6;
+  --ds-action-primary-bg-pressed: #eef2f0;
+  --ds-action-primary-text: #161d1b;
+  --ds-action-secondary-bg: #1b1f1e;
+  --ds-action-secondary-bg-hover: #252a28;
+  --ds-action-secondary-bg-pressed: #2c3230;
+  --ds-action-secondary-text: #ebedea;
+  --ds-action-secondary-border: #7c8380;
+  --ds-action-tertiary-bg-hover: #1e2725;
+  --ds-action-tertiary-bg-pressed: #273230;
+  --ds-action-tertiary-text: var(--brand-tint-dark);
+  --ds-action-selected-bg: #273230;
+  --ds-action-selected-text: #e4ebe8;
+  --ds-action-selected-indicator: var(--brand-tint-dark);
+  --ds-border-focus: var(--brand-tint-dark);
+  --ds-action-disabled-bg: #252a28;
+  --ds-action-disabled-text: #9aa09d;
+  --ds-feedback-neutral-surface: #252a28;
+  --ds-feedback-neutral-border: #3a413e;
+  --ds-feedback-neutral-text: #d8dcda;
+  --ds-feedback-neutral-icon: #b2b8b5;
+}

@@ -209,10 +209,8 @@
     });
   });
 
-  /* Simulated send: fails when offline */
-  const fakeSend = () => new Promise((resolve, reject) => {
-    setTimeout(() => (navigator.onLine ? resolve() : reject(new Error('offline'))), 900);
-  });
+  /* No server: Lava.send waits, then fails when offline (or when the demo tools ask it to) */
+  const fakeSend = () => (window.Lava ? window.Lava.send(900) : Promise.resolve());
   const busy = (btn, on, label) => {
     if (on) { btn.dataset.label = btn.textContent; btn.textContent = label; }
     else if (btn.dataset.label) btn.textContent = btn.dataset.label;
@@ -344,6 +342,9 @@
         out('contact', contact);
         out('need', need.selectedOptions[0].text);
         out('unit', unit.selectedOptions[0].text);
+        out('next', isCall
+          ? `Reference ${ref}. A consultant will call you on ${digits(phone.value)} within one working day.`
+          : `Reference ${ref}. We’ve emailed a copy to ${email.value.trim()}, and a consultant will reply within one working day.`);
         eForm.hidden = true;
         eDone.hidden = false;
         enter(eDone);

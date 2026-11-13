@@ -69,7 +69,7 @@ const step = async (name, fn) => {
       await p.click('#brochure-form button[type=submit]');
       await p.waitForSelector('#brochure-done:not([hidden])', { timeout: 3000 });
       assert.equal(await p.textContent('#brochure-done [data-out=email]'), 'huong@gmail.com');
-      assert.match(await p.textContent('#brochure-done'), /nothing was sent/);
+      assert.match(await p.textContent('#brochure-done'), /We’ve sent the Lava brochure to huong@gmail\.com/);
       assert.equal((await store()).enquiries[0].kind, 'brochure');
     });
     await step(`${tag} home: residence tabs and amenities plan still work`, async () => {
@@ -102,7 +102,7 @@ const step = async (name, fn) => {
       assert.match(await p.textContent('#enq-done [data-out=ref]'), /^LV-[A-Z0-9]{6}$/);
       assert.equal(await p.textContent('#enq-done [data-out=contact]'), 'Phone 0912345678');
       assert.equal(await p.textContent('#enq-done [data-out=unit]'), 'C-PH1, penthouse');
-      assert.match(await p.textContent('#enq-done'), /nothing was sent/);
+      assert.match(await p.textContent('#enq-done [data-out=next]'), /^Reference LV-[A-Z0-9]{6}\. A consultant will call you on 0912345678 within one working day\.$/);
       const e = (await store()).enquiries.find((x) => x.kind === 'enquiry');
       assert.equal(e.unit, 'c-ph1');
       assert.equal(e.msg, 'Is the pool heated?');
@@ -257,8 +257,8 @@ const step = async (name, fn) => {
       await p.waitForSelector('#book-done:not([hidden])', { timeout: 3000 });
       ref = await p.textContent('#done-summary [data-out=ref]');
       assert.match(ref, /^LV-[A-Z0-9]{6}$/);
-      assert.equal(await p.textContent('#done-title'), 'Viewing booked');
-      assert.match(await p.textContent('#book-done'), /nothing was sent/);
+      assert.equal(await p.textContent('#done-title'), 'Viewing confirmed');
+      assert.equal(await p.textContent('#done-note'), `Viewing confirmed. Reference ${ref}. We’ve emailed the details to anh@gmail.com, and your consultant will call you on 0987654321 the day before to confirm.`);
       const s = await store();
       assert.equal(s.bookings.length, 1);
       assert.equal(s.bookings[0].status, 'upcoming');
@@ -316,10 +316,13 @@ const step = async (name, fn) => {
       await p.waitForSelector('#sl-empty', { state: 'visible', timeout: 5000 });
       assert.equal(await navCount(), 0);
     });
-    await step(`${tag} reset demo data: confirm lists what goes, then everything is cleared`, async () => {
+    await step(`${tag} reset demo data (?demo=1 only): confirm lists what goes, then everything is cleared`, async () => {
       await go('residence.html?id=c-305');
+      assert.equal(await p.locator('.demo-tools, [data-reset-demo]').count(), 0);
       await p.click('#d-save');
       assert.equal(await navCount(), 1);
+      await go('residence.html?id=c-305&demo=1');
+      await p.click('.demo-tools summary');
       await p.click('[data-reset-demo]');
       const text = await p.textContent('dialog.lava-dialog');
       assert.match(text, /1 residence/);
@@ -332,6 +335,25 @@ const step = async (name, fn) => {
       assert.deepEqual([s.shortlist.length, s.bookings.length, s.enquiries.length], [0, 0, 0]);
       await go('viewings.html');
       assert.equal(await p.isVisible('#vw-empty'), true);
+      // The flag sticks for the tab, without ?demo in the URL
+      assert.equal(await p.locator('.demo-tools').count(), 1);
+    });
+    await step(`${tag} demo tools: "Fail the next request" fails one send, the retry succeeds`, async () => {
+      await go('index.html');
+      await p.click('.demo-tools summary');
+      await p.check('[data-demo-fail]');
+      await p.fill('#b-name', 'Vo Thanh Tam');
+      await p.fill('#b-email', 'tam.vo@gmail.com');
+      await p.click('#brochure-form button[type=submit]');
+      await p.waitForSelector('#brochure-form [data-net-error]:not([hidden])', { timeout: 3000 });
+      assert.equal(await p.isChecked('[data-demo-fail]'), false);
+      assert.equal(await p.inputValue('#b-email'), 'tam.vo@gmail.com');
+      assert.equal((await store()).enquiries.length, 0);
+      await p.click('#brochure-form button[type=submit]');
+      await p.waitForSelector('#brochure-done:not([hidden])', { timeout: 3000 });
+      assert.equal((await store()).enquiries.length, 1);
+      await go('index.html?demo=0');
+      assert.equal(await p.locator('.demo-tools').count(), 0);
     });
 
     if (mobile) {
@@ -348,12 +370,35 @@ const step = async (name, fn) => {
     }
 
     /* ---------- Every page loads without JS errors and has no dead links ---------- */
+    const PAGES = ['index.html', 'residences.html', 'residence.html?id=c-ph1', 'shortlist.html', 'book.html', 'viewings.html', 'location.html', 'developer.html', 'legal.html'];
     await step(`${tag} every page: no href="#" and no JS errors`, async () => {
-      for (const u of ['index.html', 'residences.html', 'residence.html?id=c-ph1', 'shortlist.html', 'book.html', 'viewings.html', 'location.html', 'developer.html', 'legal.html']) {
+      for (const u of PAGES) {
         await go(u);
         assert.equal(await p.locator('a[href="#"], a:not([href])').count(), 0, `dead link on ${u}`);
       }
       assert.deepEqual(errs, []);
+    });
+    await step(`${tag} every page: no prototype wording and no demo tools without ?demo; ?demo=1 shows them`, async () => {
+      const BAD = /prototype|demo data|demo tools|sandbox|simulat|fictional|state lab|portfolio review|nothing was sent/i;
+      for (const u of PAGES) {
+        await go(u);
+        const text = await p.evaluate(() => [document.title, document.body.innerText,
+          ...Array.from(document.querySelectorAll('[aria-label],[title],[alt]')).map((e) => `${e.getAttribute('aria-label') || ''} ${e.getAttribute('title') || ''} ${e.getAttribute('alt') || ''}`)].join('\n'));
+        const hit = text.match(BAD);
+        assert.equal(hit, null, `"${hit && hit[0]}" on ${u}`);
+        assert.equal(await p.locator('.demo-tools').count(), 0, `demo tools on ${u}`);
+        assert.match(await p.textContent('.ftr__meta'), /Concept product designed by Đỗ Anh Nghĩa\./);
+      }
+      await go('book.html?demo=1');
+      assert.equal(await p.isVisible('.demo-tools'), true);
+      await p.click('.demo-tools summary');
+      assert.equal(await p.isVisible('[data-reset-demo]'), true);
+      assert.equal(await p.isVisible('[data-demo-fail]'), true);
+      await shot('demo-tools');
+      await p.click('[data-demo-hide]');
+      assert.equal(await p.locator('.demo-tools').count(), 0);
+      await go('legal.html');
+      assert.equal(await p.locator('.demo-tools').count(), 0);
     });
     await ctx.close();
   }

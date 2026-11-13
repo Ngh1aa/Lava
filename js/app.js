@@ -1,8 +1,11 @@
-/* Lava: shared prototype layer for every page.
+/* Lava: shared layer for every page.
  *
  * There is no server. Everything the visitor creates (shortlist, viewings, enquiries) is kept in
  * sessionStorage under one key, so it survives moving between pages in the same tab and disappears
- * when the tab closes. "Reset demo data" in the footer clears it.
+ * when the tab closes.
+ *
+ * Demo tools (hidden from visitors): open any page with ?demo=1 to show a small floating panel with
+ * "Reset demo data" and "Fail the next request". The flag sticks for the tab; ?demo=0 turns it off.
  *
  * Exposes window.Lava: store, formatters, slot availability, card markup, toast and confirm dialog.
  */
@@ -63,6 +66,31 @@ window.Lava = (() => {
     note: { get: (k) => ss.get('lava.note.' + k), set: (k, v) => ss.set('lava.note.' + k, v) },
     reset: () => { ss.keys().filter((k) => k.startsWith('lava.')).forEach((k) => ss.del(k)); },
   };
+
+  /* ---------- Demo mode (?demo=1 / ?demo=0, remembered for the tab) ---------- */
+  // Keys deliberately do not start with "lava." so Reset demo data keeps the tools open.
+  const DEMO = 'lavaDemo';
+  const FAIL = 'lavaDemoFail';
+  const demoParam = new URLSearchParams(window.location.search).get('demo');
+  if (demoParam === '1') ss.set(DEMO, '1');
+  if (demoParam === '0') { ss.del(DEMO); ss.del(FAIL); }
+  const demoOn = () => ss.get(DEMO) === '1';
+
+  /* Every "send" goes through here: a short wait, then it fails when offline, or when the demo
+   * tools asked for the next request to fail (that flag is used once). */
+  const send = (ms = 800) => new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (!navigator.onLine) { reject(new Error('offline')); return; }
+      if (demoOn() && ss.get(FAIL) === '1') {
+        ss.del(FAIL);
+        const box = document.querySelector('[data-demo-fail]');
+        if (box) box.checked = false;
+        reject(new Error('failed'));
+        return;
+      }
+      resolve();
+    }, ms);
+  });
 
   /* ---------- Formatting ---------- */
   const esc = (v) => String(v ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -238,8 +266,23 @@ window.Lava = (() => {
     window.location.reload();
   };
 
+  const demoTools = () => {
+    const box = document.createElement('details');
+    box.className = 'demo-tools';
+    box.innerHTML = `<summary>Demo tools</summary>
+      <div class="demo-tools__body">
+        <label class="demo-tools__check"><input type="checkbox" data-demo-fail${ss.get(FAIL) === '1' ? ' checked' : ''}> Fail the next request</label>
+        <button class="demo-tools__btn" type="button" data-reset-demo>Reset demo data</button>
+        <button class="demo-tools__btn" type="button" data-demo-hide>Hide demo tools</button>
+      </div>`;
+    $('[data-demo-fail]', box).addEventListener('change', (e) => { if (e.target.checked) ss.set(FAIL, '1'); else ss.del(FAIL); });
+    $('[data-demo-hide]', box).addEventListener('click', () => { ss.del(DEMO); ss.del(FAIL); box.remove(); });
+    document.body.append(box);
+  };
+
   const init = () => {
     document.body.append(toastHost);
+    if (demoOn()) demoTools();
     document.addEventListener('click', (e) => {
       const save = e.target.closest('[data-save]');
       if (save) { e.preventDefault(); toggleSave(save.dataset.save); }
@@ -254,7 +297,7 @@ window.Lava = (() => {
 
   return {
     data: D, store, byId, esc, price, title, level, typeLine, dateLong, dateParts, time, plural,
-    viewingDays, slotTaken, newRef, icon, badge, img, card, facts, saveBtn, enter, toast, confirm: confirmDialog,
+    viewingDays, slotTaken, newRef, send, demo: demoOn, icon, badge, img, card, facts, saveBtn, enter, toast, confirm: confirmDialog,
     sync: syncShortlistUI, reduceMotion, $, $$,
   };
 })();

@@ -203,9 +203,7 @@
   });
 
   /* ---------- Confirm ---------- */
-  const fakeSend = () => new Promise((resolve, reject) => {
-    setTimeout(() => (navigator.onLine ? resolve() : reject(new Error('offline'))), 700);
-  });
+  const fakeSend = () => L.send(700);
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     if (st.step !== 4) return;
@@ -227,7 +225,8 @@
         L.store.bookings.add(Object.assign({ ref, status: 'upcoming', createdAt: new Date().toISOString() }, details));
         L.store.draft.clear('book');
       }
-      $('#done-title').textContent = original ? 'Viewing rescheduled' : 'Viewing booked';
+      $('#done-title').textContent = original ? 'Viewing rescheduled' : 'Viewing confirmed';
+      $('#done-note').textContent = `${original ? 'New time confirmed' : 'Viewing confirmed'}. Reference ${ref}. We’ve emailed the details to ${details.email}, and your consultant will call you on ${details.phone} the day before to confirm.`;
       $('#done-summary').innerHTML = `
         <dt>Reference</dt><dd data-out="ref">${ref}</dd>
         <dt>Day</dt><dd data-out="day">${L.dateLong(details.date)}</dd>

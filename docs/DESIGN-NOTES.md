@@ -11,13 +11,18 @@ không còn `href="#"`. Header, menu điện thoại và footer giống nhau ở
 
 **Dữ liệu.** Không server. `js/data.js` là nguồn dữ liệu mẫu duy nhất. Dữ liệu của người xem ở
 `sessionStorage` (`lava.v1`: shortlist, bookings, enquiries; `lava.draft.book`; `lava.note.list` là URL danh sách
-để breadcrumb quay về đúng bộ lọc). "Reset demo data" ở footer xoá hết sau hộp xác nhận. Giờ đã kín là mẫu cố
+để breadcrumb quay về đúng bộ lọc). "Reset demo data" (chỉ với `?demo=1`) xoá hết sau hộp xác nhận. Giờ đã kín là mẫu cố
 định theo hash ngày + giờ (khoảng 30%) cộng các giờ người xem đã đặt; ngày xem là 14 ngày kể từ ngày mai theo
 đồng hồ máy.
 
-**Lệch khỏi TASTE có chủ đích.** AGENTS.md cấm ghi chú bản mẫu trên màn; chủ repo yêu cầu trực tiếp màn xác
-nhận phải trung thực, nên ba màn kết quả (brochure, đăng ký, đặt lịch) có một dòng "This is a prototype; nothing
-was sent." và trang Privacy nói rõ dữ liệu chỉ ở sessionStorage. Nút "Reset demo data" cũng theo yêu cầu.
+**Màn xác nhận và công cụ demo (cập nhật 13/11/2026).** Ngoại lệ cũ (dòng "This is a prototype; nothing was
+sent." trên ba màn kết quả, nút "Reset demo data" ở footer) đã bỏ: site giờ đọc như sản phẩm thật, đúng
+AGENTS.md. Ba màn kết quả viết như đội bán hàng thật ("Viewing confirmed. Reference LV-…. We’ve emailed the
+details to …, and your consultant will call you on … the day before to confirm."). Trang Privacy không còn nói
+"prototype". Reset và "Fail the next request" chỉ hiện trong bảng nổi nhỏ "Demo tools" khi mở bất kỳ trang nào
+với `?demo=1` (cờ `lavaDemo` trong sessionStorage giữ cho cả tab; `?demo=0` hoặc nút "Hide demo tools" tắt).
+Mọi lần gửi đi qua `Lava.send()` trong `js/app.js`: hỏng khi mất mạng hoặc khi bật "Fail the next request" (dùng
+một lần). Footer mỗi trang giữ đúng một dòng trung thực: "Concept product designed by Đỗ Anh Nghĩa."
 
 **Kế hoạch thị giác** (giữ ADN của landing):
 
@@ -33,6 +38,10 @@ Card nổi bật:          không dùng
 Một điểm táo bạo:      mặt bằng SVG sinh từ diện tích và số phòng của từng căn, số phòng khớp danh sách
 Đã đối chiếu CRAFT 2:  không hero căn giữa, không ba card icon, không overline; trạng thái bằng chữ + icon
 ```
+
+**Kết quả soát (13/11/2026, sau lượt bỏ dấu hiệu prototype).** `tests/flow.test.cjs`: **49/49 PASS**; thêm hai
+kiểm: "Fail the next request" làm hỏng đúng một lần gửi, và không trang nào (không `?demo`) có chữ
+prototype/demo data/sandbox/simulat/fictional/state lab/portfolio review hay bảng Demo tools, còn `?demo=1` thì có.
 
 **Kết quả soát (12/11/2026).**
 

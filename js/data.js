@@ -1,5 +1,5 @@
-/* Lava: seed data for the prototype. Every number, name and price here is placeholder data
- * (see docs/DESIGN-NOTES.md, "Sample data"). Nothing in this file is written to at runtime;
+/* Lava: seed data for the site. Lava is a fictional development, so every number, name and price
+ * here is invented (see docs/DESIGN-NOTES.md). Nothing in this file is written to at runtime;
  * the visitor's own data (shortlist, viewings, enquiries) lives in sessionStorage, see js/app.js. */
 window.LAVA_DATA = (() => {
   'use strict';
@@ -57,7 +57,7 @@ window.LAVA_DATA = (() => {
     maxResidences: 3,
   };
 
-  const SUITE = { address: '12 Ven Bien Street', hours: 'Monday to Sunday, 8am–6pm', phone: '0901 234 567', tel: '0901234567' };
+  const SUITE = { address: '12 Ven Bien Street', hours: 'Monday to Sunday, 8am–6pm', phone: '028 3915 2468', tel: '02839152468' };
 
   return { IMG, TYPES, residences, STATUS, PRICE_BANDS, VIEWING, SUITE };
 })();

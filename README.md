@@ -1,6 +1,6 @@
 # Lava
 
-Website bán căn hộ thấp tầng cạnh biển Lava, dạng prototype nhiều trang, tiếng Anh. HTML/CSS/JS thuần,
+Website bán căn hộ thấp tầng cạnh biển Lava, nhiều trang, tiếng Anh. HTML/CSS/JS thuần,
 không cần build. Hoạt động như một website bán nhà thật; chỉ thiếu backend.
 Font Archivo, có chuyển động khi cuộn (tắt theo cài đặt giảm chuyển động).
 Thiết kế theo quy trình của [uiux-ai-workspace](https://github.com/Ngh1aa/uiux-ai-workspace).
@@ -31,15 +31,22 @@ py -3 -m http.server 8000 --bind 127.0.0.1
 
 Không có server. Mọi thứ người xem tạo ra (danh sách lưu, lịch xem, yêu cầu/brochure) nằm trong
 `sessionStorage` khoá `lava.v1` (bản nháp đặt lịch ở `lava.draft.book`). Giữ khi chuyển trang trong cùng tab,
-mất khi đóng tab. Nút **Reset demo data** ở footer xoá hết (có xác nhận). Gửi là mô phỏng (700–900 ms,
-mất mạng thì báo lỗi và giữ dữ liệu); màn xác nhận ghi rõ "This is a prototype; nothing was sent."
+mất khi đóng tab. Gửi là mô phỏng qua `Lava.send()` (700–900 ms, mất mạng thì báo lỗi và giữ dữ liệu);
+màn xác nhận viết như sản phẩm thật (mã `LV-…`, email và số điện thoại sẽ liên hệ).
+
+**Link cho portfolio:** https://ngh1aa.github.io/Lava/ (mở thẳng trang chủ, không cần đăng nhập).
+
+**Công cụ demo (ẩn với khách):** thêm `?demo=1` vào bất kỳ trang nào, ví dụ
+https://ngh1aa.github.io/Lava/?demo=1, để hiện bảng nổi nhỏ "Demo tools" góc dưới trái: **Reset demo data** (xoá hết,
+có xác nhận) và **Fail the next request** (lần gửi kế tiếp báo lỗi, để xem trạng thái lỗi). Cờ giữ cho cả tab;
+`?demo=0` hoặc nút "Hide demo tools" tắt.
 
 ## Cấu trúc
 
 | Đường dẫn | Là gì |
 |---|---|
 | `js/data.js` | **Dữ liệu mẫu duy nhất**: 11 căn, ảnh, trạng thái, khoảng giá, khung giờ xem |
-| `js/app.js` | Lớp chung: kho sessionStorage, định dạng, giờ trống, thẻ căn, toast, hộp xác nhận, số đếm danh sách lưu, Reset |
+| `js/app.js` | Lớp chung: kho sessionStorage, định dạng, giờ trống, thẻ căn, toast, hộp xác nhận, số đếm danh sách lưu, `send()`, công cụ demo (`?demo=1`) |
 | `js/residences.js`, `residence.js`, `shortlist.js`, `book.js`, `viewings.js`, `location.js` | Mỗi trang một file |
 | `js/lava.js` | Chuyển động, header, menu điện thoại, trang chủ (tab, tiện ích, brochure, form đăng ký) |
 | `css/tokens.css`, `css/components.css` | Token và component từ design system của uiux-ai-workspace |
@@ -57,4 +64,4 @@ Header, menu và footer giống nhau ở mọi trang; sửa thì sửa cả 9 fi
 node tests/flow.test.cjs
 ```
 
-Số liệu, giá, tên người, chủ đầu tư và đội dự án trên trang là dữ liệu mẫu.
+Lava là dự án hư cấu: số liệu, giá, tên người, chủ đầu tư và đội dự án đều là dữ liệu tự đặt. Footer mỗi trang ghi "Concept product designed by Đỗ Anh Nghĩa."

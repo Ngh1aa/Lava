@@ -111,7 +111,7 @@
         <form class="form" id="brochure-form" novalidate>
           <div class="ds-banner ds-banner--danger" role="alert" data-net-error hidden>
             <svg class="ds-icon" aria-hidden="true"><use href="#ds-i-alert"/></svg>
-            <div>Couldn’t send because you’re offline. Check your connection and send again; your details are still here.</div>
+            <div>We couldn’t send that just now. Check your connection and send again; your details are still here.</div>
           </div>
           <div class="ds-field">
             <label class="ds-field__label" for="b-name">Full name</label>
@@ -133,8 +133,8 @@
 
         <div class="done" id="brochure-done" hidden tabindex="-1">
           <svg class="ds-icon done__icon" aria-hidden="true"><use href="#ds-i-check-circle"/></svg>
-          <h3>Brochure request saved</h3>
-          <p>Saved for <strong data-out="email">your email</strong>. This is a prototype; nothing was sent.</p>
+          <h3>Brochure on its way</h3>
+          <p>We’ve sent the Lava brochure to <strong data-out="email">your email</strong>. If it isn’t in your inbox within a few minutes, check your spam folder or call us on <a href="tel:02839152468">028 3915 2468</a>.</p>
           <div class="form-actions">
             <a class="ds-button ds-button--primary" href="book.html">Book a viewing</a>
             <button class="ds-button ds-button--tertiary" type="button" data-edit-brochure>Change email</button>
@@ -363,7 +363,7 @@
             </ol>
             <div class="ds-banner ds-banner--danger" role="alert" data-net-error hidden>
               <svg class="ds-icon" aria-hidden="true"><use href="#ds-i-alert"/></svg>
-              <div>Couldn’t send because you’re offline. Check your connection and send again; your details are still here.</div>
+              <div>We couldn’t send that just now. Check your connection and send again; your details are still here.</div>
             </div>
 
             <fieldset class="step" data-step="1">
@@ -436,7 +436,7 @@
 
           <div class="done" id="enq-done" hidden tabindex="-1">
             <svg class="ds-icon done__icon" aria-hidden="true"><use href="#ds-i-check-circle"/></svg>
-            <h3>Enquiry saved</h3>
+            <h3>Enquiry received</h3>
             <dl class="summary">
               <dt>Reference</dt><dd data-out="ref"></dd>
               <dt>Name</dt><dd data-out="name"></dd>
@@ -444,7 +444,7 @@
               <dt>Enquiry</dt><dd data-out="need"></dd>
               <dt>Residence</dt><dd data-out="unit"></dd>
             </dl>
-            <p>This is a prototype; nothing was sent.</p>
+            <p data-out="next">A consultant will be in touch within one working day.</p>
             <div class="form-actions">
               <button class="ds-button ds-button--secondary" type="button" data-edit-enq>Edit and resend</button>
               <a class="ds-button ds-button--tertiary" href="residences.html">Browse residences</a>
@@ -455,8 +455,8 @@
         <aside class="contact__side" aria-label="Contact us directly" data-reveal style="--d:120ms">
           <div class="side-block">
             <h3>Call a consultant</h3>
-            <div class="agent"><b>Tran Minh Khoa</b><a href="tel:0901234567"><svg class="ds-icon ds-icon--sm" aria-hidden="true"><use href="#ds-i-phone"/></svg>0901 234 567</a></div>
-            <div class="agent"><b>Le Thu Ha</b><a href="tel:0902345678"><svg class="ds-icon ds-icon--sm" aria-hidden="true"><use href="#ds-i-phone"/></svg>0902 345 678</a></div>
+            <div class="agent"><b>Tran Minh Khoa</b><a href="tel:02839152468"><svg class="ds-icon ds-icon--sm" aria-hidden="true"><use href="#ds-i-phone"/></svg>028 3915 2468</a></div>
+            <div class="agent"><b>Le Thu Ha</b><a href="tel:0913572804"><svg class="ds-icon ds-icon--sm" aria-hidden="true"><use href="#ds-i-phone"/></svg>0913 572 804</a></div>
           </div>
           <div class="side-block">
             <h3>Private viewing</h3>
@@ -491,7 +491,7 @@
 <footer class="ftr">
   <div class="wrap g12">
     <a class="wordmark" href="index.html">LAVA</a>
-    <address>Display suite: 12 Ven Bien Street<br>Monday to Sunday, 8am–6pm<br><a href="tel:0901234567">0901 234 567</a></address>
+    <address>Display suite: 12 Ven Bien Street<br>Monday to Sunday, 8am–6pm<br><a href="tel:02839152468">028 3915 2468</a></address>
     <nav class="ftr__nav" aria-label="Footer">
       <a href="residences.html">Residences</a>
       <a href="book.html">Book a viewing</a>
@@ -503,9 +503,9 @@
     <div class="ftr__links">
       <a href="legal.html#privacy">Privacy policy</a>
       <a href="legal.html#terms">Terms</a>
-      <button class="ftr__reset" type="button" data-reset-demo>Reset demo data</button>
+      <a href="legal.html#credits">Credits</a>
     </div>
-    <p class="ftr__meta">© 2026 Lava</p>
+    <p class="ftr__meta">© 2026 Lava<span class="ftr__concept">Concept product designed by Đỗ Anh Nghĩa.</span></p>
   </div>
 </footer>
 

@@ -137,6 +137,7 @@ body.lava {
 .done__icon { width: 32px; height: 32px; color: var(--ds-text-brand); }
 .done p { margin: 0; color: var(--ds-text-secondary); }
 .done strong { color: var(--ds-text-primary); font-weight: 600; overflow-wrap: anywhere; }
+.done p a { color: var(--ds-text-primary); text-underline-offset: 4px; white-space: nowrap; }
 .lava .ds-banner { font-size: 16px; line-height: 1.5; }
 
 /* ---------- 01 Dự án ---------- */
@@ -271,10 +272,17 @@ body.lava {
 .ftr address { grid-column: 4 / 7; font-style: normal; line-height: 1.7; }
 .ftr address a { display: inline-flex; align-items: center; min-height: 44px; color: var(--ds-text-primary); text-underline-offset: 4px; }
 .ftr__nav { grid-column: 7 / 10; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--ds-space-400); }
-.ftr__meta { grid-column: 1 / 4; grid-row: 2; margin: 0; }
+.ftr__meta { grid-column: 1 / 7; grid-row: 2; margin: 0; }
+.ftr__concept { display: block; margin-top: var(--ds-space-100); font-size: 14px; }
 .ftr__links { grid-column: 10 / 13; display: flex; flex-direction: column; align-items: flex-start; }
 .ftr__links a, .ftr__nav a { display: inline-flex; align-items: center; min-height: 44px; color: var(--ds-text-primary); text-underline-offset: 4px; }
-.ftr__reset { display: inline-flex; align-items: center; min-height: 44px; padding: 0; border: 0; background: none; color: var(--ds-text-primary); font: inherit; text-align: left; text-decoration: underline; text-underline-offset: 4px; cursor: pointer; }
+/* Demo tools: only rendered with ?demo=1 (js/app.js). Small and out of the way, bottom left. */
+.demo-tools { position: fixed; left: var(--ds-space-400); bottom: var(--ds-space-400); z-index: 55; max-width: calc(100% - 32px); border: 1px solid var(--lava-basalt-line); border-radius: var(--ds-shape-control); background: var(--lava-basalt); color: var(--lava-photo-text); font-size: 14px; box-shadow: var(--ds-elevation-overlay); }
+.demo-tools summary { display: flex; align-items: center; min-height: 36px; padding: 0 var(--ds-space-300); cursor: pointer; opacity: .85; }
+.demo-tools[open] summary { opacity: 1; border-bottom: 1px solid var(--lava-basalt-line); }
+.demo-tools__body { display: flex; flex-direction: column; align-items: flex-start; padding: var(--ds-space-200) var(--ds-space-300); }
+.demo-tools__check { display: inline-flex; align-items: center; gap: var(--ds-space-200); min-height: 40px; cursor: pointer; }
+.demo-tools__btn { display: inline-flex; align-items: center; min-height: 40px; padding: 0; border: 0; background: none; color: inherit; font: inherit; text-decoration: underline; text-underline-offset: 4px; cursor: pointer; }
 
 /* ---------- Menu điện thoại ---------- */
 .mmenu { position: fixed; inset: 0; z-index: 50; display: flex; flex-direction: column; gap: var(--ds-space-800); padding: var(--ds-space-400) var(--lava-pad) var(--ds-space-800); background: var(--lava-basalt); color: var(--lava-photo-text); overflow-y: auto; }
